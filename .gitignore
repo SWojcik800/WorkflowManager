@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PMan.App/PMan.App/bin/Debug/net8.0-windows
+/PMan.App/PMan.App/obj

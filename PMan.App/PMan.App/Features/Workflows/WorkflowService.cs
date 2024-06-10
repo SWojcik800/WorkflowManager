@@ -331,6 +331,16 @@ namespace WorkflowManager.App.Features.Workflows
             .Include(x => x.WorkflowStage)
             .ToList();
 
+        public List<Workflow> GetWorkflowsForUser(User currentUser)
+        {
+            var workflows = GetAll();
+
+            var workflowsAvailableToUser = workflows.Where(w => w.GetGroupsThatCanStart().Any(x => currentUser.GroupList().Contains(x)))
+                .ToList();
+
+            return workflowsAvailableToUser;
+        }
+
         public Workflow GetById(int id)
             => context.Workflows.AsNoTracking().Include(x => x.WorkflowFields)
             .Include(x => x.WorkflowStage)
@@ -342,6 +352,7 @@ namespace WorkflowManager.App.Features.Workflows
         void DeleteChildren(List<int> deletedFieldsIds, List<int> deletedStagesIds);
         List<Workflow> GetAll();
         Workflow GetById(int id);
+        List<Workflow> GetWorkflowsForUser(User currentUser);
         List<WorkflowStageFieldModel> ReadStageFields(int workflowId);
         void UpdateStageFields(List<WorkflowStageFieldModel> stageFields);
         void Upsert(Workflow workflow, List<int> deletedFieldIds, List<int> deletedStagesIds);

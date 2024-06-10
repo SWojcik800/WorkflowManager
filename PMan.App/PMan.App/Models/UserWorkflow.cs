@@ -16,11 +16,17 @@ public partial class UserWorkflow : IEntity
 
     public DateTime CreationTime { get; set; }
 
-    public int Status { get; set; }
+    public UserWorkflowStatus Status { get; set; }
 
     public DateTime? CompletionTime { get; set; }
 
     public int? CurrentStageAssignedToUserId { get; set; }
 
     public virtual ICollection<UserWorkflowFieldValue> UserWorkflowFieldValues { get; set; } = new List<UserWorkflowFieldValue>();
+}
+
+public enum UserWorkflowStatus
+{
+    New,
+    Complete
 }

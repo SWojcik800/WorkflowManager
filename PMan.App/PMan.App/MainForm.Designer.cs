@@ -31,16 +31,18 @@
             panel1 = new Panel();
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
+            konfiguracjaToolStripMenuItem = new ToolStripMenuItem();
+            użytkownicyToolStripMenuItem = new ToolStripMenuItem();
+            słownikiToolStripMenuItem = new ToolStripMenuItem();
+            szablonyPrzepływówToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             zmieńHasłoToolStripMenuItem = new ToolStripMenuItem();
             szczegółyToolStripMenuItem = new ToolStripMenuItem();
             wylogujToolStripMenuItem = new ToolStripMenuItem();
             wyjdźZProgramuToolStripMenuItem = new ToolStripMenuItem();
-            konfiguracjaToolStripMenuItem = new ToolStripMenuItem();
-            użytkownicyToolStripMenuItem = new ToolStripMenuItem();
-            słownikiToolStripMenuItem = new ToolStripMenuItem();
-            szablonyPrzepływówToolStripMenuItem = new ToolStripMenuItem();
             panel2 = new Panel();
+            mojePrzepływyToolStripMenuItem = new ToolStripMenuItem();
+            dodajNowyToolStripMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -57,7 +59,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, konfiguracjaToolStripMenuItem, toolStripMenuItem2 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, konfiguracjaToolStripMenuItem, toolStripMenuItem2, mojePrzepływyToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(801, 24);
@@ -70,41 +72,6 @@
             toolStripMenuItem1.Size = new Size(145, 20);
             toolStripMenuItem1.Text = "Ustawienia bazy danych";
             toolStripMenuItem1.Click += toolStripMenuItem1_Click;
-            // 
-            // toolStripMenuItem2
-            // 
-            toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { zmieńHasłoToolStripMenuItem, szczegółyToolStripMenuItem, wylogujToolStripMenuItem, wyjdźZProgramuToolStripMenuItem });
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(80, 20);
-            toolStripMenuItem2.Text = "Moje konto";
-            // 
-            // zmieńHasłoToolStripMenuItem
-            // 
-            zmieńHasłoToolStripMenuItem.Name = "zmieńHasłoToolStripMenuItem";
-            zmieńHasłoToolStripMenuItem.Size = new Size(180, 22);
-            zmieńHasłoToolStripMenuItem.Text = "Zmień hasło";
-            zmieńHasłoToolStripMenuItem.Click += zmieńHasłoToolStripMenuItem_Click;
-            // 
-            // szczegółyToolStripMenuItem
-            // 
-            szczegółyToolStripMenuItem.Name = "szczegółyToolStripMenuItem";
-            szczegółyToolStripMenuItem.Size = new Size(180, 22);
-            szczegółyToolStripMenuItem.Text = "Szczegóły";
-            szczegółyToolStripMenuItem.Click += szczegółyToolStripMenuItem_Click;
-            // 
-            // wylogujToolStripMenuItem
-            // 
-            wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            wylogujToolStripMenuItem.Size = new Size(180, 22);
-            wylogujToolStripMenuItem.Text = "Zmień użytkownika";
-            wylogujToolStripMenuItem.Click += wylogujToolStripMenuItem_Click;
-            // 
-            // wyjdźZProgramuToolStripMenuItem
-            // 
-            wyjdźZProgramuToolStripMenuItem.Name = "wyjdźZProgramuToolStripMenuItem";
-            wyjdźZProgramuToolStripMenuItem.Size = new Size(180, 22);
-            wyjdźZProgramuToolStripMenuItem.Text = "Wyjdź z programu";
-            wyjdźZProgramuToolStripMenuItem.Click += wyjdźZProgramuToolStripMenuItem_Click;
             // 
             // konfiguracjaToolStripMenuItem
             // 
@@ -134,6 +101,41 @@
             szablonyPrzepływówToolStripMenuItem.Text = "Szablony przepływów";
             szablonyPrzepływówToolStripMenuItem.Click += szablonyPrzepływówToolStripMenuItem_Click;
             // 
+            // toolStripMenuItem2
+            // 
+            toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { zmieńHasłoToolStripMenuItem, szczegółyToolStripMenuItem, wylogujToolStripMenuItem, wyjdźZProgramuToolStripMenuItem });
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Size = new Size(80, 20);
+            toolStripMenuItem2.Text = "Moje konto";
+            // 
+            // zmieńHasłoToolStripMenuItem
+            // 
+            zmieńHasłoToolStripMenuItem.Name = "zmieńHasłoToolStripMenuItem";
+            zmieńHasłoToolStripMenuItem.Size = new Size(177, 22);
+            zmieńHasłoToolStripMenuItem.Text = "Zmień hasło";
+            zmieńHasłoToolStripMenuItem.Click += zmieńHasłoToolStripMenuItem_Click;
+            // 
+            // szczegółyToolStripMenuItem
+            // 
+            szczegółyToolStripMenuItem.Name = "szczegółyToolStripMenuItem";
+            szczegółyToolStripMenuItem.Size = new Size(177, 22);
+            szczegółyToolStripMenuItem.Text = "Szczegóły";
+            szczegółyToolStripMenuItem.Click += szczegółyToolStripMenuItem_Click;
+            // 
+            // wylogujToolStripMenuItem
+            // 
+            wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
+            wylogujToolStripMenuItem.Size = new Size(177, 22);
+            wylogujToolStripMenuItem.Text = "Zmień użytkownika";
+            wylogujToolStripMenuItem.Click += wylogujToolStripMenuItem_Click;
+            // 
+            // wyjdźZProgramuToolStripMenuItem
+            // 
+            wyjdźZProgramuToolStripMenuItem.Name = "wyjdźZProgramuToolStripMenuItem";
+            wyjdźZProgramuToolStripMenuItem.Size = new Size(177, 22);
+            wyjdźZProgramuToolStripMenuItem.Text = "Wyjdź z programu";
+            wyjdźZProgramuToolStripMenuItem.Click += wyjdźZProgramuToolStripMenuItem_Click;
+            // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -141,6 +143,20 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(801, 404);
             panel2.TabIndex = 1;
+            // 
+            // mojePrzepływyToolStripMenuItem
+            // 
+            mojePrzepływyToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dodajNowyToolStripMenuItem });
+            mojePrzepływyToolStripMenuItem.Name = "mojePrzepływyToolStripMenuItem";
+            mojePrzepływyToolStripMenuItem.Size = new Size(102, 20);
+            mojePrzepływyToolStripMenuItem.Text = "Moje przepływy";
+            // 
+            // dodajNowyToolStripMenuItem
+            // 
+            dodajNowyToolStripMenuItem.Name = "dodajNowyToolStripMenuItem";
+            dodajNowyToolStripMenuItem.Size = new Size(180, 22);
+            dodajNowyToolStripMenuItem.Text = "Dodaj nowy";
+            dodajNowyToolStripMenuItem.Click += dodajNowyToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -176,5 +192,7 @@
         private ToolStripMenuItem szablonyPrzepływówToolStripMenuItem;
         private ToolStripMenuItem wylogujToolStripMenuItem;
         private ToolStripMenuItem wyjdźZProgramuToolStripMenuItem;
+        private ToolStripMenuItem mojePrzepływyToolStripMenuItem;
+        private ToolStripMenuItem dodajNowyToolStripMenuItem;
     }
 }

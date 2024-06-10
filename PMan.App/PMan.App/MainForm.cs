@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Forms;
 
 namespace StorageManager.App
 {
@@ -85,6 +86,11 @@ namespace StorageManager.App
         private void wyjdźZProgramuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void dodajNowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateUserWorkflowForm.AddNewForCurrentUser();
         }
     }
 }
