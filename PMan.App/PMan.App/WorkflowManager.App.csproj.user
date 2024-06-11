@@ -19,6 +19,9 @@
     <Compile Update="Forms\StageFieldsForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\UserCreatedWorkflowsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>

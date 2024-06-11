@@ -13,6 +13,7 @@ public partial class DictionaryItem : IEntity
     public string? Value { get; set; }
 
     public int DictionaryId { get; set; }
+    public bool IsDefault { get; set; }
 
     public virtual Dictionary Dictionary { get; set; } = null!;
 }

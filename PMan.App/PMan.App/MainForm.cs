@@ -92,5 +92,11 @@ namespace StorageManager.App
         {
             CreateUserWorkflowForm.AddNewForCurrentUser();
         }
+
+        private void utworzonePrzezeMnieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var childForm = new UserCreatedWorkflowsForm();
+            OpenForm(childForm);
+        }
     }
 }

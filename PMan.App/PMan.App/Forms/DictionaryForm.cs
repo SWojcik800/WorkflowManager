@@ -116,12 +116,20 @@ namespace StorageManager.App.Forms
                 return false;
             }
 
+            if(_items.Count(x => x.IsDefault) > 1)
+            {
+                AppManager.Instance.ShowErrorMessage("Tylko jedna wartość słownikowa może być ustawiona jako domyślna");
+                return false;
+            }
+
             if(string.IsNullOrEmpty(_data.Name))
             {
                 this.errorProvider1.SetError(textBox1, "Nazwa słownika nie może być pusta");
                 textBox1.Focus();
                 return false;
             }
+
+
 
             return true;
 
