@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Helpers;
 
 namespace StorageManager.App.Forms.Base
 {
@@ -89,6 +90,47 @@ namespace StorageManager.App.Forms.Base
             return form.ShowDialog() == DialogResult.OK;
         }
 
+        public static void OpenWithDynamicColumnForControl<T>(Dictionary<string, string> columns, Func<List<T>> getItemsFunc, Action<DataGridViewSelectedRowCollection> handleSelectedItems,
+            string formTitle, Control control, Action<AppGridView>? configGridFunc = null, int? maxWidth = null)
+        {
+            DataTableSelectionForm<T> form = OpenFormDynamic(columns, getItemsFunc, handleSelectedItems, formTitle, configGridFunc);
+
+            if (maxWidth is not null)
+                form.MaximumSize = new Size((int)maxWidth, form.Height);
+
+            NestedFormHelper.OpenBelowControl(control, form);
+
+        }
+
+        private static DataTableSelectionForm<T> OpenFormDynamic<T>(Dictionary<string, string> columns, Func<List<T>> getItemsFunc, Action<DataGridViewSelectedRowCollection> handleSelectedItems, string formTitle, Action<AppGridView>? configGridFunc)
+        {
+            var colDefs = new List<DataGridViewColumn>();
+            var colList = columns.ToList();
+            for (int i = 0; i < columns.Count; i++)
+            {
+                var colDef = new DataGridViewTextBoxColumn()
+                {
+                    Name = "Column" + i.ToString(),
+                    HeaderText = colList[i].Key,
+                    DataPropertyName = colList[i].Value,
+                    ReadOnly = false
+                };
+
+                colDefs.Add(colDef);
+
+            }
+
+            var arr = colDefs.ToArray();
+            var form = new DataTableSelectionForm<T>(arr, getItemsFunc, handleSelectedItems, formTitle, configGridFunc);
+            return form;
+        }
+
+        private static void Form_Deactivate(object? sender, EventArgs e)
+        {
+            var form = sender as Form;
+            form.Close();
+        }
+
         protected virtual void RefreshTable()
         {
             //this.appGridView1.DataSource = null;
@@ -112,7 +154,7 @@ namespace StorageManager.App.Forms.Base
             if (this.appGridView1.SelectedRows.Count > 0)
             {
                 _handleSelectedItems(this.appGridView1.SelectedRows);
-                DialogResult = DialogResult.OK;
+                Close();
             }
         }
     }

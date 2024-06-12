@@ -49,7 +49,7 @@ namespace StorageManager.App.Forms
             if (this.appGridView1.SelectedRows.Count > 0)
             {
                 User data = appGridView1.SelectedRows[0].DataBoundItem as User;
-                var result = UserForm.Edit(data.Id);
+                var result = UserForm.EditInline(data.Id, appGridView1);
                 if (result)
                     RefreshTable();
             }
@@ -57,9 +57,18 @@ namespace StorageManager.App.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var result = UserForm.AddNew();
+            var user = new User();
+            _data.Add(user);
+            this.appGridView1.DataSource = null;
+            this.appGridView1.DataSource = _data;
+            var idx = _data.IndexOf(user);
+            var result = UserForm.AddNewInline(user, appGridView1, idx);
             if (result)
                 RefreshTable();
+            else
+                _data.Remove(user);
+            this.appGridView1.DataSource = null;
+            this.appGridView1.DataSource = _data;
         }
 
         private void RefreshTable()
@@ -76,7 +85,18 @@ namespace StorageManager.App.Forms
             if (this.appGridView1.SelectedRows.Count > 0)
             {
                 User data = appGridView1.SelectedRows[0].DataBoundItem as User;
-                var result = UserForm.Edit(data.Id);
+                var result = UserForm.EditInline(data.Id, appGridView1);
+                if (result)
+                    RefreshTable();
+            }
+        }
+
+        private void appGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.appGridView1.SelectedRows.Count > 0)
+            {
+                User data = appGridView1.SelectedRows[0].DataBoundItem as User;
+                var result = UserForm.EditInline(data.Id, appGridView1);
                 if (result)
                     RefreshTable();
             }

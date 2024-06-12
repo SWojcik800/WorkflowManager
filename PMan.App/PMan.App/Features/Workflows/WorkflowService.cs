@@ -151,7 +151,7 @@ namespace WorkflowManager.App.Features.Workflows
                   FROM [PMDb].[dbo].[WorkflowStageFields] wf
                   left join WorkflowStage ws on ws.Id = wf.[WorkflowStageId]
                   WHERE wf.[WorkflowStageId] IN @StageIds
-                  ORDER BY ws.StageIndex ASC
+                  ORDER BY ws.StageIndex, wf.Id  ASC
                 ";
 
                 var result = connection.Query<WorkflowStageFieldModel>(sql, new

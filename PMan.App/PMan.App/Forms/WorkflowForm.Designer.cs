@@ -232,6 +232,7 @@ namespace StorageManager.App
             appGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             appGridView1.AutoGenerateColumns = false;
             appGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            appGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             appGridView1.BackgroundColor = Color.WhiteSmoke;
             appGridView1.BorderStyle = BorderStyle.Fixed3D;
             appGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -339,6 +340,7 @@ namespace StorageManager.App
             appGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             appGridView2.AutoGenerateColumns = false;
             appGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            appGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             appGridView2.BackgroundColor = Color.WhiteSmoke;
             appGridView2.BorderStyle = BorderStyle.Fixed3D;
             appGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;

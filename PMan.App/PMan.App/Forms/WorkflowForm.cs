@@ -188,7 +188,7 @@ namespace StorageManager.App
 
         private void textBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            DataTableSelectionForm<DictionaryItem>.OpenWithDynamicColumn<DictionaryItem>(new Dictionary<string, string>
+            DataTableSelectionForm<DictionaryItem>.OpenWithDynamicColumnForControl<DictionaryItem>(new Dictionary<string, string>
             {
                 { "Nazwa", "Name" },
                 { "Wartość", "Value" },
@@ -219,7 +219,7 @@ namespace StorageManager.App
                 EditedItem.GroupsThatCanStart = string.Join(";", items);
                 this.editedItemBindingSource.ResetCurrentItem();
 
-            }, "Grupy użytkownika", textBox2.Location, (AppGridView appGridView) =>
+            }, "Grupy użytkownika", textBox2, (AppGridView appGridView) =>
             {
                 appGridView.ReadOnly = true;
                 appGridView.MultiSelect = true;
@@ -299,8 +299,10 @@ namespace StorageManager.App
                 ComboBox cb = e.Control as ComboBox;
                 if (cb != null)
                 {
-                    cb.SelectionChangeCommitted -= new EventHandler(ComboBox_SelectedIndexChanged);
-                    cb.SelectionChangeCommitted += new EventHandler(ComboBox_SelectedIndexChanged);
+                    cb.SelectedIndexChanged -= new EventHandler(ComboBox_SelectedIndexChanged);
+                    cb.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
+                    //cb.SelectionChangeCommitted -= new EventHandler(ComboBox_SelectedIndexChanged);
+                    //cb.SelectionChangeCommitted += new EventHandler(ComboBox_SelectedIndexChanged);
                 }
             }
         }
@@ -317,11 +319,9 @@ namespace StorageManager.App
                 if (selectedItem == "Słownik")
                 {
 
-                    var item = this.appGridView1.CurrentRow.DataBoundItem as WorkflowField;
 
-                    if (item is not null)
-                    {
-                        DataTableSelectionForm<Dictionary>.OpenWithDynamicColumn<Dictionary>(new Dictionary<string, string>
+
+                        DataTableSelectionForm<Dictionary>.OpenWithDynamicColumnForControl(new Dictionary<string, string>
                         {
                             { "Nazwa", "Name" },
                         }, () =>
@@ -336,19 +336,20 @@ namespace StorageManager.App
 
                         }, (selectedRows) =>
                         {
+                            var item = (WorkflowField)appGridView1.CurrentRow.DataBoundItem;
                             var row = selectedRows[0].DataBoundItem as Dictionary;
                             item.DisplayData = row.Id.ToString();
 
                             this.appGridView1.Refresh();
 
-                        }, "Słowniki", comboBox.Location, (AppGridView appGridView) =>
+                        }, "Słowniki", comboBox, (AppGridView appGridView) =>
                         {
                             appGridView.ReadOnly = true;
                             appGridView.MultiSelect = false;
                             appGridView.AllowUserToAddRows = false;
                             appGridView.AllowUserToDeleteRows = false;
-                        });
-                    }
+                        }, 600);
+                    
 
                 }
             }
@@ -361,8 +362,10 @@ namespace StorageManager.App
                 ComboBox cb = e.Control as ComboBox;
                 if (cb != null)
                 {
-                    cb.SelectionChangeCommitted -= new EventHandler(ComboBox_AssignedTypendexChanged);
-                    cb.SelectionChangeCommitted += new EventHandler(ComboBox_AssignedTypendexChanged);
+                    //cb.SelectionChangeCommitted -= new EventHandler(ComboBox_AssignedTypendexChanged);
+                    //cb.SelectionChangeCommitted += new EventHandler(ComboBox_AssignedTypendexChanged);cb.SelectionChangeCommitted -= new EventHandler(ComboBox_AssignedTypendexChanged);
+                    cb.SelectedIndexChanged -= new EventHandler(ComboBox_AssignedTypendexChanged);
+                    cb.SelectedIndexChanged += new EventHandler(ComboBox_AssignedTypendexChanged);
                 }
             }
         }
@@ -376,81 +379,77 @@ namespace StorageManager.App
                 if (selectedItem is null)
                     return;
 
-                var item = this.appGridView2.CurrentRow.DataBoundItem as WorkflowStage;
-
-                if (item is not null)
+                if (selectedItem == "Grupa")
                 {
 
-
-                    if (selectedItem == "Grupa")
+                    DataTableSelectionForm<DictionaryItem>.OpenWithDynamicColumnForControl<DictionaryItem>(new Dictionary<string, string>
+                {
+                    { "Nazwa", "Name" },
+                    { "Wartość", "Value" },
+                }, () =>
+                {
+                    var service = AppManager.Instance.Resolve<IDataDictionaryService>();
+                    var dict = service
+                    .GetAll().FirstOrDefault(x => x.Name == "Grupy użytkowników");
+                    var data = service.GetById(dict.Id);
+                    if (data is null)
                     {
-
-                        DataTableSelectionForm<DictionaryItem>.OpenWithDynamicColumn<DictionaryItem>(new Dictionary<string, string>
-                    {
-                        { "Nazwa", "Name" },
-                        { "Wartość", "Value" },
-                    }, () =>
-                    {
-                        var service = AppManager.Instance.Resolve<IDataDictionaryService>();
-                        var dict = service
-                        .GetAll().FirstOrDefault(x => x.Name == "Grupy użytkowników");
-                        var data = service.GetById(dict.Id);
-                        if (data is null)
-                        {
-                            AppManager.Instance.ShowErrorMessage("Brak zdefiniowanego słownika: Grupy użytkowników");
-                            return new();
-                        }
-
-                        return data.DictionaryItems.ToList();
-
-                    }, (selectedRows) =>
-                    {
-                        var selectedRow = selectedRows[0].DataBoundItem as DictionaryItem;
-
-                        item.AssignedEntityId = selectedRow.Id;
-                        this.appGridView2.Refresh();
-
-                    }, "Grupy użytkownika", comboBox.Location, (AppGridView appGridView) =>
-                    {
-                        appGridView.ReadOnly = true;
-                        appGridView.MultiSelect = false;
-                        appGridView.AllowUserToAddRows = false;
-                        appGridView.AllowUserToDeleteRows = false;
-                    });
-
-
-
+                        AppManager.Instance.ShowErrorMessage("Brak zdefiniowanego słownika: Grupy użytkowników");
+                        return new();
                     }
-                    if (selectedItem == "Użytkownik")
-                    {
-                        DataTableSelectionForm<User>.OpenWithDynamicColumn<User>(new Dictionary<string, string>
-                    {
-                        { "Login", "Login" },
-                    }, () =>
-                    {
-                        var service = AppManager.Instance.Resolve<IUserService>();
-                        var data = service
-                        .GetAll().ToList();
 
-                        return data;
+                    return data.DictionaryItems.ToList();
 
-                    }, (selectedRows) =>
-                    {
-                        var selectedRow = selectedRows[0].DataBoundItem as User;
+                }, (selectedRows) =>
+                {
+                    var selectedRow = selectedRows[0].DataBoundItem as DictionaryItem;
+                    var item = this.appGridView2.CurrentRow.DataBoundItem as WorkflowStage;
 
-                        item.AssignedEntityId = selectedRow.Id;
-                        this.appGridView2.Refresh();
+                    item.AssignedEntityId = selectedRow.Id;
+                    this.appGridView2.Refresh();
 
-                    }, "Użytkownicy", comboBox.Location, (AppGridView appGridView) =>
-                    {
-                        appGridView.ReadOnly = true;
-                        appGridView.MultiSelect = false;
-                        appGridView.AllowUserToAddRows = false;
-                        appGridView.AllowUserToDeleteRows = false;
-                    });
+                }, "Grupy użytkownika", comboBox, (AppGridView appGridView) =>
+                {
+                    appGridView.ReadOnly = true;
+                    appGridView.MultiSelect = false;
+                    appGridView.AllowUserToAddRows = false;
+                    appGridView.AllowUserToDeleteRows = false;
+                });
 
-                    }
+
+
                 }
+                if (selectedItem == "Użytkownik")
+                {
+                    DataTableSelectionForm<User>.OpenWithDynamicColumnForControl<User>(new Dictionary<string, string>
+                {
+                    { "Login", "Login" },
+                }, () =>
+                {
+                    var service = AppManager.Instance.Resolve<IUserService>();
+                    var data = service
+                    .GetAll().ToList();
+
+                    return data;
+
+                }, (selectedRows) =>
+                {
+                    var selectedRow = selectedRows[0].DataBoundItem as User;
+                    var item = this.appGridView2.CurrentRow.DataBoundItem as WorkflowStage;
+
+                    item.AssignedEntityId = selectedRow.Id;
+                    this.appGridView2.Refresh();
+
+                }, "Użytkownicy", comboBox, (AppGridView appGridView) =>
+                {
+                    appGridView.ReadOnly = true;
+                    appGridView.MultiSelect = false;
+                    appGridView.AllowUserToAddRows = false;
+                    appGridView.AllowUserToDeleteRows = false;
+                });
+
+            }
+                
 
 
             }

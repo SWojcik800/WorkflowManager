@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using StorageManager.App.Commons.Controls;
 using StorageManager.App.Features.Dictionaries;
 using StorageManager.App.Features.Users;
 using StorageManager.App.Forms.Base;
@@ -14,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Helpers;
 using User = StorageManager.App.Models.User;
 
 namespace StorageManager.App.Forms
@@ -35,7 +37,7 @@ namespace StorageManager.App.Forms
             {
                 Name = "Nowy słownik"
             };
-            if(id != 0)
+            if (id != 0)
                 data = service.GetById(id);
 
             _data = data;
@@ -74,6 +76,20 @@ namespace StorageManager.App.Forms
             return form.ShowDialog() == DialogResult.OK;
         }
 
+        public static bool EditInline(AppGridView appGridView, int id)
+        {
+            var currentUser = AppManager.Instance.CurrentUser;
+
+            if (!currentUser.IsAdmin)
+            {
+                AppManager.Instance.ShowPermissionDeniedMessage();
+                return false;
+            }
+
+            var form = new DictionaryForm(id);
+            return NestedFormHelper.OpenInGrid(appGridView, form);
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (this.appGridView1.SelectedRows.Count > 0)
@@ -88,17 +104,18 @@ namespace StorageManager.App.Forms
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if(IsValid())
+            if (IsValid())
             {
                 var service = AppManager.Instance.Resolve<IDataDictionaryService>();
 
                 _data.DictionaryItems = _items;
                 var result = service.Upsert(_data);
-                if(result.IsSuccess)
+                if (result.IsSuccess)
                 {
                     AppManager.Instance.ShowDataSavedMessage();
                     DialogResult = DialogResult.OK;
-                } else
+                }
+                else
                 {
                     AppManager.Instance.ShowErrorMessage(result.ErrorMessage);
                 }
@@ -110,19 +127,19 @@ namespace StorageManager.App.Forms
 
         private bool IsValid()
         {
-            if(_items.Any(x => string.IsNullOrEmpty(x.Name) || string.IsNullOrEmpty(x.Value)))
+            if (_items.Any(x => string.IsNullOrEmpty(x.Name) || string.IsNullOrEmpty(x.Value)))
             {
                 AppManager.Instance.ShowErrorMessage("Wartość słownikowa musi mieć zdefiniowany klucz oraz wartość");
                 return false;
             }
 
-            if(_items.Count(x => x.IsDefault) > 1)
+            if (_items.Count(x => x.IsDefault) > 1)
             {
                 AppManager.Instance.ShowErrorMessage("Tylko jedna wartość słownikowa może być ustawiona jako domyślna");
                 return false;
             }
 
-            if(string.IsNullOrEmpty(_data.Name))
+            if (string.IsNullOrEmpty(_data.Name))
             {
                 this.errorProvider1.SetError(textBox1, "Nazwa słownika nie może być pusta");
                 textBox1.Focus();
@@ -145,6 +162,11 @@ namespace StorageManager.App.Forms
                 //if (result)
                 //    RefreshTable();
             }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

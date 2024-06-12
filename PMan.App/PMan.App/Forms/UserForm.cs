@@ -15,6 +15,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Helpers;
 
 namespace StorageManager.App.Forms
 {
@@ -83,6 +84,42 @@ namespace StorageManager.App.Forms
             return form.ShowDialog() == DialogResult.OK;
         }
 
+        public static bool EditInline(int id, AppGridView appGridView)
+        {
+            var userService = AppManager.Instance.Resolve<IUserService>();
+            var form = new UserForm(userService.GetById(id));
+            form._data = form._service.GetById(id);
+           
+            form._isEdit = true;
+
+            if (!AppManager.Instance.CurrentUser.IsAdmin)
+            {
+                AppManager.Instance.ShowPermissionDeniedMessage();
+                return false;
+            }
+
+            form.textBox5.Enabled = false;
+
+
+            return NestedFormHelper.OpenInGrid(appGridView, form);
+        
+        }
+
+        public static bool AddNewInline(User user, AppGridView appGridView, int newRowIdx)
+        {
+            var userService = AppManager.Instance.Resolve<IUserService>();
+            var form = new UserForm(user);
+
+            if (!AppManager.Instance.CurrentUser.IsAdmin)
+            {
+                AppManager.Instance.ShowPermissionDeniedMessage();
+                return false;
+            }
+
+            return NestedFormHelper.OpenInGrid(appGridView, form, true, newRowIdx);
+
+        }
+
 
         private bool IsValid()
         {
@@ -140,7 +177,7 @@ namespace StorageManager.App.Forms
 
         private void textBox4_MouseDown(object sender, MouseEventArgs e)
         {
-            DataTableSelectionForm<DictionaryItem>.OpenWithDynamicColumn<DictionaryItem>(new Dictionary<string, string>
+            DataTableSelectionForm<DictionaryItem>.OpenWithDynamicColumnForControl<DictionaryItem>(new Dictionary<string, string>
             {
                 { "Nazwa", "Name" },
                 { "Wartość", "Value" },
@@ -171,7 +208,7 @@ namespace StorageManager.App.Forms
                 _data.Groups = string.Join(";", items);
                 this.userBindingSource.ResetCurrentItem();
         
-            }, "Grupy użytkownika", textBox4.Location, (AppGridView appGridView) =>
+            }, "Grupy użytkownika", textBox4, (AppGridView appGridView) =>
             {
                 appGridView.ReadOnly = true;
                 appGridView.MultiSelect = true;

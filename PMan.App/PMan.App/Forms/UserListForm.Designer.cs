@@ -143,6 +143,7 @@
             appGridView1.Size = new Size(776, 353);
             appGridView1.TabIndex = 2;
             appGridView1.CellContentDoubleClick += appGridView1_CellContentDoubleClick;
+            appGridView1.CellDoubleClick += appGridView1_CellDoubleClick;
             // 
             // loginDataGridViewTextBoxColumn
             // 

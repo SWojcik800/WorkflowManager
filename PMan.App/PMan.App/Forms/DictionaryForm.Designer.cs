@@ -36,15 +36,16 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             button1 = new Button();
             panel1 = new Panel();
+            button2 = new Button();
             textBox1 = new TextBox();
             dictionaryBindingSource = new BindingSource(components);
             label1 = new Label();
             appGridView1 = new Commons.Controls.AppGridView();
-            dictionaryItemBindingSource = new BindingSource(components);
-            errorProvider1 = new ErrorProvider(components);
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             valueDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             IsDefault = new DataGridViewCheckBoxColumn();
+            dictionaryItemBindingSource = new BindingSource(components);
+            errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dictionaryBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)appGridView1).BeginInit();
@@ -66,6 +67,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
@@ -73,6 +75,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(757, 67);
             panel1.TabIndex = 3;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Right;
+            button2.Location = new Point(506, 33);
+            button2.Name = "button2";
+            button2.Size = new Size(121, 31);
+            button2.TabIndex = 3;
+            button2.Text = "Anuluj";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
             // 
             // textBox1
             // 
@@ -101,6 +114,7 @@
             appGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(220, 220, 220);
             appGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            appGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             appGridView1.AutoGenerateColumns = false;
             appGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             appGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -156,14 +170,6 @@
             appGridView1.Size = new Size(757, 353);
             appGridView1.TabIndex = 0;
             // 
-            // dictionaryItemBindingSource
-            // 
-            dictionaryItemBindingSource.DataSource = typeof(Models.DictionaryItem);
-            // 
-            // errorProvider1
-            // 
-            errorProvider1.ContainerControl = this;
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
@@ -184,6 +190,14 @@
             IsDefault.HeaderText = "Wartość domyślna";
             IsDefault.Name = "IsDefault";
             IsDefault.ReadOnly = true;
+            // 
+            // dictionaryItemBindingSource
+            // 
+            dictionaryItemBindingSource.DataSource = typeof(Models.DictionaryItem);
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // DictionaryForm
             // 
@@ -216,5 +230,6 @@
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn IsDefault;
+        private Button button2;
     }
 }
