@@ -22,9 +22,12 @@ namespace WorkflowManager.App.Models
         }
 
         public int Id { get; set; }
+        public int WorkflowId { get; set; }
         public string Name { get; set; }
         public string DictStatus { get; set; }
         public string Stage { get; set; }
         public string AssignedToUser { get; set; }
+        public int? AssignedToUserId { get; set; }
+        public int CurrentStageId { get; set; }
     }
 }

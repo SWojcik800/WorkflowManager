@@ -98,5 +98,11 @@ namespace StorageManager.App
             var childForm = new UserCreatedWorkflowsForm();
             OpenForm(childForm);
         }
+
+        private void doObsłużeniaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var childForm = new UserWorkflowsToProcessForm();
+            OpenForm(childForm);
+        }
     }
 }

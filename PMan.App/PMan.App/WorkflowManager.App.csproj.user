@@ -28,6 +28,9 @@
     <Compile Update="Forms\UserListForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\UserWorkflowsToProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

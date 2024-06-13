@@ -42,8 +42,9 @@
             wyjdźZProgramuToolStripMenuItem = new ToolStripMenuItem();
             mojePrzepływyToolStripMenuItem = new ToolStripMenuItem();
             dodajNowyToolStripMenuItem = new ToolStripMenuItem();
-            panel2 = new Panel();
             utworzonePrzezeMnieToolStripMenuItem = new ToolStripMenuItem();
+            panel2 = new Panel();
+            doObsłużeniaToolStripMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -112,34 +113,34 @@
             // zmieńHasłoToolStripMenuItem
             // 
             zmieńHasłoToolStripMenuItem.Name = "zmieńHasłoToolStripMenuItem";
-            zmieńHasłoToolStripMenuItem.Size = new Size(180, 22);
+            zmieńHasłoToolStripMenuItem.Size = new Size(177, 22);
             zmieńHasłoToolStripMenuItem.Text = "Zmień hasło";
             zmieńHasłoToolStripMenuItem.Click += zmieńHasłoToolStripMenuItem_Click;
             // 
             // szczegółyToolStripMenuItem
             // 
             szczegółyToolStripMenuItem.Name = "szczegółyToolStripMenuItem";
-            szczegółyToolStripMenuItem.Size = new Size(180, 22);
+            szczegółyToolStripMenuItem.Size = new Size(177, 22);
             szczegółyToolStripMenuItem.Text = "Szczegóły";
             szczegółyToolStripMenuItem.Click += szczegółyToolStripMenuItem_Click;
             // 
             // wylogujToolStripMenuItem
             // 
             wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            wylogujToolStripMenuItem.Size = new Size(180, 22);
+            wylogujToolStripMenuItem.Size = new Size(177, 22);
             wylogujToolStripMenuItem.Text = "Zmień użytkownika";
             wylogujToolStripMenuItem.Click += wylogujToolStripMenuItem_Click;
             // 
             // wyjdźZProgramuToolStripMenuItem
             // 
             wyjdźZProgramuToolStripMenuItem.Name = "wyjdźZProgramuToolStripMenuItem";
-            wyjdźZProgramuToolStripMenuItem.Size = new Size(180, 22);
+            wyjdźZProgramuToolStripMenuItem.Size = new Size(177, 22);
             wyjdźZProgramuToolStripMenuItem.Text = "Wyjdź z programu";
             wyjdźZProgramuToolStripMenuItem.Click += wyjdźZProgramuToolStripMenuItem_Click;
             // 
             // mojePrzepływyToolStripMenuItem
             // 
-            mojePrzepływyToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dodajNowyToolStripMenuItem, utworzonePrzezeMnieToolStripMenuItem });
+            mojePrzepływyToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dodajNowyToolStripMenuItem, utworzonePrzezeMnieToolStripMenuItem, doObsłużeniaToolStripMenuItem });
             mojePrzepływyToolStripMenuItem.Name = "mojePrzepływyToolStripMenuItem";
             mojePrzepływyToolStripMenuItem.Size = new Size(102, 20);
             mojePrzepływyToolStripMenuItem.Text = "Moje przepływy";
@@ -151,6 +152,13 @@
             dodajNowyToolStripMenuItem.Text = "Dodaj nowy";
             dodajNowyToolStripMenuItem.Click += dodajNowyToolStripMenuItem_Click;
             // 
+            // utworzonePrzezeMnieToolStripMenuItem
+            // 
+            utworzonePrzezeMnieToolStripMenuItem.Name = "utworzonePrzezeMnieToolStripMenuItem";
+            utworzonePrzezeMnieToolStripMenuItem.Size = new Size(197, 22);
+            utworzonePrzezeMnieToolStripMenuItem.Text = "Utworzone przeze mnie";
+            utworzonePrzezeMnieToolStripMenuItem.Click += utworzonePrzezeMnieToolStripMenuItem_Click;
+            // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -159,12 +167,12 @@
             panel2.Size = new Size(801, 404);
             panel2.TabIndex = 1;
             // 
-            // utworzonePrzezeMnieToolStripMenuItem
+            // doObsłużeniaToolStripMenuItem
             // 
-            utworzonePrzezeMnieToolStripMenuItem.Name = "utworzonePrzezeMnieToolStripMenuItem";
-            utworzonePrzezeMnieToolStripMenuItem.Size = new Size(197, 22);
-            utworzonePrzezeMnieToolStripMenuItem.Text = "Utworzone przeze mnie";
-            utworzonePrzezeMnieToolStripMenuItem.Click += utworzonePrzezeMnieToolStripMenuItem_Click;
+            doObsłużeniaToolStripMenuItem.Name = "doObsłużeniaToolStripMenuItem";
+            doObsłużeniaToolStripMenuItem.Size = new Size(197, 22);
+            doObsłużeniaToolStripMenuItem.Text = "Do obsłużenia";
+            doObsłużeniaToolStripMenuItem.Click += doObsłużeniaToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -203,5 +211,6 @@
         private ToolStripMenuItem mojePrzepływyToolStripMenuItem;
         private ToolStripMenuItem dodajNowyToolStripMenuItem;
         private ToolStripMenuItem utworzonePrzezeMnieToolStripMenuItem;
+        private ToolStripMenuItem doObsłużeniaToolStripMenuItem;
     }
 }
