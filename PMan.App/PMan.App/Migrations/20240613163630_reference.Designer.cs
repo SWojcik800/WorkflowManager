@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StorageManager.App.Database;
 
@@ -11,9 +12,11 @@ using StorageManager.App.Database;
 namespace WorkflowManager.App.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240613163630_reference")]
+    partial class reference
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -341,8 +344,6 @@ namespace WorkflowManager.App.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("WorkflowStageId");
-
                     b.ToTable("WorkflowStageFields");
                 });
 
@@ -426,15 +427,6 @@ namespace WorkflowManager.App.Migrations
                     b.Navigation("Workflow");
                 });
 
-            modelBuilder.Entity("StorageManager.App.Models.WorkflowStageField", b =>
-                {
-                    b.HasOne("StorageManager.App.Models.WorkflowStage", null)
-                        .WithMany("StageFields")
-                        .HasForeignKey("WorkflowStageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("StorageManager.App.Models.Dictionary", b =>
                 {
                     b.Navigation("DictionaryItems");
@@ -460,11 +452,6 @@ namespace WorkflowManager.App.Migrations
                     b.Navigation("WorkflowFields");
 
                     b.Navigation("WorkflowStage");
-                });
-
-            modelBuilder.Entity("StorageManager.App.Models.WorkflowStage", b =>
-                {
-                    b.Navigation("StageFields");
                 });
 #pragma warning restore 612, 618
         }

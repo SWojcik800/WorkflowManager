@@ -13,8 +13,10 @@ public partial class UserWorkflow : IEntity
     public int CreatedByUserId { get; set; }
 
     public int WorkflowId { get; set; }
+    public Workflow Workflow { get; set; }
 
     public int CurrentStageId { get; set; }
+    public WorkflowStage CurrentStage { get; set; }
     public int WorkflowDictStatus { get; set; } = AppManager.Instance.Dictionaries.First(x => x.Name == "Statusy przepływów").DefaultItem.Id;
     [NotMapped]
     public string WorkflowDictStatusDisplayName { 

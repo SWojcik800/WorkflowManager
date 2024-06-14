@@ -127,6 +127,7 @@ public partial class WorkflowStage : IEntity
 
     public int? WorkflowId { get; set; }
     public Workflow? Workflow { get; set; }
+    public List<WorkflowStageField> StageFields { get; set; }
 }
 
 public enum AssignedEntityType

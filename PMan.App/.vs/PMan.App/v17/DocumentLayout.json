@@ -1,66 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\",
+  "WorkspaceRootPath": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|c:\\users\\ldvs\\desktop\\repos\\workflowmanager\\pman.app\\pman.app\\forms\\userworkflowstoprocessform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\userworkflowstoprocessform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\features\\userworkflows\\userworkflowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|c:\\users\\szymo\\source\\repos\\workflowmanager\\pman.app\\pman.app\\features\\userworkflows\\userworkflowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\features\\userworkflows\\userworkflowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\forms\\userworkflowstoprocessform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|c:\\users\\szymo\\source\\repos\\workflowmanager\\pman.app\\pman.app\\forms\\userworkflowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\userworkflowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|c:\\users\\szymo\\source\\repos\\workflowmanager\\pman.app\\pman.app\\database\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\database\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|c:\\users\\szymo\\source\\repos\\workflowmanager\\pman.app\\pman.app\\forms\\userworkflowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\userworkflowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|c:\\users\\szymo\\source\\repos\\workflowmanager\\pman.app\\pman.app\\forms\\userworkflowstoprocessform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\userworkflowstoprocessform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\models\\userworkflowreadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\models\\userworkflowreadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|c:\\users\\szymo\\source\\repos\\workflowmanager\\pman.app\\pman.app\\forms\\userworkflowstoprocessform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\userworkflowstoprocessform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\models\\workflowstage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\models\\workflowstage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|c:\\users\\szymo\\source\\repos\\workflowmanager\\pman.app\\pman.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\features\\workflows\\workflowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\features\\workflows\\workflowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\forms\\workflowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\workflowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|c:\\users\\szymo\\source\\repos\\workflowmanager\\pman.app\\pman.app\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\models\\userworkflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\models\\userworkflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\forms\\stagefieldsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\stagefieldsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\forms\\stagefieldsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\stagefieldsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\forms\\workflowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\workflowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\forms\\base\\datatableselectionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\forms\\base\\datatableselectionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\pman.app\\helpers\\nestedformhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}|PMan.App\\WorkflowManager.App.csproj|solutionrelative:pman.app\\helpers\\nestedformhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,196 +42,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserWorkflowsToProcessForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowsToProcessForm.cs [Design]",
-              "RelativeToolTip": "PMan.App\\Forms\\UserWorkflowsToProcessForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T18:32:10.809Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserWorkflowService.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Features\\UserWorkflows\\UserWorkflowService.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Features\\UserWorkflows\\UserWorkflowService.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Features\\UserWorkflows\\UserWorkflowService.cs",
-              "RelativeToolTip": "PMan.App\\Features\\UserWorkflows\\UserWorkflowService.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAAAI0AAABzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T18:11:31.368Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UserWorkflowsToProcessForm.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
-              "RelativeToolTip": "PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAkwC4AAABQAAAA",
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Database\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "PMan.App\\Database\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Database\\AppDbContext.cs",
+              "RelativeToolTip": "PMan.App\\Database\\AppDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T18:34:00.197Z"
+              "WhenOpened": "2024-06-14T20:48:56.265Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "UserWorkflowReadModel.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Models\\UserWorkflowReadModel.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Models\\UserWorkflowReadModel.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Models\\UserWorkflowReadModel.cs",
-              "RelativeToolTip": "PMan.App\\Models\\UserWorkflowReadModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAkAAAA",
+              "Title": "UserWorkflowForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowForm.cs",
+              "RelativeDocumentMoniker": "PMan.App\\Forms\\UserWorkflowForm.cs",
+              "ToolTip": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowForm.cs [Design]",
+              "RelativeToolTip": "PMan.App\\Forms\\UserWorkflowForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:57:01.955Z"
+              "WhenOpened": "2024-06-14T18:18:51.488Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\MainForm.cs",
-              "RelativeDocumentMoniker": "PMan.App\\MainForm.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\MainForm.cs",
-              "RelativeToolTip": "PMan.App\\MainForm.cs",
-              "ViewState": "AQIAAE8AAAAAAAAAAAAswGcAAAA6AAAA",
+              "DocumentIndex": 1,
+              "Title": "UserWorkflowForm.cs",
+              "DocumentMoniker": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowForm.cs",
+              "RelativeDocumentMoniker": "PMan.App\\Forms\\UserWorkflowForm.cs",
+              "ToolTip": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowForm.cs",
+              "RelativeToolTip": "PMan.App\\Forms\\UserWorkflowForm.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAlwB8AAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T18:31:38.933Z"
+              "WhenOpened": "2024-06-14T18:20:05.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserWorkflowService.cs",
+              "DocumentMoniker": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Features\\UserWorkflows\\UserWorkflowService.cs",
+              "RelativeDocumentMoniker": "PMan.App\\Features\\UserWorkflows\\UserWorkflowService.cs",
+              "ToolTip": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Features\\UserWorkflows\\UserWorkflowService.cs",
+              "RelativeToolTip": "PMan.App\\Features\\UserWorkflows\\UserWorkflowService.cs",
+              "ViewState": "AQIAAKoAAAAAAAAAAAAtwLMAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T18:21:56.019Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "WorkflowStage.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Models\\WorkflowStage.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Models\\WorkflowStage.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Models\\WorkflowStage.cs",
-              "RelativeToolTip": "PMan.App\\Models\\WorkflowStage.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAiAAAA",
+              "Title": "UserWorkflowsToProcessForm.cs",
+              "DocumentMoniker": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
+              "RelativeDocumentMoniker": "PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
+              "ToolTip": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
+              "RelativeToolTip": "PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAIA3wBcAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T18:20:24.165Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MainForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\MainForm.cs",
-              "RelativeDocumentMoniker": "PMan.App\\MainForm.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\MainForm.cs [Design]",
-              "RelativeToolTip": "PMan.App\\MainForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T18:31:21.185Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UserWorkflow.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Models\\UserWorkflow.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Models\\UserWorkflow.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Models\\UserWorkflow.cs",
-              "RelativeToolTip": "PMan.App\\Models\\UserWorkflow.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T18:14:03.019Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "WorkflowForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\WorkflowForm.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Forms\\WorkflowForm.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\WorkflowForm.cs [Design]",
-              "RelativeToolTip": "PMan.App\\Forms\\WorkflowForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T11:28:27.644Z"
+              "WhenOpened": "2024-06-14T18:32:25.743Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "WorkflowService.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Features\\Workflows\\WorkflowService.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Features\\Workflows\\WorkflowService.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Features\\Workflows\\WorkflowService.cs",
-              "RelativeToolTip": "PMan.App\\Features\\Workflows\\WorkflowService.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAtwDAAAAAwAAAA",
+              "Title": "UserWorkflowsToProcessForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
+              "RelativeDocumentMoniker": "PMan.App\\Forms\\UserWorkflowsToProcessForm.cs",
+              "ToolTip": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\UserWorkflowsToProcessForm.cs [Design]",
+              "RelativeToolTip": "PMan.App\\Forms\\UserWorkflowsToProcessForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T12:18:17.077Z"
+              "WhenOpened": "2024-06-14T18:31:29.376Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "StageFieldsForm.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\StageFieldsForm.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Forms\\StageFieldsForm.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\StageFieldsForm.cs",
-              "RelativeToolTip": "PMan.App\\Forms\\StageFieldsForm.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABYAAAAxAAAA",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Program.cs",
+              "RelativeDocumentMoniker": "PMan.App\\Program.cs",
+              "ToolTip": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Program.cs",
+              "RelativeToolTip": "PMan.App\\Program.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T12:18:02.431Z"
+              "WhenOpened": "2024-06-14T18:31:48.283Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "StageFieldsForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\StageFieldsForm.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Forms\\StageFieldsForm.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\StageFieldsForm.cs [Design]",
-              "RelativeToolTip": "PMan.App\\Forms\\StageFieldsForm.cs [Design]",
+              "DocumentIndex": 7,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\MainForm.cs",
+              "RelativeDocumentMoniker": "PMan.App\\MainForm.cs",
+              "ToolTip": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\PMan.App\\MainForm.cs [Design]",
+              "RelativeToolTip": "PMan.App\\MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T12:17:59.321Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "NestedFormHelper.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Helpers\\NestedFormHelper.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Helpers\\NestedFormHelper.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Helpers\\NestedFormHelper.cs",
-              "RelativeToolTip": "PMan.App\\Helpers\\NestedFormHelper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T11:38:11.068Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "WorkflowForm.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\WorkflowForm.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Forms\\WorkflowForm.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\WorkflowForm.cs",
-              "RelativeToolTip": "PMan.App\\Forms\\WorkflowForm.cs",
-              "ViewState": "AQIAAIcBAAAAAAAAAAAAAJgBAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T11:28:40.63Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DataTableSelectionForm.cs",
-              "DocumentMoniker": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\Base\\DataTableSelectionForm.cs",
-              "RelativeDocumentMoniker": "PMan.App\\Forms\\Base\\DataTableSelectionForm.cs",
-              "ToolTip": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\PMan.App\\Forms\\Base\\DataTableSelectionForm.cs",
-              "RelativeToolTip": "PMan.App\\Forms\\Base\\DataTableSelectionForm.cs",
-              "ViewState": "AQIAAEkAAAAAAAAAAAD4v2QAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T11:47:44.835Z"
+              "WhenOpened": "2024-06-14T18:31:44.181Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

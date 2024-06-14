@@ -109,10 +109,13 @@ namespace WorkflowManager.App.Features.UserWorkflows
                 SELECT uw.Id
                   FROM UserWorkflows uw
                   join WorkflowStage ws on uw.CurrentStageId = ws.Id
-                  where uw.Status = 0 AND uw.CurrentStageAssignedToUserId IS NULL AND (ws.AssignedEntityType = 0 AND uw.CreatedByUserId = @CurrentUserId)
+                  where uw.Status = 0 AND ( uw.CurrentStageAssignedToUserId IS NULL OR uw.CurrentStageAssignedToUserId = @CurrentUserId )
+                  AND (
+                  (ws.AssignedEntityType = 0 AND uw.CreatedByUserId = @CurrentUserId)
                   OR (ws.AssignedEntityType = 1 AND ws.AssignedEntityId IN @CurrentUserGroupIds)
                   OR (ws.AssignedEntityType = 2 AND ws.AssignedEntityId = @CurrentUserId)
                   OR uw.CurrentStageAssignedToUserId = @CurrentUserId
+                  )
                 ";
 
                 var userWorkflowIds = connection.Query<int>(sql, new
@@ -149,19 +152,93 @@ namespace WorkflowManager.App.Features.UserWorkflows
                 return Result<int>.Fail("Etap został już przypisany do danego użytkownika");
             }
 
-            userWorkflow.CurrentStageAssignedToUserId = userService.CurrentUser.Id;
+            using (var connection = DbConnectionFactory.Create())
+            {
+                connection.Open();
 
-            context.UserWorkflows.Update(userWorkflow);
-            context.SaveChanges();
+                connection.Execute("UPDATE UserWorkflows SET CurrentStageAssignedToUserId = @CurrentUserId WHERE Id = @UserWorkflowId AND CurrentStageId = @CurrentStageId", new
+                {
+                    CurrentUserId = userService.CurrentUser.Id,
+                    UserWorkflowId = userWorkflow.Id,
+                    CurrentStageId = userWorkflow.CurrentStageId
+                });
+            }
+            //context.UserWorkflows.Update(userWorkflow);
+            //context.SaveChanges();
 
             return Result<int>.Success(userWorkflowId);
         }
+
+        public UserWorkflow GetById(int id)
+        {
+            var userWorkflow = context.UserWorkflows
+                .Include(x => x.Workflow)
+                .ThenInclude(x => x.WorkflowFields)
+                .Include(x => x.UserWorkflowFieldValues)
+                .First(x => x.Id == id);
+
+            var currentStage = context.WorkflowStages.AsNoTracking().Include(x => x.StageFields).FirstOrDefault(x => x.Id == userWorkflow.CurrentStageId);
+            userWorkflow.CurrentStage = currentStage;
+
+
+            return userWorkflow;
+        }
+
+        public void CompleteWorkflow(UserWorkflow userWorkflow)
+        {
+            userWorkflow.CompletionTime = DateTime.Now;
+            userWorkflow.Status = UserWorkflowStatus.Complete;
+
+            context.UserWorkflows.Update(userWorkflow);
+            context.SaveChanges();
+        }
+
+        public void ForwardToNextStage(UserWorkflow userWorkflow)
+        {
+            var stageIdx = userWorkflow.CurrentStage.StageIndex;
+            var nextStage = userWorkflow.Workflow.WorkflowStage.Where(x => x.StageIndex > stageIdx)
+                .OrderBy(x => x.StageIndex)
+                .FirstOrDefault();
+
+            if (nextStage is not null)
+            {
+                userWorkflow.CurrentStage = nextStage;
+                userWorkflow.CurrentStageId = nextStage.Id;
+                userWorkflow.CurrentStageAssignedToUserId = null;
+            }
+
+            context.UserWorkflows.Update(userWorkflow);
+            context.SaveChanges();
+        }
+
+        public void GoBackToPreviousStage(UserWorkflow userWorkflow)
+        {
+            var stageIdx = userWorkflow.CurrentStage.StageIndex;
+            var previousStage = userWorkflow.Workflow.WorkflowStage.Where(x => x.StageIndex < stageIdx)
+                .OrderByDescending(x => x.StageIndex)
+                .FirstOrDefault();
+
+            if (previousStage is not null)
+            {
+                userWorkflow.CurrentStage = previousStage;
+                userWorkflow.CurrentStageId = previousStage.Id;
+                userWorkflow.CurrentStageAssignedToUserId = null;
+            }
+
+            context.UserWorkflows.Update(userWorkflow);
+            context.SaveChanges();
+        }
+
     }
 
     public interface IUserWorkflowService : ISingleton
     {
         Result<int> AssignToCurrentUser(int userWorkflowId, int stageId);
+        void CompleteWorkflow(UserWorkflow userWorkflow);
         void CreateUserWorkflow(int workflowId, int userId);
+        void ForwardToNextStage(UserWorkflow userWorkflow);
+        UserWorkflow GetById(int id);
+        void GoBackToPreviousStage(UserWorkflow userWorkflow);
         List<UserWorkflowReadModel> ListUserCreatedWorkflows();
         List<UserWorkflowReadModel> StagesToProcess();
     }

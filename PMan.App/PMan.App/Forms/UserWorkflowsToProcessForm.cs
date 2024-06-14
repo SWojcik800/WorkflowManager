@@ -28,13 +28,13 @@ namespace WorkflowManager.App.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(this.appGridView1.SelectedRows.Count > 0)
+            if (this.appGridView1.SelectedRows.Count > 0)
             {
                 var selectedRow = this.appGridView1.SelectedRows[0].DataBoundItem as UserWorkflowReadModel;
 
-                var confirm = AppManager.Instance.ShowYesNoDialog("Przypisanie do zadania" ,"Czy napewno chcesz przypisać to zadanie do siebie?");
+                var confirm = AppManager.Instance.ShowYesNoDialog("Przypisanie do zadania", "Czy napewno chcesz przypisać to zadanie do siebie?");
 
-                if(confirm)
+                if (confirm)
                 {
                     var result = _service.AssignToCurrentUser(selectedRow.Id, selectedRow.CurrentStageId);
 
@@ -42,7 +42,8 @@ namespace WorkflowManager.App.Forms
                     {
                         AppManager.Instance.ShowDataSavedMessage();
                         RefreshTable();
-                    } else
+                    }
+                    else
                     {
                         AppManager.Instance.ShowErrorMessage(result.ErrorMessage);
                     }
@@ -60,6 +61,19 @@ namespace WorkflowManager.App.Forms
             this.appGridView1.DataSource = null;
             this.appGridView1.DataSource = this.userWorkflowReadModelBindingSource;
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var currentRow = this.appGridView1.CurrentRow.DataBoundItem as UserWorkflowReadModel;
+
+            if(currentRow is not null)
+            {
+                var result = UserWorkflowForm.Open(currentRow.Id);
+
+                if (result)
+                    RefreshTable();
+            }
         }
     }
 }

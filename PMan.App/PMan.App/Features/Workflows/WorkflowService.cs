@@ -37,7 +37,7 @@ namespace WorkflowManager.App.Features.Workflows
                 {
                     var newStageId = new List<int>();
                     var newFieldCodes = new List<string>();
-                    var deletedFieldCodes = connection.Query<string>("SELECT [Code] FROM [PMDb].[dbo].[WorkflowFields] WHERE WorkflowId = @WorkflowId AND Id IN @DeletedFieldIds", new
+                    var deletedFieldCodes = connection.Query<string>("SELECT [Code] FROM WorkflowFields WHERE WorkflowId = @WorkflowId AND Id IN @DeletedFieldIds", new
                     {
                         WorkflowId = workflow.Id,
                         DeletedFieldIds = deletedFieldIds
@@ -65,7 +65,7 @@ namespace WorkflowManager.App.Features.Workflows
                       ,[IsVisible]
                       ,[IsEditable]
                       ,[IsRequired]
-                  FROM [PMDb].[dbo].[WorkflowStageFields]
+                  FROM WorkflowStageFields
                   WHERE WorkflowStageId IN @StageIds
                 ", new
                     {
@@ -148,7 +148,7 @@ namespace WorkflowManager.App.Features.Workflows
                       ,wf.[IsEditable]
                       ,wf.[IsRequired],
 	                  ws.Name as WorkflowStageName
-                  FROM [PMDb].[dbo].[WorkflowStageFields] wf
+                  FROM WorkflowStageFields wf
                   left join WorkflowStage ws on ws.Id = wf.[WorkflowStageId]
                   WHERE wf.[WorkflowStageId] IN @StageIds
                   ORDER BY ws.StageIndex, wf.Id  ASC
