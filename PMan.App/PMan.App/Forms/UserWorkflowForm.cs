@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WorkflowManager.App.Features.UserWorkflows;
+using WorkflowManager.App.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
@@ -32,9 +33,17 @@ namespace WorkflowManager.App.Forms
             _data = _service.GetById(id);
 
             this.Text = $"{_data.Id}/{_data.Workflow.Name}/{_data.CurrentStage.Name}";
+            this.userHistoryEntryReadModelBindingSource.DataSource = _data.HistoryEntries.Select(x => new UserHistoryEntryReadModel(x)).OrderByDescending(x => x.ActionDate).ToList();
+            this.appGridView1.DataSource = this.userHistoryEntryReadModelBindingSource;
+            InitFields();
+        }
+
+        private void InitFields()
+        {
             var flowLayoutPanel = new FlowLayoutPanel();
             flowLayoutPanel.Dock = DockStyle.Fill;
             flowLayoutPanel.AutoScroll = true;
+            flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
 
             this.tabPage1.Controls.Add(flowLayoutPanel);
 
@@ -49,7 +58,8 @@ namespace WorkflowManager.App.Forms
                 var isEditable = stageField.IsEditable;
                 var isRequired = stageField.IsRequired;
                 var label = new Label();
-                label.Text = fieldDef.DisplayName;
+                label.Text = fieldDef.DisplayName + ":";
+                var skipLabel = false;
 
                 Control controlToAdd = null;
 
@@ -92,6 +102,7 @@ namespace WorkflowManager.App.Forms
                             var checkbox = new System.Windows.Forms.CheckBox();
                             checkbox.Name = fieldDef.Code;
                             checkbox.Text = fieldDef.DisplayName;
+                            skipLabel = true;
 
                             _getValueFuncs.Add(fieldDef.Code, () =>
                             {
@@ -186,7 +197,7 @@ namespace WorkflowManager.App.Forms
                             if (existingValue is not null)
                             {
 
-                                if(int.TryParse(existingValue.FieldValue, out int selectedItemId))
+                                if (int.TryParse(existingValue.FieldValue, out int selectedItemId))
                                 {
                                     var foundItem = dictItemsList.FirstOrDefault(x => x.Id == selectedItemId);
                                     comboBox.SelectedItem = foundItem;
@@ -204,8 +215,13 @@ namespace WorkflowManager.App.Forms
 
                 controlToAdd.Visible = isVisible;
                 controlToAdd.Enabled = isEditable;
+                controlToAdd.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
+                controlToAdd.AutoSize = true;
+                controlToAdd.Width = 300;
 
-                flowLayoutPanel.Controls.Add(label);
+                if (!skipLabel)
+                    flowLayoutPanel.Controls.Add(label);
+
                 flowLayoutPanel.Controls.Add(controlToAdd);
 
             }

@@ -8,6 +8,7 @@ using StorageManager.App.Helpers;
 using StorageManager.App.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,8 @@ namespace WorkflowManager.App.Features.UserWorkflows
                 Status = UserWorkflowStatus.New,
                 CurrentStageId = firstStage.Id
             };
+
+            userWorkflow.HistoryEntries.Add(new UserWorkflowHistoryEntry(userWorkflow.Id, "", userId, ActionType.CreatedByUser));
 
             context.Add(userWorkflow);
             context.SaveChanges();
@@ -75,12 +78,14 @@ namespace WorkflowManager.App.Features.UserWorkflows
                         model.CurrentStageId = currentStage.Id;
                     }
                 }
-                var dictStatus = statuses.DictionaryItems.FirstOrDefault(x => x.Id == item.WorkflowDictStatus);
+                //var dictStatus = statuses.DictionaryItems.FirstOrDefault(x => x.Id == item.WorkflowDictStatus);
 
-                if (dictStatus is not null)
-                {
-                    model.DictStatus = dictStatus.Name;
-                }
+                //if (dictStatus is not null)
+                //{
+                //    model.DictStatus = dictStatus.Name;
+                //}
+
+                model.DictStatus = item.Status == UserWorkflowStatus.Complete ? "Zakończony" : "W trakcie";
 
                 if (item.CurrentStageAssignedToUserId is not null)
                 {
@@ -162,7 +167,11 @@ namespace WorkflowManager.App.Features.UserWorkflows
                     UserWorkflowId = userWorkflow.Id,
                     CurrentStageId = userWorkflow.CurrentStageId
                 });
+               
+                InsertHistoryEntry(connection, new UserWorkflowHistoryEntry(userWorkflowId, $"ZMIANA OSOBY PRZYPISANEJ NA {userService.CurrentUser.Login}", userService.CurrentUser.Id, ActionType.AssignedTo));
             }
+
+
             //context.UserWorkflows.Update(userWorkflow);
             //context.SaveChanges();
 
@@ -175,6 +184,7 @@ namespace WorkflowManager.App.Features.UserWorkflows
                 .Include(x => x.Workflow)
                 .ThenInclude(x => x.WorkflowFields)
                 .Include(x => x.UserWorkflowFieldValues)
+                .Include(x => x.HistoryEntries)
                 .First(x => x.Id == id);
 
             var currentStage = context.WorkflowStages.AsNoTracking().Include(x => x.StageFields).FirstOrDefault(x => x.Id == userWorkflow.CurrentStageId);
@@ -189,8 +199,19 @@ namespace WorkflowManager.App.Features.UserWorkflows
             userWorkflow.CompletionTime = DateTime.Now;
             userWorkflow.Status = UserWorkflowStatus.Complete;
 
-            context.UserWorkflows.Update(userWorkflow);
-            context.SaveChanges();
+            using (var connection = DbConnectionFactory.Create())
+            {
+                connection.Open();
+
+                connection.Execute("UPDATE UserWorkflows SET Status = 1, CompletionTime = @Now WHERE Id = @UserWorkflowId", new
+                {
+                    UserWorkflowId = userWorkflow.Id,
+                    Now = DateTime.Now
+                });
+
+                CheckForValueChanges(userWorkflow);
+                InsertHistoryEntry(connection, new UserWorkflowHistoryEntry(userWorkflow.Id, "", userService.CurrentUser.Id, ActionType.CompleteWorkflow));
+            }
         }
 
         public void ForwardToNextStage(UserWorkflow userWorkflow)
@@ -199,6 +220,9 @@ namespace WorkflowManager.App.Features.UserWorkflows
             var nextStage = userWorkflow.Workflow.WorkflowStage.Where(x => x.StageIndex > stageIdx)
                 .OrderBy(x => x.StageIndex)
                 .FirstOrDefault();
+
+            CheckForValueChanges(userWorkflow);
+            userWorkflow.HistoryEntries.Add(new UserWorkflowHistoryEntry(userWorkflow.Id, $"ORYGINALNY ETAP: {userWorkflow.CurrentStage.Name} PRZEKAZANO DO: {nextStage?.Name}", userService.CurrentUser.Id, ActionType.GoBackToNextStage));
 
             if (nextStage is not null)
             {
@@ -218,6 +242,9 @@ namespace WorkflowManager.App.Features.UserWorkflows
                 .OrderByDescending(x => x.StageIndex)
                 .FirstOrDefault();
 
+            CheckForValueChanges(userWorkflow);
+            userWorkflow.HistoryEntries.Add(new UserWorkflowHistoryEntry(userWorkflow.Id, $"ORYGINALNY ETAP: {userWorkflow.CurrentStage.Name} COFNIĘTO DO: {previousStage?.Name}", userService.CurrentUser.Id, ActionType.GoBackToNextStage));
+
             if (previousStage is not null)
             {
                 userWorkflow.CurrentStage = previousStage;
@@ -227,6 +254,51 @@ namespace WorkflowManager.App.Features.UserWorkflows
 
             context.UserWorkflows.Update(userWorkflow);
             context.SaveChanges();
+        }
+
+        private void CheckForValueChanges(UserWorkflow userWorkflow)
+        {
+            var originalWorkflowValues = context.UserWorkflowFieldValues.AsNoTracking().Where(x => x.UserWorkflowId == userWorkflow.Id).ToList();
+
+            if (originalWorkflowValues is null)
+                return;
+
+            var valueChanges = new List<ValueChanges>();
+
+            foreach (var entry in userWorkflow.UserWorkflowFieldValues)
+            {
+                var org = originalWorkflowValues.FirstOrDefault(x => x.FieldCode == entry.FieldCode);
+
+                if(org is null)
+                {
+                    valueChanges.Add(new ValueChanges() { Field = entry.FieldCode, OldValue = "", NewValue = entry.FieldValue });
+                } else if(org.FieldValue != entry.FieldValue)
+                {
+                    valueChanges.Add(new ValueChanges() { Field = entry.FieldCode, OldValue = org.FieldValue, NewValue = entry.FieldValue });
+                }               
+            }
+
+            if(valueChanges.Any())
+            {
+                var valueChangesStr = "";
+
+                foreach (var change in valueChanges)
+                {
+                    valueChangesStr += $"ORYGINALNA WARTOŚĆ: '{change.OldValue}' \n NOWA WARTOSC: '{change.NewValue}'\n";
+                }
+
+                userWorkflow.HistoryEntries.Add(new UserWorkflowHistoryEntry(userWorkflow.Id, valueChangesStr, userService.CurrentUser.Id, ActionType.ValuesUpdated));
+
+            }
+
+
+
+        }
+
+        private void InsertHistoryEntry(DbConnection connection , UserWorkflowHistoryEntry historyEntry)
+        {
+            connection.Execute("INSERT INTO [dbo].[UserWorkflowHistoryEntries] ([UserWorkflowId],[Title],[Details],[ActionUserId],[ActionDate],[ActionType]) VALUES (@UserWorkflowId ,@Title ,@Details ,@ActionUserId ,@ActionDate ,@ActionType)",
+                historyEntry);
         }
 
     }

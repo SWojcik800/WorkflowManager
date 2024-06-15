@@ -3,6 +3,7 @@ using StorageManager.App.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using WorkflowManager.App.Models;
 
 namespace StorageManager.App.Models;
 
@@ -40,6 +41,7 @@ public partial class UserWorkflow : IEntity
     public int? CurrentStageAssignedToUserId { get; set; }
 
     public virtual ICollection<UserWorkflowFieldValue> UserWorkflowFieldValues { get; set; } = new List<UserWorkflowFieldValue>();
+    public virtual ICollection<UserWorkflowHistoryEntry> HistoryEntries { get; set; } = new List<UserWorkflowHistoryEntry>();
 }
 
 public enum UserWorkflowStatus

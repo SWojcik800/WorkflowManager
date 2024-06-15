@@ -4,6 +4,9 @@
     <Compile Update="Commons\Controls\AppGridView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Commons\Controls\AppTableLayoutControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Forms\Base\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>

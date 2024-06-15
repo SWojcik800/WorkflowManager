@@ -67,13 +67,18 @@ namespace WorkflowManager.App.Forms
         {
             var currentRow = this.appGridView1.CurrentRow.DataBoundItem as UserWorkflowReadModel;
 
-            if(currentRow is not null)
+            if (currentRow is not null)
             {
                 var result = UserWorkflowForm.Open(currentRow.Id);
 
                 if (result)
                     RefreshTable();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            RefreshTable();
         }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using StorageManager.App.Commons;
 using StorageManager.App.Commons.IoC;
 using StorageManager.App.Models;
+using WorkflowManager.App.Models;
 
 namespace StorageManager.App.Database;
 
@@ -42,6 +43,7 @@ public partial class AppDbContext : DbContext, ISingleton
     public virtual DbSet<WorkflowStage> WorkflowStages { get; set; }
 
     public virtual DbSet<WorkflowStageField> WorkflowStageFields { get; set; }
+    public virtual DbSet<UserWorkflowHistoryEntry> UserWorkflowHistoryEntries { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
