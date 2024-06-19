@@ -43,8 +43,8 @@ namespace StorageManager.App
 
             this._closeFormTimer.Tick += new EventHandler(decreaseTimerOpacity);
 
-            this._closeFormTimer.Interval = 25;
-            this._startFormTimer.Interval = 25;
+            this._closeFormTimer.Interval = 5;
+            this._startFormTimer.Interval = 5;
             this._startFormTimer.Tick += new EventHandler(increaseTimerOpacity);
             this._startFormTimer.Start();
         }
