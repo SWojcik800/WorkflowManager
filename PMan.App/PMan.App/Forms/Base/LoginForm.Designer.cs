@@ -73,6 +73,7 @@ namespace StorageManager.App
             panel2.Name = "panel2";
             panel2.Size = new Size(300, 626);
             panel2.TabIndex = 13;
+            panel2.Paint += panel2_Paint;
             panel2.MouseDown += panel2_MouseDown;
             // 
             // panel3
@@ -119,7 +120,7 @@ namespace StorageManager.App
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(66, 267);
+            label5.Location = new Point(63, 295);
             label5.Name = "label5";
             label5.Size = new Size(189, 30);
             label5.TabIndex = 2;
@@ -130,7 +131,7 @@ namespace StorageManager.App
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(66, 224);
+            label1.Location = new Point(63, 257);
             label1.Name = "label1";
             label1.Size = new Size(183, 30);
             label1.TabIndex = 1;
@@ -138,9 +139,10 @@ namespace StorageManager.App
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(93, 61);
+            pictureBox1.Image = WorkflowManager.App.Properties.Resources.user_solid;
+            pictureBox1.Location = new Point(87, 91);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(120, 120);
+            pictureBox1.Size = new Size(132, 141);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;

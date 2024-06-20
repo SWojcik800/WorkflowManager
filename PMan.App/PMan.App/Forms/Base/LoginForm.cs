@@ -99,7 +99,7 @@ namespace StorageManager.App
                         DialogResult = DialogResult.OK;
                     }
                 };
-                _closeDialogFormTimer.Start(); 
+                _closeDialogFormTimer.Start();
             }
             else
             {
@@ -242,6 +242,11 @@ namespace StorageManager.App
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

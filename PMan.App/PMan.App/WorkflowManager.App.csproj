@@ -22,6 +22,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="ReaLTaiizor" Version="3.8.0.5" />
     <PackageReference Include="Scrutor" Version="4.2.2" />
   </ItemGroup>
 
@@ -50,6 +51,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Forms\Dialogs\" />
   </ItemGroup>
 
 </Project>

@@ -51,11 +51,13 @@ namespace StorageManager.App
             textBox1 = new TextBox();
             label5 = new Label();
             panel5 = new Panel();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)connectionCredsBindingSource).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // connectionCredsBindingSource
@@ -168,6 +170,7 @@ namespace StorageManager.App
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(41, 128, 185);
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(panel3);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
@@ -260,7 +263,7 @@ namespace StorageManager.App
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(41, 128, 185);
-            label5.Location = new Point(44, 47);
+            label5.Location = new Point(52, 59);
             label5.Name = "label5";
             label5.Size = new Size(251, 30);
             label5.TabIndex = 12;
@@ -276,6 +279,16 @@ namespace StorageManager.App
             panel5.Name = "panel5";
             panel5.Size = new Size(783, 443);
             panel5.TabIndex = 14;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = WorkflowManager.App.Properties.Resources.database_solid;
+            pictureBox1.Location = new Point(35, 83);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(140, 165);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // DbConnectionForm
             // 
@@ -295,6 +308,7 @@ namespace StorageManager.App
             panel2.PerformLayout();
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -319,5 +333,6 @@ namespace StorageManager.App
         private Panel panel3;
         private Panel panel4;
         private Panel panel5;
+        private PictureBox pictureBox1;
     }
 }

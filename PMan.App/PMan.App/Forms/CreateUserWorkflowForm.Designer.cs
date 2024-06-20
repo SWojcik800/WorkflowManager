@@ -36,9 +36,9 @@
             // 
             comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(12, 22);
+            comboBox1.Location = new Point(12, 52);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(264, 23);
+            comboBox1.Size = new Size(311, 23);
             comboBox1.TabIndex = 0;
             // 
             // button1
@@ -46,7 +46,7 @@
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             button1.Location = new Point(95, 90);
             button1.Name = "button1";
-            button1.Size = new Size(103, 26);
+            button1.Size = new Size(150, 42);
             button1.TabIndex = 1;
             button1.Text = "Zatwierdź";
             button1.UseVisualStyleBackColor = true;
@@ -56,11 +56,15 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(288, 128);
+            ClientSize = new Size(335, 150);
             Controls.Add(button1);
             Controls.Add(comboBox1);
+            MinimumSize = new Size(250, 150);
             Name = "CreateUserWorkflowForm";
+            Opacity = 1D;
             Text = "Utwórz nowy przepływ";
+            Controls.SetChildIndex(comboBox1, 0);
+            Controls.SetChildIndex(button1, 0);
             ResumeLayout(false);
         }
 

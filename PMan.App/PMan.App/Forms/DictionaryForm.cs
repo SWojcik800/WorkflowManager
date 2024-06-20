@@ -15,12 +15,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Forms.Base;
 using WorkflowManager.App.Helpers;
 using User = StorageManager.App.Models.User;
 
 namespace StorageManager.App.Forms
 {
-    public partial class DictionaryForm : Form
+    public partial class DictionaryForm : AppFormBase
     {
         private Dictionary _data;
         private List<DictionaryItem> _items;

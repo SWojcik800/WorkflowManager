@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Forms.Base;
 using WorkflowManager.App.Models;
 
 namespace StorageManager.App.Helpers
@@ -94,28 +95,26 @@ namespace StorageManager.App.Helpers
 
         public void ShowErrorMessage(string errorMessage)
         {
-            MessageBox.Show(errorMessage, "Wystąpił błąd");
+            AppOkDialogForm.OpenForError(errorMessage);
         }
 
         public void ShowInfoMessage(string message)
         {
-            MessageBox.Show(message);
+            AppOkDialogForm.OpenForInfo(message: message);
+
         }
 
         public void ShowDataSavedMessage()
         {
-            Task.Run(() =>
-            {
-                MessageBox.Show("Zapisano dane");
+            AppOkDialogForm.OpenForInfo(message: "Zapisano dane");
 
-            });
         }
 
 
 
         public void ShowPermissionDeniedMessage()
         {
-            MessageBox.Show("Brak wymaganych uprawnień", "Brak uprawnień");
+            AppOkDialogForm.OpenForError("Brak wymaganych uprawnień");
         }
     }
 }

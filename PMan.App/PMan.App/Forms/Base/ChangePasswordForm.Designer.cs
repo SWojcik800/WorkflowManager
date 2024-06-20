@@ -40,7 +40,7 @@
             // 
             // oldPasswordTextbox
             // 
-            oldPasswordTextbox.Location = new Point(160, 6);
+            oldPasswordTextbox.Location = new Point(161, 54);
             oldPasswordTextbox.Name = "oldPasswordTextbox";
             oldPasswordTextbox.PasswordChar = '*';
             oldPasswordTextbox.Size = new Size(167, 23);
@@ -49,7 +49,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(72, 9);
+            label1.Location = new Point(73, 57);
             label1.Name = "label1";
             label1.Size = new Size(82, 15);
             label1.TabIndex = 1;
@@ -58,7 +58,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(72, 43);
+            label2.Location = new Point(73, 90);
             label2.Name = "label2";
             label2.Size = new Size(72, 15);
             label2.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // newPasswordTexbox
             // 
-            newPasswordTexbox.Location = new Point(160, 40);
+            newPasswordTexbox.Location = new Point(161, 87);
             newPasswordTexbox.Name = "newPasswordTexbox";
             newPasswordTexbox.PasswordChar = '*';
             newPasswordTexbox.Size = new Size(167, 23);
@@ -74,7 +74,7 @@
             // 
             // newPasswordTextboxRepeat
             // 
-            newPasswordTextboxRepeat.Location = new Point(160, 75);
+            newPasswordTextboxRepeat.Location = new Point(161, 122);
             newPasswordTextboxRepeat.Name = "newPasswordTextboxRepeat";
             newPasswordTextboxRepeat.PasswordChar = '*';
             newPasswordTextboxRepeat.Size = new Size(167, 23);
@@ -83,7 +83,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(72, 78);
+            label3.Location = new Point(73, 125);
             label3.Name = "label3";
             label3.Size = new Size(84, 15);
             label3.TabIndex = 4;
@@ -91,7 +91,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(217, 121);
+            button1.Location = new Point(218, 168);
             button1.Name = "button1";
             button1.Size = new Size(110, 35);
             button1.TabIndex = 6;
@@ -101,7 +101,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(106, 121);
+            button2.Location = new Point(107, 168);
             button2.Name = "button2";
             button2.Size = new Size(105, 35);
             button2.TabIndex = 7;
@@ -113,7 +113,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(413, 181);
+            ClientSize = new Size(429, 220);
+            Controls.Add(oldPasswordTextbox);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(newPasswordTextboxRepeat);
@@ -121,12 +122,20 @@
             Controls.Add(newPasswordTexbox);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(oldPasswordTextbox);
             MaximumSize = new Size(429, 220);
             MinimumSize = new Size(429, 220);
             Name = "ChangePasswordForm";
+            Opacity = 1D;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Zmiana hasła";
+            Controls.SetChildIndex(label1, 0);
+            Controls.SetChildIndex(label2, 0);
+            Controls.SetChildIndex(newPasswordTexbox, 0);
+            Controls.SetChildIndex(label3, 0);
+            Controls.SetChildIndex(newPasswordTextboxRepeat, 0);
+            Controls.SetChildIndex(button1, 0);
+            Controls.SetChildIndex(button2, 0);
+            Controls.SetChildIndex(oldPasswordTextbox, 0);
             ResumeLayout(false);
             PerformLayout();
         }

@@ -10,16 +10,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Forms.Base;
 
 namespace StorageManager.App.Forms.Base
 {
-    public partial class ChangePasswordForm : Form
+    public partial class ChangePasswordForm : AppFormBase
     {
         private User _data;
         private bool _checkCurrentPassword = true;
         protected ChangePasswordForm(bool checkCurrentPassword)
         {
             InitializeComponent();
+            InitForm();
             if (!checkCurrentPassword)
             {
                 this.oldPasswordTextbox.Enabled = false;
@@ -58,7 +60,7 @@ namespace StorageManager.App.Forms.Base
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            CloseWithDialogRsult(DialogResult.Cancel);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -92,8 +94,10 @@ namespace StorageManager.App.Forms.Base
             if(result.IsSuccess)
             {
                 AppManager.Instance.ShowInfoMessage("Hasło zostało zmienione");
-                DialogResult = DialogResult.OK;
-            } else
+                CloseWithDialogRsult(DialogResult.OK);
+
+            }
+            else
             {
                 AppManager.Instance.ShowErrorMessage(result.ErrorMessage);
             }

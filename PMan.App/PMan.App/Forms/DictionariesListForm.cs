@@ -13,16 +13,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Forms.Base;
 using User = StorageManager.App.Models.User;
 
 namespace StorageManager.App.Forms
 {
-    public partial class DictionariesListForm : Form
+    public partial class DictionariesListForm : AppFormBase
     {
         private List<Dictionary> _data;
         protected DictionariesListForm()
         {
             InitializeComponent();
+            InitForm();
 
             var service = AppManager.Instance.Resolve<IDataDictionaryService>();
             var items = service.GetAll();

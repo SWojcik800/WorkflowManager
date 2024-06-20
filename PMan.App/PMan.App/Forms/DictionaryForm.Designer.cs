@@ -36,10 +36,10 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             button1 = new Button();
             panel1 = new Panel();
-            button2 = new Button();
             textBox1 = new TextBox();
             dictionaryBindingSource = new BindingSource(components);
             label1 = new Label();
+            button2 = new Button();
             appGridView1 = new Commons.Controls.AppGridView();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             valueDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -67,25 +67,16 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Controls.Add(button2);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(12, 39);
             panel1.Name = "panel1";
             panel1.Size = new Size(757, 67);
             panel1.TabIndex = 3;
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.Right;
-            button2.Location = new Point(506, 33);
-            button2.Name = "button2";
-            button2.Size = new Size(121, 31);
-            button2.TabIndex = 3;
-            button2.Text = "Anuluj";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click_1;
+            panel1.Controls.SetChildIndex(button1, 0);
+            panel1.Controls.SetChildIndex(label1, 0);
+            panel1.Controls.SetChildIndex(textBox1, 0);
             // 
             // textBox1
             // 
@@ -107,6 +98,17 @@
             label1.Size = new Size(94, 15);
             label1.TabIndex = 1;
             label1.Text = "Nazwa słownika:";
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Right;
+            button2.Location = new Point(506, 33);
+            button2.Name = "button2";
+            button2.Size = new Size(121, 31);
+            button2.TabIndex = 3;
+            button2.Text = "Anuluj";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
             // 
             // appGridView1
             // 
@@ -136,14 +138,14 @@
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(31, 31, 31);
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             appGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             appGridView1.EnableHeadersVisualStyles = false;
             appGridView1.GridColor = Color.FromArgb(166, 166, 166);
-            appGridView1.Location = new Point(12, 85);
+            appGridView1.Location = new Point(12, 112);
             appGridView1.MultiSelect = false;
             appGridView1.Name = "appGridView1";
             appGridView1.ReadOnly = true;
@@ -167,7 +169,7 @@
             appGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
             appGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
             appGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            appGridView1.Size = new Size(757, 353);
+            appGridView1.Size = new Size(757, 326);
             appGridView1.TabIndex = 0;
             // 
             // nameDataGridViewTextBoxColumn
@@ -207,8 +209,10 @@
             Controls.Add(appGridView1);
             Controls.Add(panel1);
             Name = "DictionaryForm";
-            StartPosition = FormStartPosition.CenterScreen;
+            Opacity = 1D;
             Text = "Lista słowników";
+            Controls.SetChildIndex(panel1, 0);
+            Controls.SetChildIndex(appGridView1, 0);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dictionaryBindingSource).EndInit();

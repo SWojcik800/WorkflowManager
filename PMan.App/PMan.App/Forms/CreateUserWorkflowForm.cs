@@ -11,16 +11,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WorkflowManager.App.Features.UserWorkflows;
 using WorkflowManager.App.Features.Workflows;
+using WorkflowManager.App.Forms.Base;
 
 namespace WorkflowManager.App.Forms
 {
-    public partial class CreateUserWorkflowForm : Form
+    public partial class CreateUserWorkflowForm : AppFormBase
     {
         private IWorkflowService _service = AppManager.Instance.Resolve<IWorkflowService>();
         private IUserWorkflowService _userWorkflowService = AppManager.Instance.Resolve<IUserWorkflowService>();
         protected CreateUserWorkflowForm()
         {
             InitializeComponent();
+            InitForm();
             this.comboBox1.DataSource = _service.GetWorkflowsForUser(AppManager.Instance.CurrentUser);
             this.comboBox1.DisplayMember = "Name";
             this.comboBox1.ValueMember = "Id";

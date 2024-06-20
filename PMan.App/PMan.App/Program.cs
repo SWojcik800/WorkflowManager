@@ -16,6 +16,7 @@ namespace StorageManager.App
             {
                 ApplicationConfiguration.Initialize();
                 Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
                 var creds = DbConnectionFactory.GetFromRegistry();
 
                 if(DbConnectionFactory.CanConnect(creds).IsSuccess)
