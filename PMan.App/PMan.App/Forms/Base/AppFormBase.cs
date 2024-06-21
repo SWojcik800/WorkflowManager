@@ -15,6 +15,7 @@ namespace WorkflowManager.App.Forms.Base
     {
         private System.Windows.Forms.Timer _startFormTimer = new System.Windows.Forms.Timer();
         private System.Windows.Forms.Timer _closeFormTimer = new System.Windows.Forms.Timer();
+        private System.Windows.Forms.Timer _showDialogFormTimer = new System.Windows.Forms.Timer();
         private System.Windows.Forms.Timer _closeDialogFormTimer = new System.Windows.Forms.Timer();
 
         public AppFormBase()
@@ -28,8 +29,8 @@ namespace WorkflowManager.App.Forms.Base
         {
             this.formTitleLabel.Text = this.Text;
 
+            _showDialogFormTimer.Interval = 5;
             this._closeFormTimer.Tick += new EventHandler(decreaseTimerOpacity);
-
             this._closeFormTimer.Interval = 5;
             this._closeDialogFormTimer.Interval = 5;
             this._startFormTimer.Interval = 5;
@@ -38,10 +39,30 @@ namespace WorkflowManager.App.Forms.Base
             this._startFormTimer.Start();
         }
 
+        public new DialogResult ShowDialog()
+        {
+            this.Opacity = 0;
+            var result = base.ShowDialog();
+
+            _showDialogFormTimer.Tick += (object sender, EventArgs e) =>
+            {
+                if (this.Opacity < 1)
+                {
+                    this.Opacity += 0.05;
+                }
+                else
+                {
+                    this._showDialogFormTimer.Stop();
+                }
+            };
+
+            return result;
+        }
+
         protected override void OnTextChanged(EventArgs e)
         {
             base.OnTextChanged(e);
-            if(this.formTitleLabel is not null)
+            if (this.formTitleLabel is not null)
                 this.formTitleLabel.Text = this.Text;
         }
 
@@ -55,7 +76,7 @@ namespace WorkflowManager.App.Forms.Base
             _closeFormTimer.Start();
         }
 
-        public void CloseWithDialogRsult(DialogResult dialogResult)
+        public void CloseWithDialogResult(DialogResult dialogResult)
         {
             _closeDialogFormTimer.Tick += (object sender, EventArgs e) =>
              {
@@ -119,6 +140,11 @@ namespace WorkflowManager.App.Forms.Base
         {
             base.OnResize(e);
             Invalidate();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

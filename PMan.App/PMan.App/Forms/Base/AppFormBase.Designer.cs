@@ -38,6 +38,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(41, 128, 185);
+            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(formTitleLabel);
@@ -54,12 +55,13 @@
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(735, 0);
+            button2.Location = new Point(733, 0);
             button2.Name = "button2";
             button2.Size = new Size(33, 33);
             button2.TabIndex = 5;
             button2.Text = "_";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -67,7 +69,7 @@
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(767, 0);
+            button1.Location = new Point(765, 0);
             button1.Name = "button1";
             button1.Size = new Size(33, 33);
             button1.TabIndex = 4;

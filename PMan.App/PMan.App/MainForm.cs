@@ -21,6 +21,8 @@ namespace StorageManager.App
         {
             InitializeComponent();
             InitVersionLabel();
+            InitSubMenus();
+            this.currentUserLabel.Text = AppManager.Instance.CurrentUser.Login;
         }
 
         private void InitVersionLabel()
@@ -116,6 +118,88 @@ namespace StorageManager.App
         {
             var childForm = new UserWorkflowsToProcessForm();
             OpenForm(childForm);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var childForm = new UserCreatedWorkflowsForm();
+            OpenForm(childForm);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var childForm = new UserWorkflowsToProcessForm();
+            OpenForm(childForm);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            WorkflowForm childForm = new WorkflowForm();
+            OpenForm(childForm);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AppManager.Instance.Logout();
+
+        }
+
+        #region SubMenus
+        private void InitSubMenus()
+        {
+            this.myWorkflowsSubMenuPanel.Visible = true;
+            this.myAccountSubMenuPanel.Visible = false;
+        }
+        private void myWorkflowsButton_Click(object sender, EventArgs e)
+        {
+            myWorkflowsSubMenuPanel.Visible = !myWorkflowsSubMenuPanel.Visible;
+        }
+
+
+        private void myAccountButton_Click_1(object sender, EventArgs e)
+        {
+            myAccountSubMenuPanel.Visible = !myAccountSubMenuPanel.Visible;
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            UserForm.MyAccount();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm.ChangePasswordForCurrentUser();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AppManager.Instance.Logout();
+        }
+        #endregion
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            CreateUserWorkflowForm.AddNewForCurrentUser();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            WorkflowForm childForm = new WorkflowForm();
+            OpenForm(childForm);
+        }
+
+        private void configurationButton_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            DbConnectionForm.InitDbConnection();
         }
     }
 }

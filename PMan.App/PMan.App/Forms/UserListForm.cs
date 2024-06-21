@@ -12,17 +12,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Forms.Base;
 using User = StorageManager.App.Models.User;
 
 namespace StorageManager.App.Forms
 {
-    public partial class UserListForm : Form
+    public partial class UserListForm : AppFormBase
     {
         private List<User> _data;
         protected UserListForm()
         {
             InitializeComponent();
-
+            InitForm();
             var userService = AppManager.Instance.Resolve<IUserService>();
             var users = userService.GetAll();
 
@@ -49,7 +50,7 @@ namespace StorageManager.App.Forms
             if (this.appGridView1.SelectedRows.Count > 0)
             {
                 User data = appGridView1.SelectedRows[0].DataBoundItem as User;
-                var result = UserForm.EditInline(data.Id, appGridView1);
+                var result = UserForm.Edit(data.Id);
                 if (result)
                     RefreshTable();
             }
@@ -61,8 +62,8 @@ namespace StorageManager.App.Forms
             _data.Add(user);
             this.appGridView1.DataSource = null;
             this.appGridView1.DataSource = _data;
-            var idx = _data.IndexOf(user);
-            var result = UserForm.AddNewInline(user, appGridView1, idx);
+ 
+            var result = UserForm.AddNew();
             if (result)
                 RefreshTable();
             else
@@ -96,7 +97,7 @@ namespace StorageManager.App.Forms
             if (this.appGridView1.SelectedRows.Count > 0)
             {
                 User data = appGridView1.SelectedRows[0].DataBoundItem as User;
-                var result = UserForm.EditInline(data.Id, appGridView1);
+                var result = UserForm.Edit(data.Id);
                 if (result)
                     RefreshTable();
             }

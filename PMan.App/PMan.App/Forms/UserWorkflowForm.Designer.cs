@@ -37,20 +37,20 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
-            errorProvider1 = new ErrorProvider(components);
-            button1 = new Button();
-            button2 = new Button();
             appGridView1 = new StorageManager.App.Commons.Controls.AppGridView();
-            userHistoryEntryReadModelBindingSource = new BindingSource(components);
             titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             detailsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             actionUserLoginDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             actionDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            userHistoryEntryReadModelBindingSource = new BindingSource(components);
+            errorProvider1 = new ErrorProvider(components);
+            button1 = new Button();
+            button2 = new Button();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)appGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userHistoryEntryReadModelBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -58,10 +58,10 @@
             tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(12, 41);
+            tabControl1.Location = new Point(12, 68);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(776, 500);
+            tabControl1.Size = new Size(776, 473);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -69,7 +69,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(768, 472);
+            tabPage1.Size = new Size(768, 445);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Pola";
             tabPage1.UseVisualStyleBackColor = true;
@@ -80,34 +80,10 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(768, 472);
+            tabPage2.Size = new Size(768, 405);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Historia";
             tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // errorProvider1
-            // 
-            errorProvider1.ContainerControl = this;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(16, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "Cofnij";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(97, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(123, 23);
-            button2.TabIndex = 2;
-            button2.Text = "Przekaż dalej";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // appGridView1
             // 
@@ -135,7 +111,7 @@
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(31, 31, 31);
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
@@ -167,12 +143,8 @@
             appGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
             appGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
             appGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            appGridView1.Size = new Size(762, 466);
+            appGridView1.Size = new Size(762, 399);
             appGridView1.TabIndex = 0;
-            // 
-            // userHistoryEntryReadModelBindingSource
-            // 
-            userHistoryEntryReadModelBindingSource.DataSource = typeof(Models.UserHistoryEntryReadModel);
             // 
             // titleDataGridViewTextBoxColumn
             // 
@@ -202,6 +174,34 @@
             actionDateDataGridViewTextBoxColumn.Name = "actionDateDataGridViewTextBoxColumn";
             actionDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // userHistoryEntryReadModelBindingSource
+            // 
+            userHistoryEntryReadModelBindingSource.DataSource = typeof(Models.UserHistoryEntryReadModel);
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(16, 39);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "Cofnij";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(97, 39);
+            button2.Name = "button2";
+            button2.Size = new Size(123, 23);
+            button2.TabIndex = 2;
+            button2.Text = "Przekaż dalej";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // UserWorkflowForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -211,12 +211,16 @@
             Controls.Add(button1);
             Controls.Add(tabControl1);
             Name = "UserWorkflowForm";
+            Opacity = 1D;
             Text = "UserWorkflowForm";
+            Controls.SetChildIndex(tabControl1, 0);
+            Controls.SetChildIndex(button1, 0);
+            Controls.SetChildIndex(button2, 0);
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ((System.ComponentModel.ISupportInitialize)appGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)userHistoryEntryReadModelBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 

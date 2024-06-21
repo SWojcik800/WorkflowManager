@@ -12,13 +12,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WorkflowManager.App.Features.UserWorkflows;
+using WorkflowManager.App.Forms.Base;
 using WorkflowManager.App.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace WorkflowManager.App.Forms
 {
-    public partial class UserWorkflowForm : Form
+    public partial class UserWorkflowForm : AppFormBase
     {
         private IUserWorkflowService _service = AppManager.Instance.Resolve<IUserWorkflowService>();
         private IDataDictionaryService _dictService = AppManager.Instance.Resolve<IDataDictionaryService>();
@@ -29,7 +30,7 @@ namespace WorkflowManager.App.Forms
         protected UserWorkflowForm(int id)
         {
             InitializeComponent();
-
+            InitForm();
             _data = _service.GetById(id);
 
             this.Text = $"{_data.Id}/{_data.Workflow.Name}/{_data.CurrentStage.Name}";
@@ -253,7 +254,7 @@ namespace WorkflowManager.App.Forms
                     ForwardToNextStage();
 
                     AppManager.Instance.ShowDataSavedMessage();
-                    DialogResult = DialogResult.OK;
+                    CloseWithDialogResult(DialogResult.OK);
                 }
 
             }
@@ -285,7 +286,7 @@ namespace WorkflowManager.App.Forms
                 if (result)
                 {
                     _service.CompleteWorkflow(_data);
-                    DialogResult = DialogResult.OK;
+                    CloseWithDialogResult(DialogResult.OK);
                     return;
                 }
 
@@ -370,7 +371,7 @@ namespace WorkflowManager.App.Forms
                     GoBackToPreviousStage();
 
                     AppManager.Instance.ShowDataSavedMessage();
-                    DialogResult = DialogResult.OK;
+                    CloseWithDialogResult(DialogResult.OK); 
                 }
             }
         }
@@ -395,7 +396,7 @@ namespace WorkflowManager.App.Forms
                     GoBackToPreviousStage();
 
                     AppManager.Instance.ShowDataSavedMessage();
-                    DialogResult = DialogResult.OK;
+                    CloseWithDialogResult(DialogResult.OK);
                 }
             }
         }

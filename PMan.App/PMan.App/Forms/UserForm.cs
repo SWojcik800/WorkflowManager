@@ -15,11 +15,12 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkflowManager.App.Forms.Base;
 using WorkflowManager.App.Helpers;
 
 namespace StorageManager.App.Forms
 {
-    public partial class UserForm : Form
+    public partial class UserForm : AppFormBase
     {
         private readonly IUserService _service = AppManager.Instance.Resolve<IUserService>();
         private User _data;
@@ -172,7 +173,7 @@ namespace StorageManager.App.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            CloseWithDialogResult(DialogResult.Cancel);
         }
 
         private void textBox4_MouseDown(object sender, MouseEventArgs e)

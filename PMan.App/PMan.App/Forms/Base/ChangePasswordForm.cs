@@ -60,7 +60,7 @@ namespace StorageManager.App.Forms.Base
 
         private void button2_Click(object sender, EventArgs e)
         {
-            CloseWithDialogRsult(DialogResult.Cancel);
+            CloseWithDialogResult(DialogResult.Cancel);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace StorageManager.App.Forms.Base
             if(result.IsSuccess)
             {
                 AppManager.Instance.ShowInfoMessage("Hasło zostało zmienione");
-                CloseWithDialogRsult(DialogResult.OK);
+                CloseWithDialogResult(DialogResult.OK);
 
             }
             else
