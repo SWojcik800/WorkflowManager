@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic.ApplicationServices;
 using StorageManager.App.Commons;
 using StorageManager.App.Commons.IoC;
 using StorageManager.App.Database;

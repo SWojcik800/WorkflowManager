@@ -38,7 +38,7 @@ namespace WorkflowManager.App.Forms
         {
             Workflow selectedWorkflow = (Workflow)this.comboBox1.SelectedItem;
             _userWorkflowService.CreateUserWorkflow(selectedWorkflow.Id, AppManager.Instance.CurrentUser.Id);
-            AppManager.Instance.ShowDataSavedMessage();
+            AppManager.ShowDataSavedMessage();
             this.DialogResult = DialogResult.OK;
         }
     }

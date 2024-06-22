@@ -18,12 +18,12 @@ public partial class UserWorkflow : IEntity
 
     public int CurrentStageId { get; set; }
     public WorkflowStage CurrentStage { get; set; }
-    public int WorkflowDictStatus { get; set; } = AppManager.Instance.Dictionaries.First(x => x.Name == "Statusy przepływów").DefaultItem.Id;
+    public int WorkflowDictStatus { get; set; } = AppManagerCore.Instance.Dictionaries.First(x => x.Name == "Statusy przepływów").DefaultItem.Id;
     [NotMapped]
     public string WorkflowDictStatusDisplayName { 
         get
         {
-            var statusesDict = AppManager.Instance.Dictionaries.First(x => x.Name == "Statusy przepływów");
+            var statusesDict = AppManagerCore.Instance.Dictionaries.First(x => x.Name == "Statusy przepływów");
 
             if(WorkflowDictStatus == 0)
                 return statusesDict.DefaultItem is not null ? statusesDict.DefaultItem.Name : "";

@@ -80,7 +80,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(768, 405);
+            tabPage2.Size = new Size(768, 445);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Historia";
             tabPage2.UseVisualStyleBackColor = true;
@@ -143,7 +143,7 @@
             appGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
             appGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
             appGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            appGridView1.Size = new Size(762, 399);
+            appGridView1.Size = new Size(762, 439);
             appGridView1.TabIndex = 0;
             // 
             // titleDataGridViewTextBoxColumn

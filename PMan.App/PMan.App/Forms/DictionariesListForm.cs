@@ -39,7 +39,7 @@ namespace StorageManager.App.Forms
 
             if (!currentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return;
             }
 
@@ -79,10 +79,10 @@ namespace StorageManager.App.Forms
         {
             if (this.appGridView1.SelectedRows.Count > 0)
             {
-                //User data = appGridView1.SelectedRows[0].DataBoundItem as User;
-                //var result = UserForm.Edit(data.Id);
-                //if (result)
-                //    RefreshTable();
+                Dictionary data = appGridView1.SelectedRows[0].DataBoundItem as Dictionary;
+                var result = DictionaryForm.Edit(data.Id);
+                if (result)
+                    RefreshTable();
             }
         }
     }

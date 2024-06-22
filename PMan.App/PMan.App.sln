@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowManager.App", "PMan.App\WorkflowManager.App.csproj", "{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowManager.ApplicationCore", "WorkflowManager.ApplicationCore\WorkflowManager.ApplicationCore.csproj", "{8CFC2021-6844-4AB6-B0BD-62CD46025037}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AA1ACBC-351B-4BA2-8B3B-8FB245EC5C20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFC2021-6844-4AB6-B0BD-62CD46025037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFC2021-6844-4AB6-B0BD-62CD46025037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFC2021-6844-4AB6-B0BD-62CD46025037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFC2021-6844-4AB6-B0BD-62CD46025037}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

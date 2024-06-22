@@ -42,7 +42,7 @@ namespace WorkflowManager.App.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             _service.UpdateStageFields(_data);
-            AppManager.Instance.ShowDataSavedMessage();
+            AppManager.ShowDataSavedMessage();
             
             DialogResult = DialogResult.OK;
         }

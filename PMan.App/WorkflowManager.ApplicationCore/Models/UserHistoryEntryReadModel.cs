@@ -21,7 +21,7 @@ namespace WorkflowManager.App.Models
             Details = entry.Details;
             UserWorkflowId = entry.UserWorkflowId;
             ActionUserId = entry.ActionUserId;
-            var actionUser = AppManager.Instance.Users.FirstOrDefault(x => x.Id == ActionUserId);
+            var actionUser = AppManagerCore.Instance.Users.FirstOrDefault(x => x.Id == ActionUserId);
 
             if(actionUser is not null)
             {

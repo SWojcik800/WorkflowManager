@@ -10,25 +10,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using WorkflowManager.App.Forms.Base;
 using WorkflowManager.App.Models;
 
 namespace StorageManager.App.Helpers
 {
-    public sealed class AppManager
+    public sealed class AppManager : IAppManager
     {
-        private IServiceProvider _serviceProvider;
-        public AppDbContext DbContext { get; private set; }
-        public static AppManager Instance;
-        public string CurrentPageTitle { get; set; }
+        public AppDbContext DbContext { get
+            {
+                return Instance.DbContext;
+            }
+        }
+        public static IAppManager Instance;
+        public string CurrentPageTitle { get
+            {
+                return Instance.CurrentPageTitle;
+            }
+            set {
+                Instance.CurrentPageTitle = value;   
+            }
+        }
 
         private List<Dictionary> _dictionaries;
 
         public List<Dictionary> Dictionaries { 
             get
             {
-                return _dictionaries;
+                return Instance.Dictionaries;
             }
         }
 
@@ -38,24 +47,19 @@ namespace StorageManager.App.Helpers
         {
             get
             {
-                return _users;
+                return Instance.Users;
             }
         }
 
-        public User CurrentUser { get { return _serviceProvider.GetRequiredService<IUserService>().CurrentUser; } }
+        public User CurrentUser { get { return Instance.CurrentUser; } }
 
-        public static void Init()
+        public void Init()
         {
-            Instance = new AppManager();
-            Instance.DbContext = DbConnectionFactory.CreateDbContext();
-
-            Instance._dictionaries = Instance.DbContext.Dictionaries.Include(x => x.DictionaryItems)
-                .ToList();
-
-            Instance._users = Instance.DbContext.Users.ToList();
+            Instance = new AppManagerCore();
+            Instance.Init();
         }
 
-        public void Logout()
+        public static void Logout()
         {
             Instance.Resolve<IUserService>().Logout();
             RegistryAccessor.SaveValue("UserPwd", "", true);
@@ -63,48 +67,33 @@ namespace StorageManager.App.Helpers
             Application.Exit();
         }
 
-        public static void RegisterServices()
+        public IServiceProvider RegisterServices()
         {
-            ServiceCollection collection = new ServiceCollection();
-
-            collection.Scan(scan => scan
-                .FromAssemblyOf<AppManager>()
-                    .AddClasses(classes => classes.AssignableTo<ITransientService>())
-                        .AsImplementedInterfaces()
-                        .WithTransientLifetime()
-                    .AddClasses(classes => classes.AssignableTo<IScopedService>())
-                        .AsImplementedInterfaces()
-                        .WithScopedLifetime()
-                    .AddClasses(classes => classes.AssignableTo<ISingleton>())
-                        .AsImplementedInterfaces()
-                        .WithSingletonLifetime());
-
-            collection.AddSingleton<AppDbContext>(Instance.DbContext);
-            Instance._serviceProvider = collection.BuildServiceProvider();
+            return Instance.RegisterServices();
         }
 
         public TService Resolve<TService>()
         {
-            return _serviceProvider.GetRequiredService<TService>();
+            return Instance.Resolve<TService>();
         }
 
-        public bool ShowYesNoDialog(string title, string content)
+        public static bool ShowYesNoDialog(string title, string content)
         {
             return MessageBox.Show(content, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
-        public void ShowErrorMessage(string errorMessage)
+        public static void ShowErrorMessage(string errorMessage)
         {
             AppOkDialogForm.OpenForError(errorMessage);
         }
 
-        public void ShowInfoMessage(string message)
+        public static void ShowInfoMessage(string message)
         {
             AppOkDialogForm.OpenForInfo(message: message);
 
         }
 
-        public void ShowDataSavedMessage()
+        public static void ShowDataSavedMessage()
         {
             AppOkDialogForm.OpenForInfo(message: "Zapisano dane");
 
@@ -112,7 +101,7 @@ namespace StorageManager.App.Helpers
 
 
 
-        public void ShowPermissionDeniedMessage()
+        public static void ShowPermissionDeniedMessage()
         {
             AppOkDialogForm.OpenForError("Brak wymaganych uprawnień");
         }

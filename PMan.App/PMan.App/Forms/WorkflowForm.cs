@@ -152,7 +152,7 @@ namespace StorageManager.App
             }
             catch (Exception ex)
             {
-                AppManager.Instance.ShowErrorMessage($"Wystąpił błąd podczas zapisu danych: {ex.Message}");
+                AppManager.ShowErrorMessage($"Wystąpił błąd podczas zapisu danych: {ex.Message}");
             }
         }
 
@@ -200,7 +200,7 @@ namespace StorageManager.App
                 var data = service.GetById(dict.Id);
                 if (data is null)
                 {
-                    AppManager.Instance.ShowErrorMessage("Brak zdefiniowanego słownika: Grupy użytkowników");
+                    AppManager.ShowErrorMessage("Brak zdefiniowanego słownika: Grupy użytkowników");
                     return new();
                 }
 
@@ -245,7 +245,7 @@ namespace StorageManager.App
             {
                 this.tabControl1.SelectedTab = this.tabPage2;
 
-                AppManager.Instance.ShowErrorMessage("Kod pola musi być unikalny");
+                AppManager.ShowErrorMessage("Kod pola musi być unikalny");
 
                 return false;
             }
@@ -254,7 +254,7 @@ namespace StorageManager.App
             {
                 this.tabControl1.SelectedTab = this.tabPage2;
 
-                AppManager.Instance.ShowErrorMessage("Kod pola oraz nazwa wyświetlana są wymagane");
+                AppManager.ShowErrorMessage("Kod pola oraz nazwa wyświetlana są wymagane");
 
                 return false;
             }
@@ -263,7 +263,7 @@ namespace StorageManager.App
             {
                 this.tabControl1.SelectedTab = this.tabPage2;
 
-                AppManager.Instance.ShowErrorMessage("Brak dodanych pól");
+                AppManager.ShowErrorMessage("Brak dodanych pól");
 
                 return false;
             }
@@ -394,7 +394,7 @@ namespace StorageManager.App
                     var data = service.GetById(dict.Id);
                     if (data is null)
                     {
-                        AppManager.Instance.ShowErrorMessage("Brak zdefiniowanego słownika: Grupy użytkowników");
+                        AppManager.ShowErrorMessage("Brak zdefiniowanego słownika: Grupy użytkowników");
                         return new();
                     }
 

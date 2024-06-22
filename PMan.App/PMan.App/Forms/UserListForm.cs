@@ -37,7 +37,7 @@ namespace StorageManager.App.Forms
 
             if (!currentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return;
             }
 

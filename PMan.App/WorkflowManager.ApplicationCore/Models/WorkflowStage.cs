@@ -91,11 +91,10 @@ public partial class WorkflowStage : IEntity
                 case AssignedEntityType.Group:
                     {
                         var entityId = AssignedEntityId;
-                        var group = AppManager.Instance.Dictionaries.FirstOrDefault(x => x.Name == "Grupy użytkowników");
+                        var group = AppManagerCore.Instance.Dictionaries.FirstOrDefault(x => x.Name == "Grupy użytkowników");
 
                         if (group is null)
                         {
-                            AppManager.Instance.ShowErrorMessage("Nie ustawiono słownika Grupy użytkowników");
                             return "";
                         }
 
@@ -111,7 +110,7 @@ public partial class WorkflowStage : IEntity
                 case AssignedEntityType.SpecificUser:
                     {
                         var entityId = AssignedEntityId;
-                        var user = AppManager.Instance.Users.FirstOrDefault(x => x.Id == entityId);
+                        var user = AppManagerCore.Instance.Users.FirstOrDefault(x => x.Id == entityId);
 
                         return user.Login;
                     }

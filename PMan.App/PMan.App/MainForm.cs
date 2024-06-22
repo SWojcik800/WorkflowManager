@@ -40,13 +40,14 @@ namespace StorageManager.App
             DbConnectionForm.InitDbConnection();
         }
 
-        private void OpenForm(Form childForm)
+        private void OpenForm(Form childForm, string pageName)
         {
             if (!AppManager.Instance.CurrentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return;
             }
+            pageTitleLabel.Text = pageName;
 
             childForm.TopLevel = false;
 
@@ -62,7 +63,7 @@ namespace StorageManager.App
         private void MainForm_Load(object sender, EventArgs e)
         {
             var childForm = new UserWorkflowsToProcessForm();
-            OpenForm(childForm);
+            OpenForm(childForm, "Przepywy do obsłużenia");
 
         }
 
@@ -90,12 +91,11 @@ namespace StorageManager.App
         {
 
             WorkflowForm childForm = new WorkflowForm();
-            OpenForm(childForm);
+            OpenForm(childForm, "Szablony przepływów");
         }
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AppManager.Instance.Logout();
         }
 
         private void wyjdźZProgramuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,31 +111,31 @@ namespace StorageManager.App
         private void utworzonePrzezeMnieToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var childForm = new UserCreatedWorkflowsForm();
-            OpenForm(childForm);
+            OpenForm(childForm, "Przepływy utworzone przeze mnie");
         }
 
         private void doObsłużeniaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var childForm = new UserWorkflowsToProcessForm();
-            OpenForm(childForm);
+            OpenForm(childForm, "Przepływy do obsłużenia");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             var childForm = new UserCreatedWorkflowsForm();
-            OpenForm(childForm);
+            OpenForm(childForm, "Utworzone przeze mnie");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             var childForm = new UserWorkflowsToProcessForm();
-            OpenForm(childForm);
+            OpenForm(childForm, "Do obsłużenia");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             WorkflowForm childForm = new WorkflowForm();
-            OpenForm(childForm);
+            OpenForm(childForm, "Szablony przepływów");
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -145,7 +145,7 @@ namespace StorageManager.App
 
         private void button5_Click(object sender, EventArgs e)
         {
-            AppManager.Instance.Logout();
+            AppManager.Logout();
 
         }
 
@@ -178,7 +178,7 @@ namespace StorageManager.App
 
         private void button7_Click(object sender, EventArgs e)
         {
-            AppManager.Instance.Logout();
+            AppManager.Logout();
         }
         #endregion
 
@@ -190,7 +190,7 @@ namespace StorageManager.App
         private void button3_Click_1(object sender, EventArgs e)
         {
             WorkflowForm childForm = new WorkflowForm();
-            OpenForm(childForm);
+            OpenForm(childForm, "Szablony przepływów");
         }
 
         private void configurationButton_Click(object sender, EventArgs e)

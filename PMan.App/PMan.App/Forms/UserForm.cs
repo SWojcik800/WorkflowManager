@@ -59,7 +59,7 @@ namespace StorageManager.App.Forms
 
             if (!AppManager.Instance.CurrentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return false;
             }
 
@@ -76,7 +76,7 @@ namespace StorageManager.App.Forms
 
             if (!AppManager.Instance.CurrentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return false;
             }
 
@@ -95,7 +95,7 @@ namespace StorageManager.App.Forms
 
             if (!AppManager.Instance.CurrentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return false;
             }
 
@@ -113,7 +113,7 @@ namespace StorageManager.App.Forms
 
             if (!AppManager.Instance.CurrentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return false;
             }
 
@@ -155,12 +155,12 @@ namespace StorageManager.App.Forms
                     if (!_isEdit)
                         ChangePasswordForm.ChangePasswordForUser(_data.Id);
 
-                    AppManager.Instance.ShowDataSavedMessage();
+                    AppManager.ShowDataSavedMessage();
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    AppManager.Instance.ShowErrorMessage(result.ErrorMessage);
+                    AppManager.ShowErrorMessage(result.ErrorMessage);
                 }
             }
         }
@@ -190,7 +190,7 @@ namespace StorageManager.App.Forms
                 var data = service.GetById(dict.Id);
                 if (data is null)
                 {
-                    AppManager.Instance.ShowErrorMessage("Brak zdefiniowanego słownika: Grupy użytkowników");
+                    AppManager.ShowErrorMessage("Brak zdefiniowanego słownika: Grupy użytkowników");
                     return new();
                 }
 

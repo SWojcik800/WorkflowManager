@@ -37,7 +37,7 @@ namespace StorageManager.App
             {
 
                 MessageBox.Show($"Wystąpił błąd: {e.Message}");
-                System.Diagnostics.Process.Start(Application.ExecutablePath);
+                //System.Diagnostics.Process.Start(Application.ExecutablePath);
                 Application.Exit();
             }
 
@@ -45,8 +45,8 @@ namespace StorageManager.App
 
         private static void RunApplication()
         {
-            AppManager.Init();
-            AppManager.RegisterServices();
+            var manager = new AppManager();
+            manager.Init();
 
             var result = LoginForm.Open(true);
 

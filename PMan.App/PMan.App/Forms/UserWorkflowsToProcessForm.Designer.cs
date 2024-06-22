@@ -108,6 +108,7 @@
             appGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             appGridView1.Size = new Size(1045, 373);
             appGridView1.TabIndex = 0;
+            appGridView1.CellDoubleClick += appGridView1_CellDoubleClick;
             // 
             // idDataGridViewTextBoxColumn
             // 

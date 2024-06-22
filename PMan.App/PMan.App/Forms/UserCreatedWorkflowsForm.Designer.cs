@@ -35,12 +35,14 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             appGridView1 = new StorageManager.App.Commons.Controls.AppGridView();
-            userWorkflowReadModelBindingSource = new BindingSource(components);
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dictStatusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             stageDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             assignedToUserDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            userWorkflowReadModelBindingSource = new BindingSource(components);
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)appGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userWorkflowReadModelBindingSource).BeginInit();
             SuspendLayout();
@@ -79,7 +81,7 @@
             appGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             appGridView1.EnableHeadersVisualStyles = false;
             appGridView1.GridColor = Color.FromArgb(166, 166, 166);
-            appGridView1.Location = new Point(12, 12);
+            appGridView1.Location = new Point(12, 43);
             appGridView1.MultiSelect = false;
             appGridView1.Name = "appGridView1";
             appGridView1.ReadOnly = true;
@@ -103,12 +105,9 @@
             appGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
             appGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
             appGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            appGridView1.Size = new Size(1045, 426);
+            appGridView1.Size = new Size(1045, 395);
             appGridView1.TabIndex = 0;
-            // 
-            // userWorkflowReadModelBindingSource
-            // 
-            userWorkflowReadModelBindingSource.DataSource = typeof(Models.UserWorkflowReadModel);
+            appGridView1.CellDoubleClick += appGridView1_CellDoubleClick;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -145,11 +144,37 @@
             assignedToUserDataGridViewTextBoxColumn.Name = "assignedToUserDataGridViewTextBoxColumn";
             assignedToUserDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // userWorkflowReadModelBindingSource
+            // 
+            userWorkflowReadModelBindingSource.DataSource = typeof(Models.UserWorkflowReadModel);
+            // 
+            // button1
+            // 
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "Podgląd";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(93, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 2;
+            button2.Text = "Odśwież";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // UserCreatedWorkflowsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1069, 450);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(appGridView1);
             Name = "UserCreatedWorkflowsForm";
             Text = "UserCreatedWorkflowsForm";
@@ -167,5 +192,7 @@
         private DataGridViewTextBoxColumn stageDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn assignedToUserDataGridViewTextBoxColumn;
         private BindingSource userWorkflowReadModelBindingSource;
+        private Button button1;
+        private Button button2;
     }
 }

@@ -24,6 +24,7 @@ namespace WorkflowManager.App.Forms
         private IUserWorkflowService _service = AppManager.Instance.Resolve<IUserWorkflowService>();
         private IDataDictionaryService _dictService = AppManager.Instance.Resolve<IDataDictionaryService>();
         private UserWorkflow _data;
+        private bool _isReadOnly = false;
 
         private Dictionary<string, Func<string>> _getValueFuncs = new Dictionary<string, Func<string>>();
         private Dictionary<string, Func<bool>> _validateDataFuncs = new Dictionary<string, Func<bool>>();
@@ -56,7 +57,7 @@ namespace WorkflowManager.App.Forms
                     continue;
 
                 var isVisible = stageField.IsVisible;
-                var isEditable = stageField.IsEditable;
+                var isEditable = stageField.IsEditable && !_isReadOnly;
                 var isRequired = stageField.IsRequired;
                 var label = new Label();
                 label.Text = fieldDef.DisplayName + ":";
@@ -235,6 +236,15 @@ namespace WorkflowManager.App.Forms
             return form.ShowDialog() == DialogResult.OK;
         }
 
+        public static bool OpenInReadOnlyMode(int id)
+        {
+            var form = new UserWorkflowForm(id);
+            form._isReadOnly = true;
+            form.button1.Enabled = false;
+            form.button2.Enabled = false;
+            return form.ShowDialog() == DialogResult.OK;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             CheckIfUserIsAssignedToStage();
@@ -247,13 +257,13 @@ namespace WorkflowManager.App.Forms
             if (isValid)
             {
                 SetFieldValues();
-                var confirm = AppManager.Instance.ShowYesNoDialog("Potwierdzenie operacji", "Czy napewno chcesz przekazać przepływ do następnego etapu?");
+                var confirm = AppManager.ShowYesNoDialog("Potwierdzenie operacji", "Czy napewno chcesz przekazać przepływ do następnego etapu?");
 
                 if (confirm)
                 {
                     ForwardToNextStage();
 
-                    AppManager.Instance.ShowDataSavedMessage();
+                    AppManager.ShowDataSavedMessage();
                     CloseWithDialogResult(DialogResult.OK);
                 }
 
@@ -264,7 +274,7 @@ namespace WorkflowManager.App.Forms
         {
             if (_data.CurrentStageAssignedToUserId != AppManager.Instance.CurrentUser.Id)
             {
-                var result = AppManager.Instance.ShowYesNoDialog("Potwierdzenie operacji", "Przed obsłużeniem etapu musi on zostać przypisany do użytkownika? Czy chcesz przypisać ten etap do siebie?");
+                var result = AppManager.ShowYesNoDialog("Potwierdzenie operacji", "Przed obsłużeniem etapu musi on zostać przypisany do użytkownika? Czy chcesz przypisać ten etap do siebie?");
 
                 if (result)
                     _service.AssignToCurrentUser(_data.Id, _data.CurrentStageId);
@@ -281,7 +291,7 @@ namespace WorkflowManager.App.Forms
 
             if (isLastStage)
             {
-                var result = AppManager.Instance.ShowYesNoDialog("Potwierdzenie operacji", "Przepływ jest na ostatnim etapie. Czy napewno chcesz go zakończyć?");
+                var result = AppManager.ShowYesNoDialog("Potwierdzenie operacji", "Przepływ jest na ostatnim etapie. Czy napewno chcesz go zakończyć?");
 
                 if (result)
                 {
@@ -344,7 +354,7 @@ namespace WorkflowManager.App.Forms
 
             if (isFirstStage)
             {
-                AppManager.Instance.ShowErrorMessage("Nie można cofnąć do poprzedniego etapu, ponieważ jest to pierwszy etap przepływu");
+                AppManager.ShowErrorMessage("Nie można cofnąć do poprzedniego etapu, ponieważ jest to pierwszy etap przepływu");
                 return;
             }
 
@@ -364,13 +374,13 @@ namespace WorkflowManager.App.Forms
             {
                 SetFieldValues();
 
-                var confirm = AppManager.Instance.ShowYesNoDialog("Potwierdzenie operacji", "Czy napewno chcesz cofnąć przepływ do poprzedniego etapu?");
+                var confirm = AppManager.ShowYesNoDialog("Potwierdzenie operacji", "Czy napewno chcesz cofnąć przepływ do poprzedniego etapu?");
 
                 if (confirm)
                 {
                     GoBackToPreviousStage();
 
-                    AppManager.Instance.ShowDataSavedMessage();
+                    AppManager.ShowDataSavedMessage();
                     CloseWithDialogResult(DialogResult.OK); 
                 }
             }
@@ -389,13 +399,13 @@ namespace WorkflowManager.App.Forms
             {
                 SetFieldValues();
 
-                var confirm = AppManager.Instance.ShowYesNoDialog("Potwierdzenie operacji", "Czy napewno chcesz cofnąć przepływ do poprzedniego etapu?");
+                var confirm = AppManager.ShowYesNoDialog("Potwierdzenie operacji", "Czy napewno chcesz cofnąć przepływ do poprzedniego etapu?");
 
                 if (confirm)
                 {
                     GoBackToPreviousStage();
 
-                    AppManager.Instance.ShowDataSavedMessage();
+                    AppManager.ShowDataSavedMessage();
                     CloseWithDialogResult(DialogResult.OK);
                 }
             }

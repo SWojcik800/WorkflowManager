@@ -47,7 +47,7 @@ namespace StorageManager.App.Forms.Base
             
             if(!currentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return false;
             }
 
@@ -69,20 +69,20 @@ namespace StorageManager.App.Forms.Base
             {
                 if (_data.Password != EncryptionHelper.Decrypt(oldPasswordTextbox.Text))
                 {
-                    AppManager.Instance.ShowErrorMessage("Niepoprawne hasło");
+                    AppManager.ShowErrorMessage("Niepoprawne hasło");
                     return;
                 }
             }
 
             if (newPasswordTexbox.Text != newPasswordTextboxRepeat.Text)
             {
-                AppManager.Instance.ShowErrorMessage("Hasła się nie zgadzają");
+                AppManager.ShowErrorMessage("Hasła się nie zgadzają");
                 return;
             }
 
             if(string.IsNullOrEmpty(newPasswordTexbox.Text))
             {
-                AppManager.Instance.ShowErrorMessage("Hasło nie może być puste");
+                AppManager.ShowErrorMessage("Hasło nie może być puste");
                 return;
             }
 
@@ -93,13 +93,13 @@ namespace StorageManager.App.Forms.Base
 
             if(result.IsSuccess)
             {
-                AppManager.Instance.ShowInfoMessage("Hasło zostało zmienione");
+                AppManager.ShowInfoMessage("Hasło zostało zmienione");
                 CloseWithDialogResult(DialogResult.OK);
 
             }
             else
             {
-                AppManager.Instance.ShowErrorMessage(result.ErrorMessage);
+                AppManager.ShowErrorMessage(result.ErrorMessage);
             }
         }
     }

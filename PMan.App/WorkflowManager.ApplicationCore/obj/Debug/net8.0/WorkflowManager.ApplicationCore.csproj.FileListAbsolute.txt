@@ -1,0 +1,13 @@
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\WorkflowManager.ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\WorkflowManager.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\WorkflowManager.ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\WorkflowManager.ApplicationCore.AssemblyInfo.cs
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\WorkflowManager.ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\WorkflowManager.ApplicationCore.sourcelink.json
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\bin\Debug\net8.0\WorkflowManager.ApplicationCore.deps.json
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\bin\Debug\net8.0\WorkflowManager.ApplicationCore.dll
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\bin\Debug\net8.0\WorkflowManager.ApplicationCore.pdb
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\WorkflowManager.ApplicationCore.dll
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\refint\WorkflowManager.ApplicationCore.dll
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\WorkflowManager.ApplicationCore.pdb
+C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore\obj\Debug\net8.0\ref\WorkflowManager.ApplicationCore.dll

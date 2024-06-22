@@ -55,6 +55,8 @@
             panel2 = new Panel();
             panel4 = new Panel();
             versionLabel = new Label();
+            panel3 = new Panel();
+            pageTitleLabel = new Label();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             sideBarContainerPanel.SuspendLayout();
@@ -64,6 +66,7 @@
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel4.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -385,10 +388,10 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.Image = WorkflowManager.App.Properties.Resources.user_solid;
-            pictureBox1.Location = new Point(88, 8);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(71, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(119, 134);
+            pictureBox1.Size = new Size(155, 161);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -396,9 +399,9 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel2.Location = new Point(300, 29);
+            panel2.Location = new Point(300, 79);
             panel2.Name = "panel2";
-            panel2.Size = new Size(789, 820);
+            panel2.Size = new Size(789, 770);
             panel2.TabIndex = 1;
             // 
             // panel4
@@ -421,11 +424,33 @@
             versionLabel.TabIndex = 0;
             versionLabel.Text = "Workflow manager - Wersja 1.0.0";
             // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Gainsboro;
+            panel3.Controls.Add(pageTitleLabel);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(300, 29);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(801, 44);
+            panel3.TabIndex = 3;
+            // 
+            // pageTitleLabel
+            // 
+            pageTitleLabel.AutoSize = true;
+            pageTitleLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pageTitleLabel.ForeColor = Color.DimGray;
+            pageTitleLabel.Location = new Point(8, 9);
+            pageTitleLabel.Name = "pageTitleLabel";
+            pageTitleLabel.Size = new Size(90, 25);
+            pageTitleLabel.TabIndex = 0;
+            pageTitleLabel.Text = "Page title";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1101, 881);
+            Controls.Add(panel3);
             Controls.Add(panel4);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -447,6 +472,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -480,5 +507,7 @@
         private Button myAccountButton;
         private Button button8;
         private Button button3;
+        private Panel panel3;
+        private Label pageTitleLabel;
     }
 }

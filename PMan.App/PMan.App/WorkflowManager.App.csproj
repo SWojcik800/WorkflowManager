@@ -57,4 +57,8 @@
     <Folder Include="Forms\Dialogs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WorkflowManager.ApplicationCore\WorkflowManager.ApplicationCore.csproj" />
+  </ItemGroup>
+
 </Project>

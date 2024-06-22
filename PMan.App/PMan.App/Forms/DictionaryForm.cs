@@ -53,7 +53,7 @@ namespace StorageManager.App.Forms
 
             if (!currentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return false;
             }
 
@@ -68,7 +68,7 @@ namespace StorageManager.App.Forms
 
             if (!currentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return false;
             }
 
@@ -83,7 +83,7 @@ namespace StorageManager.App.Forms
 
             if (!currentUser.IsAdmin)
             {
-                AppManager.Instance.ShowPermissionDeniedMessage();
+                AppManager.ShowPermissionDeniedMessage();
                 return false;
             }
 
@@ -113,12 +113,12 @@ namespace StorageManager.App.Forms
                 var result = service.Upsert(_data);
                 if (result.IsSuccess)
                 {
-                    AppManager.Instance.ShowDataSavedMessage();
+                    AppManager.ShowDataSavedMessage();
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    AppManager.Instance.ShowErrorMessage(result.ErrorMessage);
+                    AppManager.ShowErrorMessage(result.ErrorMessage);
                 }
             }
             //var result = UserForm.AddNew();
@@ -130,13 +130,13 @@ namespace StorageManager.App.Forms
         {
             if (_items.Any(x => string.IsNullOrEmpty(x.Name) || string.IsNullOrEmpty(x.Value)))
             {
-                AppManager.Instance.ShowErrorMessage("Wartość słownikowa musi mieć zdefiniowany klucz oraz wartość");
+                AppManager.ShowErrorMessage("Wartość słownikowa musi mieć zdefiniowany klucz oraz wartość");
                 return false;
             }
 
             if (_items.Count(x => x.IsDefault) > 1)
             {
-                AppManager.Instance.ShowErrorMessage("Tylko jedna wartość słownikowa może być ustawiona jako domyślna");
+                AppManager.ShowErrorMessage("Tylko jedna wartość słownikowa może być ustawiona jako domyślna");
                 return false;
             }
 

@@ -103,7 +103,7 @@ namespace StorageManager.App
             }
             else
             {
-                AppManager.Instance.ShowErrorMessage(result.ErrorMessage);
+                AppManager.ShowErrorMessage(result.ErrorMessage);
             }
         }
 
