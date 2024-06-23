@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            panel1 = new Panel();
-            menuStrip1 = new MenuStrip();
-            konfiguracjaToolStripMenuItem = new ToolStripMenuItem();
-            użytkownicyToolStripMenuItem = new ToolStripMenuItem();
-            słownikiToolStripMenuItem = new ToolStripMenuItem();
-            szablonyPrzepływówToolStripMenuItem = new ToolStripMenuItem();
             sideBarContainerPanel = new Panel();
+            administrationSubMenuPanel = new Panel();
+            workflowsButton = new Button();
+            dictionariesButton = new Button();
+            usersButton = new Button();
+            administrationSubmenuButton = new Button();
             button4 = new Button();
             myAccountSubMenuPanel = new Panel();
             button3 = new Button();
@@ -57,9 +56,8 @@
             versionLabel = new Label();
             panel3 = new Panel();
             pageTitleLabel = new Label();
-            panel1.SuspendLayout();
-            menuStrip1.SuspendLayout();
             sideBarContainerPanel.SuspendLayout();
+            administrationSubMenuPanel.SuspendLayout();
             myAccountSubMenuPanel.SuspendLayout();
             myWorkflowsSubMenuPanel.SuspendLayout();
             panel5.SuspendLayout();
@@ -69,58 +67,12 @@
             panel3.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.MenuBar;
-            panel1.Controls.Add(menuStrip1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(300, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(801, 29);
-            panel1.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.Dock = DockStyle.Fill;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { konfiguracjaToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(801, 29);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // konfiguracjaToolStripMenuItem
-            // 
-            konfiguracjaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { użytkownicyToolStripMenuItem, słownikiToolStripMenuItem, szablonyPrzepływówToolStripMenuItem });
-            konfiguracjaToolStripMenuItem.Name = "konfiguracjaToolStripMenuItem";
-            konfiguracjaToolStripMenuItem.Size = new Size(86, 25);
-            konfiguracjaToolStripMenuItem.Text = "Konfiguracja";
-            // 
-            // użytkownicyToolStripMenuItem
-            // 
-            użytkownicyToolStripMenuItem.Name = "użytkownicyToolStripMenuItem";
-            użytkownicyToolStripMenuItem.Size = new Size(187, 22);
-            użytkownicyToolStripMenuItem.Text = "Użytkownicy";
-            użytkownicyToolStripMenuItem.Click += użytkownicyToolStripMenuItem_Click;
-            // 
-            // słownikiToolStripMenuItem
-            // 
-            słownikiToolStripMenuItem.Name = "słownikiToolStripMenuItem";
-            słownikiToolStripMenuItem.Size = new Size(187, 22);
-            słownikiToolStripMenuItem.Text = "Słowniki";
-            słownikiToolStripMenuItem.Click += słownikiToolStripMenuItem_Click;
-            // 
-            // szablonyPrzepływówToolStripMenuItem
-            // 
-            szablonyPrzepływówToolStripMenuItem.Name = "szablonyPrzepływówToolStripMenuItem";
-            szablonyPrzepływówToolStripMenuItem.Size = new Size(187, 22);
-            szablonyPrzepływówToolStripMenuItem.Text = "Szablony przepływów";
-            szablonyPrzepływówToolStripMenuItem.Click += szablonyPrzepływówToolStripMenuItem_Click;
-            // 
             // sideBarContainerPanel
             // 
             sideBarContainerPanel.AutoScroll = true;
             sideBarContainerPanel.BackColor = Color.FromArgb(41, 128, 185);
+            sideBarContainerPanel.Controls.Add(administrationSubMenuPanel);
+            sideBarContainerPanel.Controls.Add(administrationSubmenuButton);
             sideBarContainerPanel.Controls.Add(button4);
             sideBarContainerPanel.Controls.Add(myAccountSubMenuPanel);
             sideBarContainerPanel.Controls.Add(myAccountButton);
@@ -133,6 +85,96 @@
             sideBarContainerPanel.Size = new Size(300, 881);
             sideBarContainerPanel.TabIndex = 2;
             // 
+            // administrationSubMenuPanel
+            // 
+            administrationSubMenuPanel.Controls.Add(workflowsButton);
+            administrationSubMenuPanel.Controls.Add(dictionariesButton);
+            administrationSubMenuPanel.Controls.Add(usersButton);
+            administrationSubMenuPanel.Dock = DockStyle.Top;
+            administrationSubMenuPanel.Location = new Point(0, 772);
+            administrationSubMenuPanel.Name = "administrationSubMenuPanel";
+            administrationSubMenuPanel.Size = new Size(283, 182);
+            administrationSubMenuPanel.TabIndex = 13;
+            // 
+            // workflowsButton
+            // 
+            workflowsButton.Dock = DockStyle.Top;
+            workflowsButton.FlatAppearance.BorderSize = 0;
+            workflowsButton.FlatStyle = FlatStyle.Flat;
+            workflowsButton.Font = new Font("Segoe UI", 12F);
+            workflowsButton.ForeColor = Color.White;
+            workflowsButton.Image = (Image)resources.GetObject("workflowsButton.Image");
+            workflowsButton.ImageAlign = ContentAlignment.MiddleLeft;
+            workflowsButton.Location = new Point(0, 118);
+            workflowsButton.Name = "workflowsButton";
+            workflowsButton.Padding = new Padding(20, 0, 0, 0);
+            workflowsButton.Size = new Size(283, 59);
+            workflowsButton.TabIndex = 5;
+            workflowsButton.Text = "Szablony przepływów";
+            workflowsButton.TextAlign = ContentAlignment.MiddleLeft;
+            workflowsButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            workflowsButton.UseVisualStyleBackColor = true;
+            workflowsButton.Click += workflowsButton_Click;
+            // 
+            // dictionariesButton
+            // 
+            dictionariesButton.Dock = DockStyle.Top;
+            dictionariesButton.FlatAppearance.BorderSize = 0;
+            dictionariesButton.FlatStyle = FlatStyle.Flat;
+            dictionariesButton.Font = new Font("Segoe UI", 12F);
+            dictionariesButton.ForeColor = Color.White;
+            dictionariesButton.Image = (Image)resources.GetObject("dictionariesButton.Image");
+            dictionariesButton.ImageAlign = ContentAlignment.MiddleLeft;
+            dictionariesButton.Location = new Point(0, 59);
+            dictionariesButton.Name = "dictionariesButton";
+            dictionariesButton.Padding = new Padding(20, 0, 0, 0);
+            dictionariesButton.Size = new Size(283, 59);
+            dictionariesButton.TabIndex = 4;
+            dictionariesButton.Text = "Słowniki";
+            dictionariesButton.TextAlign = ContentAlignment.MiddleLeft;
+            dictionariesButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            dictionariesButton.UseVisualStyleBackColor = true;
+            dictionariesButton.Click += dictionariesButton_Click;
+            // 
+            // usersButton
+            // 
+            usersButton.Dock = DockStyle.Top;
+            usersButton.FlatAppearance.BorderSize = 0;
+            usersButton.FlatStyle = FlatStyle.Flat;
+            usersButton.Font = new Font("Segoe UI", 12F);
+            usersButton.ForeColor = Color.White;
+            usersButton.Image = (Image)resources.GetObject("usersButton.Image");
+            usersButton.ImageAlign = ContentAlignment.MiddleLeft;
+            usersButton.Location = new Point(0, 0);
+            usersButton.Name = "usersButton";
+            usersButton.Padding = new Padding(20, 0, 0, 0);
+            usersButton.Size = new Size(283, 59);
+            usersButton.TabIndex = 3;
+            usersButton.Text = "Użytkownicy";
+            usersButton.TextAlign = ContentAlignment.MiddleLeft;
+            usersButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            usersButton.UseVisualStyleBackColor = true;
+            usersButton.Click += usersButton_Click;
+            // 
+            // administrationSubmenuButton
+            // 
+            administrationSubmenuButton.Dock = DockStyle.Top;
+            administrationSubmenuButton.FlatAppearance.BorderSize = 0;
+            administrationSubmenuButton.FlatStyle = FlatStyle.Flat;
+            administrationSubmenuButton.Font = new Font("Segoe UI", 12F);
+            administrationSubmenuButton.ForeColor = Color.White;
+            administrationSubmenuButton.Image = (Image)resources.GetObject("administrationSubmenuButton.Image");
+            administrationSubmenuButton.ImageAlign = ContentAlignment.MiddleLeft;
+            administrationSubmenuButton.Location = new Point(0, 713);
+            administrationSubmenuButton.Name = "administrationSubmenuButton";
+            administrationSubmenuButton.Size = new Size(283, 59);
+            administrationSubmenuButton.TabIndex = 12;
+            administrationSubmenuButton.Text = "Administracja";
+            administrationSubmenuButton.TextAlign = ContentAlignment.MiddleLeft;
+            administrationSubmenuButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            administrationSubmenuButton.UseVisualStyleBackColor = true;
+            administrationSubmenuButton.Click += administrationSubmenuButton_Click;
+            // 
             // button4
             // 
             button4.Dock = DockStyle.Bottom;
@@ -142,9 +184,9 @@
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(0, 822);
+            button4.Location = new Point(0, 954);
             button4.Name = "button4";
-            button4.Size = new Size(300, 59);
+            button4.Size = new Size(283, 59);
             button4.TabIndex = 4;
             button4.Text = "Wyjdź";
             button4.TextAlign = ContentAlignment.MiddleLeft;
@@ -161,7 +203,7 @@
             myAccountSubMenuPanel.Dock = DockStyle.Top;
             myAccountSubMenuPanel.Location = new Point(0, 478);
             myAccountSubMenuPanel.Name = "myAccountSubMenuPanel";
-            myAccountSubMenuPanel.Size = new Size(300, 235);
+            myAccountSubMenuPanel.Size = new Size(283, 235);
             myAccountSubMenuPanel.TabIndex = 8;
             // 
             // button3
@@ -176,7 +218,7 @@
             button3.Location = new Point(0, 176);
             button3.Name = "button3";
             button3.Padding = new Padding(20, 0, 0, 0);
-            button3.Size = new Size(300, 59);
+            button3.Size = new Size(283, 59);
             button3.TabIndex = 8;
             button3.Text = "Połączenie z bazą danych";
             button3.TextAlign = ContentAlignment.MiddleLeft;
@@ -196,7 +238,7 @@
             button7.Location = new Point(0, 118);
             button7.Name = "button7";
             button7.Padding = new Padding(20, 0, 0, 0);
-            button7.Size = new Size(300, 59);
+            button7.Size = new Size(283, 59);
             button7.TabIndex = 4;
             button7.Text = "Zmień użytkownika";
             button7.TextAlign = ContentAlignment.MiddleLeft;
@@ -216,7 +258,7 @@
             button6.Location = new Point(0, 59);
             button6.Name = "button6";
             button6.Padding = new Padding(20, 0, 0, 0);
-            button6.Size = new Size(300, 59);
+            button6.Size = new Size(283, 59);
             button6.TabIndex = 3;
             button6.Text = "Zmień hasło";
             button6.TextAlign = ContentAlignment.MiddleLeft;
@@ -236,7 +278,7 @@
             button5.Location = new Point(0, 0);
             button5.Name = "button5";
             button5.Padding = new Padding(20, 0, 0, 0);
-            button5.Size = new Size(300, 59);
+            button5.Size = new Size(283, 59);
             button5.TabIndex = 2;
             button5.Text = "Szczegóły";
             button5.TextAlign = ContentAlignment.MiddleLeft;
@@ -255,7 +297,7 @@
             myAccountButton.ImageAlign = ContentAlignment.MiddleLeft;
             myAccountButton.Location = new Point(0, 419);
             myAccountButton.Name = "myAccountButton";
-            myAccountButton.Size = new Size(300, 59);
+            myAccountButton.Size = new Size(283, 59);
             myAccountButton.TabIndex = 7;
             myAccountButton.Text = "Moje konto";
             myAccountButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -271,7 +313,7 @@
             myWorkflowsSubMenuPanel.Dock = DockStyle.Top;
             myWorkflowsSubMenuPanel.Location = new Point(0, 237);
             myWorkflowsSubMenuPanel.Name = "myWorkflowsSubMenuPanel";
-            myWorkflowsSubMenuPanel.Size = new Size(300, 182);
+            myWorkflowsSubMenuPanel.Size = new Size(283, 182);
             myWorkflowsSubMenuPanel.TabIndex = 6;
             // 
             // button8
@@ -286,7 +328,7 @@
             button8.Location = new Point(0, 118);
             button8.Name = "button8";
             button8.Padding = new Padding(20, 0, 0, 0);
-            button8.Size = new Size(300, 59);
+            button8.Size = new Size(283, 59);
             button8.TabIndex = 3;
             button8.Text = "Dodaj nowy";
             button8.TextAlign = ContentAlignment.MiddleLeft;
@@ -306,7 +348,7 @@
             button2.Location = new Point(0, 59);
             button2.Name = "button2";
             button2.Padding = new Padding(20, 0, 0, 0);
-            button2.Size = new Size(300, 59);
+            button2.Size = new Size(283, 59);
             button2.TabIndex = 2;
             button2.Text = "Do obsłużenia";
             button2.TextAlign = ContentAlignment.MiddleLeft;
@@ -326,7 +368,7 @@
             button1.Location = new Point(0, 0);
             button1.Name = "button1";
             button1.Padding = new Padding(20, 0, 0, 0);
-            button1.Size = new Size(300, 59);
+            button1.Size = new Size(283, 59);
             button1.TabIndex = 1;
             button1.Text = "Utworzone przeze mnie";
             button1.TextAlign = ContentAlignment.MiddleLeft;
@@ -345,7 +387,7 @@
             myWorkflowsButton.ImageAlign = ContentAlignment.MiddleLeft;
             myWorkflowsButton.Location = new Point(0, 178);
             myWorkflowsButton.Name = "myWorkflowsButton";
-            myWorkflowsButton.Size = new Size(300, 59);
+            myWorkflowsButton.Size = new Size(283, 59);
             myWorkflowsButton.TabIndex = 5;
             myWorkflowsButton.Text = "Moje przepływy";
             myWorkflowsButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -361,7 +403,7 @@
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(300, 178);
+            panel5.Size = new Size(283, 178);
             panel5.TabIndex = 0;
             // 
             // panel6
@@ -371,7 +413,7 @@
             panel6.ForeColor = Color.White;
             panel6.Location = new Point(0, 126);
             panel6.Name = "panel6";
-            panel6.Size = new Size(300, 52);
+            panel6.Size = new Size(283, 52);
             panel6.TabIndex = 1;
             // 
             // currentUserLabel
@@ -380,7 +422,7 @@
             currentUserLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             currentUserLabel.Location = new Point(0, 0);
             currentUserLabel.Name = "currentUserLabel";
-            currentUserLabel.Size = new Size(300, 52);
+            currentUserLabel.Size = new Size(283, 52);
             currentUserLabel.TabIndex = 0;
             currentUserLabel.Text = "USER";
             currentUserLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -391,7 +433,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(71, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(155, 161);
+            pictureBox1.Size = new Size(138, 161);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -399,9 +441,9 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel2.Location = new Point(300, 79);
+            panel2.Location = new Point(300, 50);
             panel2.Name = "panel2";
-            panel2.Size = new Size(789, 770);
+            panel2.Size = new Size(789, 799);
             panel2.TabIndex = 1;
             // 
             // panel4
@@ -429,7 +471,7 @@
             panel3.BackColor = Color.Gainsboro;
             panel3.Controls.Add(pageTitleLabel);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(300, 29);
+            panel3.Location = new Point(300, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(801, 44);
             panel3.TabIndex = 3;
@@ -453,18 +495,13 @@
             Controls.Add(panel3);
             Controls.Add(panel4);
             Controls.Add(panel2);
-            Controls.Add(panel1);
             Controls.Add(sideBarContainerPanel);
-            MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "Workflow manager";
             WindowState = FormWindowState.Maximized;
             Load += MainForm_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             sideBarContainerPanel.ResumeLayout(false);
+            administrationSubMenuPanel.ResumeLayout(false);
             myAccountSubMenuPanel.ResumeLayout(false);
             myWorkflowsSubMenuPanel.ResumeLayout(false);
             panel5.ResumeLayout(false);
@@ -478,13 +515,6 @@
         }
 
         #endregion
-
-        private Panel panel1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem konfiguracjaToolStripMenuItem;
-        private ToolStripMenuItem użytkownicyToolStripMenuItem;
-        private ToolStripMenuItem słownikiToolStripMenuItem;
-        private ToolStripMenuItem szablonyPrzepływówToolStripMenuItem;
         private Panel sideBarContainerPanel;
         private Panel panel2;
         private Panel panel4;
@@ -509,5 +539,13 @@
         private Button button3;
         private Panel panel3;
         private Label pageTitleLabel;
+        private Button button9;
+        private Button button10;
+        private Button button11;
+        private Button administrationSubmenuButton;
+        private Panel administrationSubMenuPanel;
+        private Button workflowsButton;
+        private Button dictionariesButton;
+        private Button usersButton;
     }
 }

@@ -47,5 +47,6 @@ public partial class UserWorkflow : IEntity
 public enum UserWorkflowStatus
 {
     New,
-    Complete
+    Complete,
+    Archive
 }

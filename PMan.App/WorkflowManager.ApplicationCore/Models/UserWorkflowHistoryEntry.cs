@@ -42,6 +42,9 @@ namespace WorkflowManager.App.Models
                 case ActionType.CompleteWorkflow:
                     Title = "Zakończony";
                     break;
+                case ActionType.MoveToArchive:
+                    Title = "Przeniesiono do archiwum";
+                    break;
                 default:
                     break;
             }
@@ -65,6 +68,7 @@ namespace WorkflowManager.App.Models
         ValuesUpdated,
         ForwardedToNextStage,
         GoBackToNextStage,
-        CompleteWorkflow
+        CompleteWorkflow,
+        MoveToArchive
     }
 }

@@ -53,7 +53,9 @@ namespace WorkflowManager.App.Features.UserWorkflows
         {
             using (var context = DbConnectionFactory.CreateDbContext())
             {
-                var userWorkflows = context.UserWorkflows.Where(x => x.CreatedByUserId == userService.CurrentUser.Id).ToList();
+                var userWorkflows = context.UserWorkflows.Where(x => x.CreatedByUserId == userService.CurrentUser.Id && x.Status != UserWorkflowStatus.Archive)
+                    .OrderByDescending(x => x.CreationTime)
+                    .ToList();
                 var workflows = context.Workflows.Include(x => x.WorkflowStage).ToList();
                 var statuses = AppManagerCore.Instance.Dictionaries.First(x => x.Name == "Statusy przepływów");
                 var users = AppManagerCore.Instance.Users;
@@ -63,6 +65,29 @@ namespace WorkflowManager.App.Features.UserWorkflows
 
                 return readModels;
 
+            }
+        }
+
+        public Result<bool> MoveToArchive(int userWorkflowId)
+        {
+            using (var context = DbConnectionFactory.CreateDbContext())
+            {
+                var userWorkflow = context.UserWorkflows.FirstOrDefault(x => x.CreatedByUserId == userService.CurrentUser.Id && x.Id == userWorkflowId);
+
+                if (userWorkflow is null)
+                    return Result<bool>.Fail("Nie znaleziono przepływu");
+
+                if(userWorkflow.Status != UserWorkflowStatus.Complete)
+                    return Result<bool>.Fail("Nie można zarchiwizować przepływu dopóki nie zostanie on zakończony");
+
+
+                userWorkflow.Status = UserWorkflowStatus.Archive;
+                userWorkflow.HistoryEntries.Add(new UserWorkflowHistoryEntry(userWorkflow.Id, $"PRZENIESIONO DO ARCHIWUM", userService.CurrentUser.Id, ActionType.MoveToArchive));
+
+                context.Update(userWorkflow);
+                context.SaveChanges();
+
+                return Result<bool>.Success(true);
             }
         }
 
@@ -263,7 +288,7 @@ namespace WorkflowManager.App.Features.UserWorkflows
             }
         }
 
-        public void GoBackToPreviousStage(UserWorkflow userWorkflow)
+        public void GoBackToPreviousStage(UserWorkflow userWorkflow, string reason)
         {
             using (var context = DbConnectionFactory.CreateDbContext())
             {
@@ -273,7 +298,7 @@ namespace WorkflowManager.App.Features.UserWorkflows
                     .FirstOrDefault();
 
                 CheckForValueChanges(userWorkflow);
-                userWorkflow.HistoryEntries.Add(new UserWorkflowHistoryEntry(userWorkflow.Id, $"ORYGINALNY ETAP: {userWorkflow.CurrentStage.Name} COFNIĘTO DO: {previousStage?.Name}", userService.CurrentUser.Id, ActionType.GoBackToNextStage));
+                userWorkflow.HistoryEntries.Add(new UserWorkflowHistoryEntry(userWorkflow.Id, reason, userService.CurrentUser.Id, ActionType.GoBackToNextStage));
 
                 if (previousStage is not null)
                 {
@@ -347,8 +372,9 @@ namespace WorkflowManager.App.Features.UserWorkflows
         void CreateUserWorkflow(int workflowId, int userId);
         void ForwardToNextStage(UserWorkflow userWorkflow);
         UserWorkflow GetById(int id);
-        void GoBackToPreviousStage(UserWorkflow userWorkflow);
+        void GoBackToPreviousStage(UserWorkflow userWorkflow, string reason);
         List<UserWorkflowReadModel> ListUserCreatedWorkflows();
+        Result<bool> MoveToArchive(int userWorkflowId);
         List<UserWorkflowReadModel> StagesToProcess();
     }
 }

@@ -21,7 +21,7 @@ namespace StorageManager.App.Forms
     public partial class DictionariesListForm : AppFormBase
     {
         private List<Dictionary> _data;
-        protected DictionariesListForm()
+        public DictionariesListForm()
         {
             InitializeComponent();
             InitForm();

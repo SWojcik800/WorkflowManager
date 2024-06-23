@@ -40,72 +40,42 @@ namespace StorageManager.App
             DbConnectionForm.InitDbConnection();
         }
 
+
         private void OpenForm(Form childForm, string pageName)
         {
-            if (!AppManager.Instance.CurrentUser.IsAdmin)
-            {
-                AppManager.ShowPermissionDeniedMessage();
-                return;
-            }
             pageTitleLabel.Text = pageName;
 
             childForm.TopLevel = false;
 
             childForm.FormBorderStyle = FormBorderStyle.None;
-            this.panel2.Controls.Clear();
-            this.panel2.Controls.Add(childForm);
 
-            childForm.Dock = DockStyle.Fill;
+            if(this.panel2.Controls.Count > 0)
+            {
+                var oldControl = panel2.Controls[0];
+                oldControl.Hide();
+                this.panel2.Controls.Add(childForm);
 
-            childForm.Show();
+                childForm.Dock = DockStyle.Fill;
+
+                childForm.Show();
+                panel2.Controls.Remove(oldControl);
+            } else
+            {
+                this.panel2.Controls.Add(childForm);
+
+                childForm.Dock = DockStyle.Fill;
+
+                childForm.Show();
+            }
+            
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             var childForm = new UserWorkflowsToProcessForm();
-            OpenForm(childForm, "Przepywy do obsłużenia");
+            OpenForm(childForm, "Przepływy do obsłużenia");
 
-        }
-
-        private void zmieńHasłoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePasswordForm.ChangePasswordForCurrentUser();
-        }
-
-        private void użytkownicyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UserListForm.OpenListForm();
-        }
-
-        private void szczegółyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UserForm.MyAccount();
-        }
-
-        private void słownikiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DictionariesListForm.OpenListForm();
-        }
-
-        private void szablonyPrzepływówToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            WorkflowForm childForm = new WorkflowForm();
-            OpenForm(childForm, "Szablony przepływów");
-        }
-
-        private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void wyjdźZProgramuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void dodajNowyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreateUserWorkflowForm.AddNewForCurrentUser();
         }
 
         private void utworzonePrzezeMnieToolStripMenuItem_Click(object sender, EventArgs e)
@@ -154,6 +124,13 @@ namespace StorageManager.App
         {
             this.myWorkflowsSubMenuPanel.Visible = true;
             this.myAccountSubMenuPanel.Visible = false;
+            this.administrationSubMenuPanel.Visible = false;
+
+            if (!AppManager.Instance.CurrentUser.IsAdmin)
+            {
+                this.administrationSubmenuButton.Enabled = false;
+                this.administrationSubmenuButton.Visible = false;
+            }
         }
         private void myWorkflowsButton_Click(object sender, EventArgs e)
         {
@@ -200,6 +177,29 @@ namespace StorageManager.App
         private void button3_Click_2(object sender, EventArgs e)
         {
             DbConnectionForm.InitDbConnection();
+        }
+
+        private void usersButton_Click(object sender, EventArgs e)
+        {
+            UserListForm.OpenListForm();
+        }
+
+        private void dictionariesButton_Click(object sender, EventArgs e)
+        {
+            DictionariesListForm.OpenListForm();
+        }
+
+        private void workflowsButton_Click(object sender, EventArgs e)
+        {
+            WorkflowForm childForm = new WorkflowForm();
+            OpenForm(childForm, "Szablony przepływów");
+        }
+
+        private void administrationSubmenuButton_Click(object sender, EventArgs e)
+        {
+            if (!AppManager.Instance.CurrentUser.IsAdmin)
+                return;
+            this.administrationSubMenuPanel.Visible = !this.administrationSubMenuPanel.Visible;
         }
     }
 }

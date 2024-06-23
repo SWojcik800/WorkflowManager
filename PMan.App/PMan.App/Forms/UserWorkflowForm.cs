@@ -358,7 +358,9 @@ namespace WorkflowManager.App.Forms
                 return;
             }
 
-            _service.GoBackToPreviousStage(_data);
+            var reasonForm = new ReasonForm();
+            reasonForm.ShowDialog();
+            _service.GoBackToPreviousStage(_data, reasonForm.Reason);
         }
 
         private void button1_Click_1(object sender, EventArgs e)

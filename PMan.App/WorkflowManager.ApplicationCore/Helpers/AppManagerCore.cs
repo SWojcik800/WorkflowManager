@@ -54,6 +54,7 @@ namespace StorageManager.App.Helpers
                 .ToList();
 
             Instance._users = Instance.DbContext.Users.ToList();
+            AddInitialDataToDb();
         }
 
         public void Logout()
@@ -94,6 +95,56 @@ namespace StorageManager.App.Helpers
         public TService Resolve<TService>()
         {
             return Instance._serviceProvider.GetRequiredService<TService>();
+        }
+
+        public void AddInitialDataToDb()
+        {
+            var userGroupsDict = DbContext.Dictionaries.FirstOrDefault(x => x.Name == "Grupy użytkowników");
+            if(userGroupsDict is null)
+            {
+                var userGroups = new Dictionary()
+                {
+                    Name = "Grupy użytkowników"
+                };
+
+                DbContext.Dictionaries.Add(userGroups);
+            }
+
+            var statusesDict = DbContext.Dictionaries.FirstOrDefault(x => x.Name == "Statusy przepływów");
+            if (statusesDict is null)
+            {
+                var statDict = new Dictionary()
+                {
+                    Name = "Statusy przepływów",
+                    DictionaryItems = new List<DictionaryItem>
+                    {
+                        new DictionaryItem()
+                        {
+                            Name = "Nowy",
+                            Value  = "1"
+                        },
+                        new DictionaryItem()
+                        {
+                            Name = "Zakończony",
+                            Value  = "2"
+                        }
+                    }
+                };
+
+                DbContext.Dictionaries.Add(statDict);
+            }
+
+            if (!DbContext.Users.Any())
+            {
+                DbContext.Users.Add(new User()
+                {
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Login = "ADMIN",
+                    Password = EncryptionHelper.Encrypt("123qwe")
+                });
+            }
+            DbContext.SaveChanges();
         }
 
         public void ShowDataSavedMessage()

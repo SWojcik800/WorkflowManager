@@ -1,4 +1,5 @@
-﻿using StorageManager.App.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using StorageManager.App.Database;
 using StorageManager.App.Forms;
 using StorageManager.App.Helpers;
 
@@ -47,6 +48,12 @@ namespace StorageManager.App
         {
             var manager = new AppManager();
             manager.Init();
+            var dbContext = manager.DbContext;
+            dbContext.Database.EnsureCreated();
+            if(dbContext.Database.GetPendingMigrations().Any())
+            {
+                dbContext.Database.Migrate();
+            }
 
             var result = LoginForm.Open(true);
 

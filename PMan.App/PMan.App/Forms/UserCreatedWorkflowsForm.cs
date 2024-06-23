@@ -47,9 +47,43 @@ namespace WorkflowManager.App.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            RefreshDataGrid();
+        }
+
+        private void RefreshDataGrid()
+        {
             _data = _service.ListUserCreatedWorkflows();
             this.userWorkflowReadModelBindingSource.DataSource = _data;
             this.userWorkflowReadModelBindingSource.ResetBindings(true);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var result = CreateUserWorkflowForm.AddNewForCurrentUser();
+
+            if (result)
+            {
+                RefreshDataGrid();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (this.appGridView1.SelectedRows.Count > 0)
+            {
+                var currentRow = this.appGridView1.SelectedRows[0].DataBoundItem as UserWorkflowReadModel;
+                var result = AppManager.ShowYesNoDialog("Przeniesienie do archiwum", "Czy napewno chcesz przenieść wybrany przepływ do archiwum?");
+
+                if (result)
+                {
+                    var operationResult = _service.MoveToArchive(currentRow.Id);
+                    if (operationResult.IsSuccess)
+                        AppManager.ShowDataSavedMessage();
+                    else
+                        AppManager.ShowErrorMessage(operationResult.ErrorMessage);
+                }
+                    
+            }
         }
     }
 }
