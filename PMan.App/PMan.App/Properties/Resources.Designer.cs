@@ -63,6 +63,16 @@ namespace WorkflowManager.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Close_WF {
+            get {
+                object obj = ResourceManager.GetObject("Close WF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap database_fill {
             get {
                 object obj = ResourceManager.GetObject("database-fill", resourceCulture);
@@ -126,6 +136,16 @@ namespace WorkflowManager.App.Properties {
         internal static System.Drawing.Bitmap person_outline {
             get {
                 object obj = ResourceManager.GetObject("person-outline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Restore {
+            get {
+                object obj = ResourceManager.GetObject("Restore", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

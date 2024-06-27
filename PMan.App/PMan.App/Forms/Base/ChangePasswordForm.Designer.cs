@@ -91,22 +91,28 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.White;
+            button1.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(218, 168);
             button1.Name = "button1";
             button1.Size = new Size(110, 35);
             button1.TabIndex = 6;
             button1.Text = "Zapisz zmiany";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.White;
+            button2.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button2.FlatStyle = FlatStyle.Flat;
             button2.Location = new Point(107, 168);
             button2.Name = "button2";
             button2.Size = new Size(105, 35);
             button2.TabIndex = 7;
             button2.Text = "Anuluj";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // ChangePasswordForm

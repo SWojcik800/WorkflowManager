@@ -1,10 +1,12 @@
 ﻿using StorageManager.App.Features.Dictionaries;
+using StorageManager.App.Features.Users;
 using StorageManager.App.Helpers;
 using StorageManager.App.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
@@ -22,9 +24,12 @@ namespace WorkflowManager.App.Forms
     public partial class UserWorkflowForm : AppFormBase
     {
         private IUserWorkflowService _service = AppManager.Instance.Resolve<IUserWorkflowService>();
+        private IUserService _userService = AppManager.Instance.Resolve<IUserService>();
         private IDataDictionaryService _dictService = AppManager.Instance.Resolve<IDataDictionaryService>();
         private UserWorkflow _data;
+        private List<AttachmentDto> _attachments = new List<AttachmentDto>();
         private bool _isReadOnly = false;
+        private string _apiBaseurl = "https://localhost:7255";
 
         private Dictionary<string, Func<string>> _getValueFuncs = new Dictionary<string, Func<string>>();
         private Dictionary<string, Func<bool>> _validateDataFuncs = new Dictionary<string, Func<bool>>();
@@ -37,9 +42,110 @@ namespace WorkflowManager.App.Forms
             this.Text = $"{_data.Id}/{_data.Workflow.Name}/{_data.CurrentStage.Name}";
             this.userHistoryEntryReadModelBindingSource.DataSource = _data.HistoryEntries.Select(x => new UserHistoryEntryReadModel(x)).OrderByDescending(x => x.ActionDate).ToList();
             this.appGridView1.DataSource = this.userHistoryEntryReadModelBindingSource;
+            this.attachmentDtoBindingSource.DataSource = _attachments;
+            this.appGridView2.DataSource = this.attachmentDtoBindingSource;
+            this.appGridView2.MultiSelect = true;
             InitFields();
+            RefreshAttachmentsFromApi(_data.Id);
         }
 
+        private void AddBearerToken(HttpClient httpClient, string token)
+        {
+            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+        }
+        private void RefreshAttachmentsFromApi(int userWorkflowId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var currentUser = AppManager.Instance.CurrentUser;
+                var client = new swaggerClient(_apiBaseurl, httpClient);
+                var result = client.UsersAsync(currentUser.Login, EncryptionHelper.Decrypt(currentUser.Password)).Result;
+                var token = result.Value;
+                AddBearerToken(httpClient, token);
+                var attachmentDtos = client.ForOwnerAsync(userWorkflowId, AttachmentOwnerType._1).Result
+                    .OrderByDescending(x => x.CreationTime)
+                    .ToList();
+                _attachments.Clear();
+                _attachments.AddRange(attachmentDtos);
+                this.attachmentDtoBindingSource.ResetBindings(true);
+            }
+        }
+
+        private void DownloadFilesFromApi(List<string> fileIds)
+        {
+            var folderDialog = new FolderBrowserDialog();
+
+            var result = folderDialog.ShowDialog() == DialogResult.OK;
+
+            if (result)
+            {
+                var folderPath = folderDialog.SelectedPath;
+                Cursor.Current = Cursors.WaitCursor;
+                using (var httpClient = new HttpClient())
+                {
+
+                    var currentUser = AppManager.Instance.CurrentUser;
+                    var client = new swaggerClient(_apiBaseurl, httpClient);
+                    var apiResult = client.UsersAsync(currentUser.Login, EncryptionHelper.Decrypt(currentUser.Password)).Result;
+                    var token = apiResult.Value;
+                    AddBearerToken(httpClient, token);
+
+                    foreach (var id in fileIds)
+                    {
+                        var file = client.AttachmentsGETAsync(id).Result;
+
+                        var filePath = Path.Combine(folderPath, file.FileName);
+
+                        File.WriteAllBytes(filePath, file.File);
+                    }
+
+
+
+                }
+
+                Process.Start("explorer", folderPath);
+                Cursor.Current = Cursors.Default;
+
+            }
+
+        }
+
+        private async void UploadFile()
+        {
+            var dialog = new OpenFileDialog();
+
+            var dialogResult = dialog.ShowDialog() == DialogResult.OK;
+
+            if(dialogResult)
+            {
+                var bytes = File.ReadAllBytes(dialog.FileName);
+                var fileName = Path.GetFileName(dialog.FileName);
+                using (var httpClient = new HttpClient())
+                {
+                    var currentUser = AppManager.Instance.CurrentUser;
+                    var client = new swaggerClient(_apiBaseurl, httpClient);
+                    var result = client.UsersAsync(currentUser.Login, EncryptionHelper.Decrypt(currentUser.Password)).Result;
+                    var token = result.Value;
+                    AddBearerToken(httpClient, token);
+                    
+                    if(_attachments.Any(x => x.FileName == fileName))
+                    {
+                        AppManager.ShowErrorMessage($"Plik o nazwie {fileName} istnieje już w ramach tego przepływu. Prześlij plik z inną nazwą.");
+                        return;
+                    }
+
+                    await client.AttachmentsPOSTAsync(new UploadAttachmentDto()
+                    {
+                        FileName = fileName,
+                        OwnerId = _data.Id,
+                        AttachmentOwnerType = AttachmentOwnerType._1,
+                        Attachment = bytes
+                    });
+
+                    RefreshAttachmentsFromApi(_data.Id);
+                }
+            }
+        }
         private void InitFields()
         {
             var flowLayoutPanel = new FlowLayoutPanel();
@@ -383,7 +489,7 @@ namespace WorkflowManager.App.Forms
                     GoBackToPreviousStage();
 
                     AppManager.ShowDataSavedMessage();
-                    CloseWithDialogResult(DialogResult.OK); 
+                    CloseWithDialogResult(DialogResult.OK);
                 }
             }
         }
@@ -411,6 +517,29 @@ namespace WorkflowManager.App.Forms
                     CloseWithDialogResult(DialogResult.OK);
                 }
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (this.appGridView2.SelectedRows.Count > 0)
+            {
+                var items = new List<AttachmentDto>();
+                foreach (var row in this.appGridView2.SelectedRows)
+                {
+                    AttachmentDto item = (row as DataGridViewRow).DataBoundItem as AttachmentDto;
+                    items.Add(item);
+                }
+
+                var filesIds = items.Select(x => x.Id)
+                    .ToList();
+
+                DownloadFilesFromApi(filesIds);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UploadFile();
         }
     }
 }

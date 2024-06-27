@@ -52,23 +52,29 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button1.BackColor = Color.White;
+            button1.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(422, 237);
             button1.Name = "button1";
             button1.Size = new Size(115, 33);
             button1.TabIndex = 0;
             button1.Text = "Anuluj";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
             button2.Anchor = AnchorStyles.Right;
+            button2.BackColor = Color.White;
+            button2.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button2.FlatStyle = FlatStyle.Flat;
             button2.Location = new Point(301, 237);
             button2.Name = "button2";
             button2.Size = new Size(115, 33);
             button2.TabIndex = 1;
             button2.Text = "Zapisz";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // textBox1
@@ -179,13 +185,16 @@
             // button3
             // 
             button3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button3.BackColor = Color.White;
+            button3.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button3.FlatStyle = FlatStyle.Flat;
             button3.Location = new Point(12, 237);
             button3.MaximumSize = new Size(115, 33);
             button3.Name = "button3";
             button3.Size = new Size(115, 33);
             button3.TabIndex = 14;
             button3.Text = "Zmień hasło";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // UserForm

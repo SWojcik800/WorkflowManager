@@ -77,6 +77,9 @@ namespace WorkflowManager.App.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("DiskSpaceLimit")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -383,6 +386,38 @@ namespace WorkflowManager.App.Migrations
                     b.ToTable("UserWorkflowHistoryEntries");
                 });
 
+            modelBuilder.Entity("WorkflowManager.ApplicationCore.Models.Attachment", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AttachmentOwnerType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OwnerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.ToTable("Attachments");
+                });
+
             modelBuilder.Entity("StorageManager.App.Models.DictionaryItem", b =>
                 {
                     b.HasOne("StorageManager.App.Models.Dictionary", "Dictionary")
@@ -489,6 +524,17 @@ namespace WorkflowManager.App.Migrations
                     b.Navigation("ActionUser");
 
                     b.Navigation("UserWorkflow");
+                });
+
+            modelBuilder.Entity("WorkflowManager.ApplicationCore.Models.Attachment", b =>
+                {
+                    b.HasOne("StorageManager.App.Models.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("StorageManager.App.Models.Dictionary", b =>

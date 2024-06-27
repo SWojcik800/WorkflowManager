@@ -56,12 +56,15 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.Right;
+            button1.BackColor = Color.White;
+            button1.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(633, 33);
             button1.Name = "button1";
             button1.Size = new Size(121, 31);
             button1.TabIndex = 0;
             button1.Text = "Zapisz";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // panel1
@@ -74,9 +77,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(757, 67);
             panel1.TabIndex = 3;
-            panel1.Controls.SetChildIndex(button1, 0);
-            panel1.Controls.SetChildIndex(label1, 0);
-            panel1.Controls.SetChildIndex(textBox1, 0);
             // 
             // textBox1
             // 

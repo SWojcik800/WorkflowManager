@@ -539,8 +539,6 @@
         private Button button3;
         private Panel panel3;
         private Label pageTitleLabel;
-        private Button button9;
-        private Button button10;
         private Button button11;
         private Button administrationSubmenuButton;
         private Panel administrationSubMenuPanel;

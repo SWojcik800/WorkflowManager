@@ -83,7 +83,7 @@
             appGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             appGridView1.EnableHeadersVisualStyles = false;
             appGridView1.GridColor = Color.FromArgb(166, 166, 166);
-            appGridView1.Location = new Point(12, 43);
+            appGridView1.Location = new Point(12, 53);
             appGridView1.MultiSelect = false;
             appGridView1.Name = "appGridView1";
             appGridView1.ReadOnly = true;
@@ -107,7 +107,7 @@
             appGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
             appGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
             appGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            appGridView1.Size = new Size(1045, 395);
+            appGridView1.Size = new Size(1045, 385);
             appGridView1.TabIndex = 0;
             appGridView1.CellDoubleClick += appGridView1_CellDoubleClick;
             // 
@@ -152,42 +152,67 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(41, 128, 185);
+            button1.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
             button1.Location = new Point(12, 12);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(75, 35);
             button1.TabIndex = 1;
-            button1.Text = "Podgląd";
-            button1.UseVisualStyleBackColor = true;
+            button1.Text = "Szczegóły";
+            button1.TextImageRelation = TextImageRelation.ImageAboveText;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.FromArgb(41, 128, 185);
+            button2.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button2.ForeColor = Color.White;
             button2.Location = new Point(93, 12);
             button2.Name = "button2";
-            button2.Size = new Size(75, 23);
+            button2.Size = new Size(75, 35);
             button2.TabIndex = 2;
             button2.Text = "Odśwież";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button3
             // 
+            button3.BackColor = Color.FromArgb(41, 128, 185);
+            button3.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button3.ForeColor = Color.White;
             button3.Location = new Point(174, 12);
             button3.Name = "button3";
-            button3.Size = new Size(113, 23);
+            button3.Size = new Size(113, 35);
             button3.TabIndex = 3;
             button3.Text = "Dodaj nowy";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button4
             // 
+            button4.BackColor = Color.FromArgb(41, 128, 185);
+            button4.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button4.ForeColor = Color.White;
             button4.Location = new Point(293, 12);
             button4.Name = "button4";
-            button4.Size = new Size(141, 23);
+            button4.Size = new Size(150, 35);
             button4.TabIndex = 4;
             button4.Text = "Przenieś do archiwum";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // UserCreatedWorkflowsForm

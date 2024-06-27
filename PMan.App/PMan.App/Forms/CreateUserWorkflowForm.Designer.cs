@@ -44,12 +44,15 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button1.BackColor = Color.White;
+            button1.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(95, 90);
             button1.Name = "button1";
             button1.Size = new Size(150, 42);
             button1.TabIndex = 1;
             button1.Text = "Zatwierdź";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // CreateUserWorkflowForm

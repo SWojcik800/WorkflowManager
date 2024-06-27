@@ -53,23 +53,29 @@
             // button2
             // 
             button2.Anchor = AnchorStyles.Right;
-            button2.Location = new Point(525, 33);
+            button2.BackColor = Color.White;
+            button2.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(528, 10);
             button2.Name = "button2";
             button2.Size = new Size(121, 31);
             button2.TabIndex = 1;
             button2.Text = "Edytuj";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Right;
-            button1.Location = new Point(652, 33);
+            button1.BackColor = Color.White;
+            button1.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(655, 10);
             button1.Name = "button1";
             button1.Size = new Size(121, 31);
             button1.TabIndex = 0;
             button1.Text = "Dodaj nowy";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // panel1
@@ -77,9 +83,9 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(12, 35);
             panel1.Name = "panel1";
-            panel1.Size = new Size(776, 67);
+            panel1.Size = new Size(776, 44);
             panel1.TabIndex = 3;
             // 
             // appGridView1
@@ -109,7 +115,7 @@
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(31, 31, 31);
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
@@ -199,8 +205,10 @@
             Controls.Add(panel1);
             Controls.Add(appGridView1);
             Name = "UserListForm";
-            StartPosition = FormStartPosition.CenterScreen;
+            Opacity = 1D;
             Text = "Lista użytkowników";
+            Controls.SetChildIndex(appGridView1, 0);
+            Controls.SetChildIndex(panel1, 0);
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)appGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();

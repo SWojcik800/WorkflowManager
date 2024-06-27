@@ -22,6 +22,7 @@ public partial class User : IEntity
     public virtual ICollection<UserUserGroup> UserUserGroups { get; set; } = new List<UserUserGroup>();
     public bool IsAdmin { get; set; }
     public string? Groups { get; set; }
+    public int DiskSpaceLimit { get; set; }
     [NotMapped]
     public string UserType { 
         get {

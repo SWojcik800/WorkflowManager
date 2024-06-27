@@ -1,4 +1,5 @@
-﻿using StorageManager.App.Forms;
+﻿using ReaLTaiizor.Forms;
+using StorageManager.App.Forms;
 using StorageManager.App.Forms.Base;
 using StorageManager.App.Helpers;
 using System;
@@ -17,6 +18,7 @@ namespace StorageManager.App
 {
     public partial class MainForm : Form
     {
+
         public MainForm()
         {
             InitializeComponent();
@@ -49,7 +51,7 @@ namespace StorageManager.App
 
             childForm.FormBorderStyle = FormBorderStyle.None;
 
-            if(this.panel2.Controls.Count > 0)
+            if (this.panel2.Controls.Count > 0)
             {
                 var oldControl = panel2.Controls[0];
                 oldControl.Hide();
@@ -59,7 +61,8 @@ namespace StorageManager.App
 
                 childForm.Show();
                 panel2.Controls.Remove(oldControl);
-            } else
+            }
+            else
             {
                 this.panel2.Controls.Add(childForm);
 
@@ -67,7 +70,7 @@ namespace StorageManager.App
 
                 childForm.Show();
             }
-            
+
 
         }
 
@@ -201,5 +204,6 @@ namespace StorageManager.App
                 return;
             this.administrationSubMenuPanel.Visible = !this.administrationSubMenuPanel.Visible;
         }
+
     }
 }

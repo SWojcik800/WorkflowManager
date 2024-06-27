@@ -43,6 +43,7 @@ namespace StorageManager.App
             checkBox2 = new CheckBox();
             button2 = new Button();
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             panel3 = new Panel();
             panel2 = new Panel();
             panel4 = new Panel();
@@ -51,13 +52,12 @@ namespace StorageManager.App
             textBox1 = new TextBox();
             label5 = new Label();
             panel5 = new Panel();
-            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)connectionCredsBindingSource).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // connectionCredsBindingSource
@@ -158,13 +158,16 @@ namespace StorageManager.App
             // 
             // button2
             // 
+            button2.BackColor = Color.White;
+            button2.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.Location = new Point(157, 326);
             button2.Name = "button2";
             button2.Size = new Size(158, 38);
             button2.TabIndex = 11;
             button2.Text = "Połącz";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // panel1
@@ -177,6 +180,16 @@ namespace StorageManager.App
             panel1.Name = "panel1";
             panel1.Size = new Size(211, 441);
             panel1.TabIndex = 12;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = WorkflowManager.App.Properties.Resources.database_solid;
+            pictureBox1.Location = new Point(35, 83);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(140, 165);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // panel3
             // 
@@ -280,16 +293,6 @@ namespace StorageManager.App
             panel5.Size = new Size(783, 443);
             panel5.TabIndex = 14;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = WorkflowManager.App.Properties.Resources.database_solid;
-            pictureBox1.Location = new Point(35, 83);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(140, 165);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
             // DbConnectionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -304,11 +307,11 @@ namespace StorageManager.App
             Text = "DbConnectionForm";
             ((System.ComponentModel.ISupportInitialize)connectionCredsBindingSource).EndInit();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 

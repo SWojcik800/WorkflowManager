@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("b726c9c5-1bc5-49d3-a717-d11645990b0d")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("WorkflowManager.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc5f58bb626bf2da0e8572c4ffbca698f4cfe57f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b420d68b0b9c01a3096579fdaa8bb0df57f503ce")]
 [assembly: System.Reflection.AssemblyProductAttribute("WorkflowManager.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WorkflowManager.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

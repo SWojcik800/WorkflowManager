@@ -49,23 +49,29 @@
             // button2
             // 
             button2.Anchor = AnchorStyles.Right;
-            button2.Location = new Point(506, 33);
+            button2.BackColor = Color.White;
+            button2.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(506, 10);
             button2.Name = "button2";
             button2.Size = new Size(121, 31);
             button2.TabIndex = 1;
             button2.Text = "Edytuj";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Right;
-            button1.Location = new Point(633, 33);
+            button1.BackColor = Color.White;
+            button1.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(633, 10);
             button1.Name = "button1";
             button1.Size = new Size(121, 31);
             button1.TabIndex = 0;
             button1.Text = "Dodaj nowy";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // panel1
@@ -73,13 +79,14 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(12, 35);
             panel1.Name = "panel1";
-            panel1.Size = new Size(757, 67);
+            panel1.Size = new Size(757, 44);
             panel1.TabIndex = 3;
             // 
             // appGridView1
             // 
+            appGridView1.AllowUserToAddRows = false;
             appGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(220, 220, 220);
             appGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -104,7 +111,7 @@
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(31, 31, 31);
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
@@ -114,6 +121,7 @@
             appGridView1.Location = new Point(12, 85);
             appGridView1.MultiSelect = false;
             appGridView1.Name = "appGridView1";
+            appGridView1.ReadOnly = true;
             appGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Control;
@@ -150,6 +158,7 @@
             DictionaryItemsCount.DataPropertyName = "DictionaryItemsCount";
             DictionaryItemsCount.HeaderText = "Liczba wpisów w słowniku";
             DictionaryItemsCount.Name = "DictionaryItemsCount";
+            DictionaryItemsCount.ReadOnly = true;
             // 
             // dictionaryBindingSource
             // 
@@ -160,11 +169,13 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(781, 450);
-            Controls.Add(panel1);
             Controls.Add(appGridView1);
+            Controls.Add(panel1);
             Name = "DictionariesListForm";
-            StartPosition = FormStartPosition.CenterScreen;
+            Opacity = 1D;
             Text = "Lista słowników";
+            Controls.SetChildIndex(panel1, 0);
+            Controls.SetChildIndex(appGridView1, 0);
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)appGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dictionaryBindingSource).EndInit();

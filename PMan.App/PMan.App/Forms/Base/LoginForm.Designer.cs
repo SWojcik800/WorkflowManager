@@ -218,13 +218,16 @@ namespace StorageManager.App
             // 
             // button1
             // 
+            button1.BackColor = Color.White;
+            button1.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 12F);
             button1.Location = new Point(101, 301);
             button1.Name = "button1";
             button1.Size = new Size(152, 36);
             button1.TabIndex = 11;
             button1.Text = "Zaloguj się";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             button1.KeyDown += button1_KeyDown;
             // 

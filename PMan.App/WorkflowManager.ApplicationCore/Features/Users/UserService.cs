@@ -15,6 +15,7 @@ namespace StorageManager.App.Features.Users
     public sealed class UserService(AppDbContext context) : IUserService
     {
         public User CurrentUser { get; private set; }
+        public string CurrentUserToken { get; private set; }
         public Result<User> Login(string login, string password)
         {
             var user = context.Users.Include(x => x.UserUserGroups)

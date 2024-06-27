@@ -14,7 +14,7 @@ using WorkflowManager.App.Models;
 
 namespace StorageManager.App.Helpers
 {
-    public sealed class AppManagerCore : IAppManager
+    public class AppManagerCore : IAppManager
     {
         private IServiceProvider _serviceProvider;
         public AppDbContext DbContext { get
@@ -78,9 +78,7 @@ namespace StorageManager.App.Helpers
                     .AddClasses(classes => classes.AssignableTo<ISingleton>())
                         .AsImplementedInterfaces()
                         .WithSingletonLifetime());
-
-            var creds = DbConnectionFactory.GetFromRegistry();
-            var connectionString = DbConnectionFactory.GetConnectionString(creds);
+            string connectionString = GetConnectionString();
             collection.AddDbContext<AppDbContext>((builder) =>
             {
                 builder.UseSqlServer(connectionString);
@@ -90,6 +88,13 @@ namespace StorageManager.App.Helpers
             Instance._serviceProvider = provider;
             _serviceProvider = provider;
             return Instance._serviceProvider;
+        }
+
+        protected virtual string GetConnectionString()
+        {
+            var creds = DbConnectionFactory.GetFromRegistry();
+            var connectionString = DbConnectionFactory.GetConnectionString(creds);
+            return connectionString;
         }
 
         public TService Resolve<TService>()
