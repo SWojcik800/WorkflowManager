@@ -12,6 +12,7 @@ namespace StorageManager.App.Database;
 public partial class AppDbContext : DbContext, ISingleton
 {
     private string _connectionString;
+    private bool _testing = false;
     public AppDbContext()
     {
         var creds = DbConnectionFactory.GetFromRegistry();
@@ -23,6 +24,11 @@ public partial class AppDbContext : DbContext, ISingleton
         _connectionString = connectionString;
     }
 
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options) 
+    {
+        _testing = true;
+    }
     public virtual DbSet<Dictionary> Dictionaries { get; set; }
 
     public virtual DbSet<DictionaryItem> DictionaryItems { get; set; }
@@ -46,10 +52,14 @@ public partial class AppDbContext : DbContext, ISingleton
     public virtual DbSet<WorkflowStageField> WorkflowStageFields { get; set; }
     public virtual DbSet<UserWorkflowHistoryEntry> UserWorkflowHistoryEntries { get; set; }
     public virtual DbSet<Attachment> Attachments { get; set; }
+    public virtual DbSet<Setting> Settings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(_connectionString);
+        if (!_testing)
+            optionsBuilder.UseSqlServer(_connectionString);
+        else
+            base.OnConfiguring(optionsBuilder);
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

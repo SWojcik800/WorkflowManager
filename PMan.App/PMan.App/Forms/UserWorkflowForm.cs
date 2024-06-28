@@ -29,7 +29,7 @@ namespace WorkflowManager.App.Forms
         private UserWorkflow _data;
         private List<AttachmentDto> _attachments = new List<AttachmentDto>();
         private bool _isReadOnly = false;
-        private string _apiBaseurl = "https://localhost:7255";
+        private string _apiBaseurl = AppManager.ApiUrl;
 
         private Dictionary<string, Func<string>> _getValueFuncs = new Dictionary<string, Func<string>>();
         private Dictionary<string, Func<bool>> _validateDataFuncs = new Dictionary<string, Func<bool>>();
@@ -55,19 +55,27 @@ namespace WorkflowManager.App.Forms
         }
         private void RefreshAttachmentsFromApi(int userWorkflowId)
         {
-            using (var httpClient = new HttpClient())
+            try
             {
-                var currentUser = AppManager.Instance.CurrentUser;
-                var client = new swaggerClient(_apiBaseurl, httpClient);
-                var result = client.UsersAsync(currentUser.Login, EncryptionHelper.Decrypt(currentUser.Password)).Result;
-                var token = result.Value;
-                AddBearerToken(httpClient, token);
-                var attachmentDtos = client.ForOwnerAsync(userWorkflowId, AttachmentOwnerType._1).Result
-                    .OrderByDescending(x => x.CreationTime)
-                    .ToList();
-                _attachments.Clear();
-                _attachments.AddRange(attachmentDtos);
-                this.attachmentDtoBindingSource.ResetBindings(true);
+                using (var httpClient = new HttpClient())
+                {
+                    var currentUser = AppManager.Instance.CurrentUser;
+                    var client = new swaggerClient(_apiBaseurl, httpClient);
+                    var result = client.UsersAsync(currentUser.Login, EncryptionHelper.Decrypt(currentUser.Password)).Result;
+                    var token = result.Value;
+                    AddBearerToken(httpClient, token);
+                    var attachmentDtos = client.ForOwnerAsync(userWorkflowId, AttachmentOwnerType._1).Result
+                        .OrderByDescending(x => x.CreationTime)
+                        .ToList();
+                    _attachments.Clear();
+                    _attachments.AddRange(attachmentDtos);
+                    this.attachmentDtoBindingSource.ResetBindings(true);
+                }
+            }
+            catch (Exception e)
+            {
+
+                AppManager.ShowErrorMessage("Bład podczas łączenia z sieciową usługą plików");
             }
         }
 
@@ -81,29 +89,38 @@ namespace WorkflowManager.App.Forms
             {
                 var folderPath = folderDialog.SelectedPath;
                 Cursor.Current = Cursors.WaitCursor;
-                using (var httpClient = new HttpClient())
+                try
                 {
-
-                    var currentUser = AppManager.Instance.CurrentUser;
-                    var client = new swaggerClient(_apiBaseurl, httpClient);
-                    var apiResult = client.UsersAsync(currentUser.Login, EncryptionHelper.Decrypt(currentUser.Password)).Result;
-                    var token = apiResult.Value;
-                    AddBearerToken(httpClient, token);
-
-                    foreach (var id in fileIds)
+                    using (var httpClient = new HttpClient())
                     {
-                        var file = client.AttachmentsGETAsync(id).Result;
 
-                        var filePath = Path.Combine(folderPath, file.FileName);
+                        var currentUser = AppManager.Instance.CurrentUser;
+                        var client = new swaggerClient(_apiBaseurl, httpClient);
+                        var apiResult = client.UsersAsync(currentUser.Login, EncryptionHelper.Decrypt(currentUser.Password)).Result;
+                        var token = apiResult.Value;
+                        AddBearerToken(httpClient, token);
 
-                        File.WriteAllBytes(filePath, file.File);
+                        foreach (var id in fileIds)
+                        {
+                            var file = client.AttachmentsGETAsync(id).Result;
+
+                            var filePath = Path.Combine(folderPath, file.FileName);
+
+                            File.WriteAllBytes(filePath, file.File);
+                        }
+
+
+
                     }
 
-
+                    Process.Start("explorer", folderPath);
 
                 }
+                catch (Exception e)
+                {
 
-                Process.Start("explorer", folderPath);
+                    AppManager.ShowErrorMessage("Bład podczas łączenia z sieciową usługą plików");
+                }
                 Cursor.Current = Cursors.Default;
 
             }
@@ -120,7 +137,10 @@ namespace WorkflowManager.App.Forms
             {
                 var bytes = File.ReadAllBytes(dialog.FileName);
                 var fileName = Path.GetFileName(dialog.FileName);
-                using (var httpClient = new HttpClient())
+
+                try
+                {
+                    using (var httpClient = new HttpClient())
                 {
                     var currentUser = AppManager.Instance.CurrentUser;
                     var client = new swaggerClient(_apiBaseurl, httpClient);
@@ -143,6 +163,12 @@ namespace WorkflowManager.App.Forms
                     });
 
                     RefreshAttachmentsFromApi(_data.Id);
+                }
+                }
+                catch (Exception e)
+                {
+
+                    AppManager.ShowErrorMessage("Bład podczas łączenia z sieciową usługą plików");
                 }
             }
         }

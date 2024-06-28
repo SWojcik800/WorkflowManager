@@ -17,7 +17,7 @@ using WorkflowManager.App.Models;
 
 namespace WorkflowManager.App.Features.UserWorkflows
 {
-    internal sealed class UserWorkflowService(IUserService userService, IWorkflowService workflowService) : IUserWorkflowService
+    public sealed class UserWorkflowService(IUserService userService, IWorkflowService workflowService) : IUserWorkflowService
     {
         public void CreateUserWorkflow(int workflowId, int userId)
         {

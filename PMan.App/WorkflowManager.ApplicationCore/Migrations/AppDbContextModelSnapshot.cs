@@ -418,6 +418,31 @@ namespace WorkflowManager.App.Migrations
                     b.ToTable("Attachments");
                 });
 
+            modelBuilder.Entity("WorkflowManager.ApplicationCore.Models.Setting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Settings");
+                });
+
             modelBuilder.Entity("StorageManager.App.Models.DictionaryItem", b =>
                 {
                     b.HasOne("StorageManager.App.Models.Dictionary", "Dictionary")

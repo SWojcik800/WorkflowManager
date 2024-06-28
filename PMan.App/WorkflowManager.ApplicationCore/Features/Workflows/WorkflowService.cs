@@ -14,7 +14,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace WorkflowManager.App.Features.Workflows
 {
-    internal sealed class WorkflowService(AppDbContext context) : IWorkflowService
+    public sealed class WorkflowService(AppDbContext context) : IWorkflowService
     {
         public void DeleteChildren(List<int> deletedFieldsIds, List<int> deletedStagesIds)
         {

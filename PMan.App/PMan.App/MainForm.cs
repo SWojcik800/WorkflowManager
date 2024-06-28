@@ -205,5 +205,9 @@ namespace StorageManager.App
             this.administrationSubMenuPanel.Visible = !this.administrationSubMenuPanel.Visible;
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            SettingsForm.Open();
+        }
     }
 }

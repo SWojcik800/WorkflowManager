@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowManager.App", "PMan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowManager.ApplicationCore", "WorkflowManager.ApplicationCore\WorkflowManager.ApplicationCore.csproj", "{8CFC2021-6844-4AB6-B0BD-62CD46025037}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowManager.Api", "WorkflowManager.Api\WorkflowManager.Api.csproj", "{7B17A735-1FFE-464A-AF94-C25A3DA88B4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowManager.Api", "WorkflowManager.Api\WorkflowManager.Api.csproj", "{7B17A735-1FFE-464A-AF94-C25A3DA88B4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowManager.ApplicationCore.Tests", "WorkflowManager.ApplicationCore.Tests\WorkflowManager.ApplicationCore.Tests.csproj", "{987A3FF4-DF08-4113-AABA-32CD548AD348}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{7B17A735-1FFE-464A-AF94-C25A3DA88B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B17A735-1FFE-464A-AF94-C25A3DA88B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B17A735-1FFE-464A-AF94-C25A3DA88B4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{987A3FF4-DF08-4113-AABA-32CD548AD348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{987A3FF4-DF08-4113-AABA-32CD548AD348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{987A3FF4-DF08-4113-AABA-32CD548AD348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{987A3FF4-DF08-4113-AABA-32CD548AD348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

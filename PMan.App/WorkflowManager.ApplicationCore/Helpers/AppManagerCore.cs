@@ -50,10 +50,17 @@ namespace StorageManager.App.Helpers
         {
             Instance = new AppManagerCore();
             RegisterServices();
+
+            Instance.DbContext.Database.EnsureCreated();
+
+            if (Instance.DbContext.Database.GetPendingMigrations().Any())
+                Instance.DbContext.Database.Migrate();
+
             Instance._dictionaries = Instance.DbContext.Dictionaries.Include(x => x.DictionaryItems)
                 .ToList();
 
             Instance._users = Instance.DbContext.Users.ToList();
+
             AddInitialDataToDb();
         }
 
@@ -149,6 +156,17 @@ namespace StorageManager.App.Helpers
                     Password = EncryptionHelper.Encrypt("123qwe")
                 });
             }
+
+            if(!DbContext.Settings.Any())
+            {
+                var apiUrlSetting = new WorkflowManager.ApplicationCore.Models.Setting() {
+                    Code = "ApiUrl",
+                    DisplayName = "Adres usługi sieciowej",
+                    Value = "https://localhost:7255"
+                };
+                DbContext.Settings.Add(apiUrlSetting);
+            }
+
             DbContext.SaveChanges();
         }
 

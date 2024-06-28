@@ -56,6 +56,7 @@
             versionLabel = new Label();
             panel3 = new Panel();
             pageTitleLabel = new Label();
+            button9 = new Button();
             sideBarContainerPanel.SuspendLayout();
             administrationSubMenuPanel.SuspendLayout();
             myAccountSubMenuPanel.SuspendLayout();
@@ -87,13 +88,14 @@
             // 
             // administrationSubMenuPanel
             // 
+            administrationSubMenuPanel.Controls.Add(button9);
             administrationSubMenuPanel.Controls.Add(workflowsButton);
             administrationSubMenuPanel.Controls.Add(dictionariesButton);
             administrationSubMenuPanel.Controls.Add(usersButton);
             administrationSubMenuPanel.Dock = DockStyle.Top;
             administrationSubMenuPanel.Location = new Point(0, 772);
             administrationSubMenuPanel.Name = "administrationSubMenuPanel";
-            administrationSubMenuPanel.Size = new Size(283, 182);
+            administrationSubMenuPanel.Size = new Size(283, 241);
             administrationSubMenuPanel.TabIndex = 13;
             // 
             // workflowsButton
@@ -184,7 +186,7 @@
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(0, 954);
+            button4.Location = new Point(0, 1013);
             button4.Name = "button4";
             button4.Size = new Size(283, 59);
             button4.TabIndex = 4;
@@ -487,6 +489,26 @@
             pageTitleLabel.TabIndex = 0;
             pageTitleLabel.Text = "Page title";
             // 
+            // button9
+            // 
+            button9.Dock = DockStyle.Top;
+            button9.FlatAppearance.BorderSize = 0;
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.Font = new Font("Segoe UI", 12F);
+            button9.ForeColor = Color.White;
+            button9.Image = (Image)resources.GetObject("button9.Image");
+            button9.ImageAlign = ContentAlignment.MiddleLeft;
+            button9.Location = new Point(0, 177);
+            button9.Name = "button9";
+            button9.Padding = new Padding(20, 0, 0, 0);
+            button9.Size = new Size(283, 59);
+            button9.TabIndex = 6;
+            button9.Text = "Ustawienia";
+            button9.TextAlign = ContentAlignment.MiddleLeft;
+            button9.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -545,5 +567,6 @@
         private Button workflowsButton;
         private Button dictionariesButton;
         private Button usersButton;
+        private Button button9;
     }
 }

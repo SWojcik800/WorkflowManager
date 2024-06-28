@@ -53,10 +53,19 @@ namespace StorageManager.App.Helpers
 
         public User CurrentUser { get { return Instance.CurrentUser; } }
 
+        public static string ApiUrl { get; private set; }
+
         public void Init()
         {
             Instance = new AppManagerCore();
             Instance.Init();
+
+            var urlSetting = DbContext.Settings.FirstOrDefault(x => x.Code == "ApiUrl");
+
+            if (urlSetting != null)
+            {
+                ApiUrl = urlSetting.Value;
+            }
         }
 
         public static void Logout()
