@@ -8226,23 +8226,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\szymo\\.nuget\\packages\\": {},
+    "C:\\Users\\Ldvs\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore.Tests\\WorkflowManager.ApplicationCore.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore.Tests\\WorkflowManager.ApplicationCore.Tests.csproj",
       "projectName": "WorkflowManager.ApplicationCore.Tests",
-      "projectPath": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore.Tests\\WorkflowManager.ApplicationCore.Tests.csproj",
-      "packagesPath": "C:\\Users\\szymo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore.Tests\\obj\\",
+      "projectPath": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore.Tests\\WorkflowManager.ApplicationCore.Tests.csproj",
+      "packagesPath": "C:\\Users\\Ldvs\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\szymo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ldvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8251,7 +8251,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://nuget.devexpress.com/tBiH2fM31W7PbL5QtZnd21CMCj3HLemuoCZwgNFseIbDlnEc6v/api": {}
       },
@@ -8259,8 +8258,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore\\WorkflowManager.ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\szymo\\source\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore\\WorkflowManager.ApplicationCore.csproj"
+            "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore\\WorkflowManager.ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\Ldvs\\Desktop\\repos\\WorkflowManager\\PMan.App\\WorkflowManager.ApplicationCore\\WorkflowManager.ApplicationCore.csproj"
             }
           }
         }
@@ -8321,7 +8320,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

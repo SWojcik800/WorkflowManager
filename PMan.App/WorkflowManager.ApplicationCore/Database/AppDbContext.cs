@@ -53,6 +53,7 @@ public partial class AppDbContext : DbContext, ISingleton
     public virtual DbSet<UserWorkflowHistoryEntry> UserWorkflowHistoryEntries { get; set; }
     public virtual DbSet<Attachment> Attachments { get; set; }
     public virtual DbSet<Setting> Settings { get; set; }
+    public virtual DbSet<UserDiskLimit> UserDiskLimits { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WorkflowManager.ApplicationCore.Tests
-build_property.ProjectDir = C:\Users\szymo\source\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore.Tests\
+build_property.ProjectDir = C:\Users\Ldvs\Desktop\repos\WorkflowManager\PMan.App\WorkflowManager.ApplicationCore.Tests\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

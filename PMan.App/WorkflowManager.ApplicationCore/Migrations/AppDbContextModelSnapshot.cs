@@ -443,6 +443,27 @@ namespace WorkflowManager.App.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("WorkflowManager.ApplicationCore.Models.UserDiskLimit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Limit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserDiskLimits");
+                });
+
             modelBuilder.Entity("StorageManager.App.Models.DictionaryItem", b =>
                 {
                     b.HasOne("StorageManager.App.Models.Dictionary", "Dictionary")
@@ -560,6 +581,17 @@ namespace WorkflowManager.App.Migrations
                         .IsRequired();
 
                     b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("WorkflowManager.ApplicationCore.Models.UserDiskLimit", b =>
+                {
+                    b.HasOne("StorageManager.App.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StorageManager.App.Models.Dictionary", b =>
