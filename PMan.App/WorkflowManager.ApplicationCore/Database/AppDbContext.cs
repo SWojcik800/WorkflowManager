@@ -12,6 +12,7 @@ namespace StorageManager.App.Database;
 public partial class AppDbContext : DbContext, ISingleton
 {
     private string _connectionString;
+    private readonly bool _turnOffTracking;
     private bool _testing = false;
     public AppDbContext()
     {
@@ -19,9 +20,10 @@ public partial class AppDbContext : DbContext, ISingleton
         _connectionString = DbConnectionFactory.GetConnectionString(creds);
     }
 
-    public AppDbContext(string connectionString)
+    public AppDbContext(string connectionString, bool turnOffTracking = false)
     {
         _connectionString = connectionString;
+        _turnOffTracking = turnOffTracking;
     }
 
     public AppDbContext(DbContextOptions<AppDbContext> options)
@@ -61,6 +63,9 @@ public partial class AppDbContext : DbContext, ISingleton
             optionsBuilder.UseSqlServer(_connectionString);
         else
             base.OnConfiguring(optionsBuilder);
+
+        if (_turnOffTracking)
+            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

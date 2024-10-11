@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WorkflowManager.ApplicationCore.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41fcac428e15cc5e245684f214e692f09eae31b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c19204a3717012e8042c1169a8ebf453efce752e")]
 [assembly: System.Reflection.AssemblyProductAttribute("WorkflowManager.ApplicationCore.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WorkflowManager.ApplicationCore.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -254,16 +254,18 @@ namespace WorkflowManager.App.Forms
                         {
                             var comboBox = new System.Windows.Forms.ComboBox();
                             comboBox.Name = fieldDef.Code;
-                            comboBox.Text = fieldDef.DisplayName;
+                            //comboBox.Text = fieldDef.DisplayName;
 
                             object[] items = fieldDef.DisplayData.Split(";").ToArray();
                             comboBox.Items.AddRange(items);
 
                             _getValueFuncs.Add(fieldDef.Code, () =>
                             {
-                                var selectedItem = comboBox.SelectedItem.ToString();
+                                var selectedItem = comboBox.SelectedItem;
+                                if (selectedItem == null)
+                                    return "";
 
-                                if (string.IsNullOrEmpty(selectedItem))
+                                if (string.IsNullOrEmpty(selectedItem.ToString()))
                                     return "";
 
                                 return selectedItem.ToString();
@@ -272,6 +274,12 @@ namespace WorkflowManager.App.Forms
                             if (isRequired)
                                 _validateDataFuncs.Add(fieldDef.Code, () =>
                                 {
+                                    if (comboBox.SelectedItem is null)
+                                    {
+                                        this.errorProvider1.SetError(comboBox, "To pole jest wymagane");
+                                        return false;
+                                    }
+
                                     var selectedItem = comboBox.SelectedItem.ToString();
                                     if (string.IsNullOrEmpty(selectedItem))
                                     {
@@ -342,6 +350,85 @@ namespace WorkflowManager.App.Forms
                             controlToAdd = comboBox;
                         }
                         break;
+                    case WorkflowFieldType.User:
+                        {
+                            var comboBox = new System.Windows.Forms.ComboBox();
+                            comboBox.Name = fieldDef.Code;
+                            //comboBox.Text = fieldDef.DisplayName;
+
+                            var usersList = _userService.GetAll().ToList();
+
+                            comboBox.Items.AddRange(usersList.ToArray());
+                            comboBox.DisplayMember = "Login";
+                            comboBox.ValueMember = "Id";
+
+                            _getValueFuncs.Add(fieldDef.Code, () =>
+                            {
+                                var selectedItem = comboBox.SelectedItem as User;
+
+                                if (selectedItem is null)
+                                    return "";
+
+                                return selectedItem.Id.ToString();
+                            });
+
+                            if (isRequired)
+                                _validateDataFuncs.Add(fieldDef.Code, () =>
+                                {
+                                    var selectedItem = comboBox.SelectedItem as User;
+                                    if (selectedItem is null)
+                                    {
+                                        this.errorProvider1.SetError(comboBox, "To pole jest wymagane");
+                                        return false;
+                                    }
+
+                                    return true;
+                                });
+
+                            var existingValue = _data.UserWorkflowFieldValues.FirstOrDefault(x => x.FieldCode == stageField.FieldCode);
+                            if (existingValue is not null)
+                            {
+
+                                if (int.TryParse(existingValue.FieldValue, out int selectedItemId))
+                                {
+                                    var foundItem = usersList.FirstOrDefault(x => x.Id == selectedItemId);
+                                    comboBox.SelectedItem = foundItem;
+                                }
+
+                            }
+
+                            controlToAdd = comboBox;
+                        }
+                        break;
+                    case WorkflowFieldType.Date:
+                        {
+                            var dateTimePicker = new DateTimePicker();
+
+                            if (isRequired)
+                                _validateDataFuncs.Add(fieldDef.Code, () =>
+                                {
+                                    var selectedItem = dateTimePicker.Value;
+                                    if (selectedItem <= DateTime.MinValue)
+                                    {
+                                        this.errorProvider1.SetError(dateTimePicker, "To pole jest wymagane");
+                                        return false;
+                                    }
+
+                                    return true;
+                                });
+
+                            _getValueFuncs.Add(fieldDef.Code, () =>
+                            {
+                                return dateTimePicker.Value.ToString().ToLower().Trim();
+                            });
+
+                            var existingValue = _data.UserWorkflowFieldValues.FirstOrDefault(x => x.FieldCode == stageField.FieldCode);
+                            if (existingValue is not null)
+                                dateTimePicker.Value = DateTime.Parse(existingValue.FieldValue.ToString());
+
+                            controlToAdd = dateTimePicker;
+                        }
+                        break;
                     default:
                         continue;
                         break;
@@ -353,7 +440,7 @@ namespace WorkflowManager.App.Forms
                 controlToAdd.AutoSize = true;
                 controlToAdd.Width = 300;
 
-                if (!skipLabel)
+                if (!skipLabel && isVisible)
                     flowLayoutPanel.Controls.Add(label);
 
                 flowLayoutPanel.Controls.Add(controlToAdd);

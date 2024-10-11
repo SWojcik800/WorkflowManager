@@ -47,6 +47,8 @@ public static class WorkflowFieldTypeExtensions
             { WorkflowFieldType.Checkbox, "Checkbox" },
             { WorkflowFieldType.ComboBox, "Combobox" },
             { WorkflowFieldType.Dictionary, "Słownik" },
+            { WorkflowFieldType.User, "Użytkownik" },
+            { WorkflowFieldType.Date, "Data" },
         };
     public static string GetName(WorkflowFieldType e)
     {
@@ -69,5 +71,7 @@ public enum WorkflowFieldType
     Text,
     Checkbox,
     ComboBox,
-    Dictionary
+    Dictionary,
+    User,
+    Date
 }

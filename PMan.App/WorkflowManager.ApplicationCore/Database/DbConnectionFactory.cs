@@ -63,8 +63,8 @@ namespace StorageManager.App.Database
         public static DbConnection Create()
             => new SqlConnection(_connectionString);
 
-        public static AppDbContext CreateDbContext()
-            => new AppDbContext(_connectionString);
+        public static AppDbContext CreateDbContext(bool disableChangeTracking = false)
+            => new AppDbContext(_connectionString, disableChangeTracking);
 
         public static void SaveToRegistry(ConnectionCreds creds)
         {
